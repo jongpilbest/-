@@ -1,64 +1,33 @@
 
-
-
+import { useSelector, useDispatch } from 'react-redux'
 import React, { useState, useContext, useEffect } from "react"
 import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
-import { Context } from '../contextv/DetailContext'
-
+//import { Context } from '../contextv/DetailContext'
+import { authAction } from "../redux/auth";
+import { cos } from 'react-native-reanimated';
+//import { counterActions } from "../store"
 
 import axios from "axios"
 
 
-const nickname = function ({ navigation }) {
 
+
+const nickname = function ({ navigation }) {
+  const dispatch = useDispatch();
   const [id, setid] = useState("");
+  const [checkhey, setcheck] = useState(false);
+  //const dispatch = useDispatch();
+
+  const is_id = useSelector((state) => state.auth.nickname)
 
 
   // var userId = Math.floor(Math.random() * 10);
-  const { add_nickname } = useContext(Context)
-  const z = 1;
+  // const { add_component, add_id, die } = useContext(Context)
 
-  var bol_check = 0;
-
-  const check_id = function () {
-    console.log('?HI')
-
-    axios.get(`http://192.168.15.137:5000/auth/checkNickname/${id}`, {
-      nickname: id
-    })
-      .then((response) => {
-        if (response) {
-          console.log('?');
-
-          console.log(response.data)
-          bol_check = response.data
-
-          //console.log(response.data);
-          //setUser(response);
-        } else {
-          alert("failed to ");
-        }
-      }).catch((err) => {
-        console.log(err.message);
-        console.log(err)
-        console.log('?');
-      });
-
-
-
-  }
-
-  const checkcorrct = function () {
-
-
-
-    if (bol_check == true) {
-      return false
-
-
-    }
-    return true;
-  }
+  // const dispatch = useDispatch();
+  // const set_id = useSelector((state) => state.id);
+  //const push = () =>
+  // const z = 1;
 
   const go_go_opacity = function () {
 
@@ -75,6 +44,56 @@ const nickname = function ({ navigation }) {
     }
   }
 
+
+
+
+
+
+
+
+  const check_id = function () {
+
+
+
+    console.log('//')
+    axios.get(`http://13.209.83.188:5000/auth/checkNickname/${id}`).then((response) => {
+      if (response) {
+        console.log('?? first');
+        console.log(response.data)
+        setcheck(response.data);
+
+        //setUser(response);
+      } else {
+        alert("failed to ");
+      }
+    }).catch((err) => {
+      console.log(err.message);
+      console.log(err)
+      console.log('?');
+    });
+    //console.log(' 체큰 ')
+    //console.log(checkhey)
+    // if (checkhey==true)
+
+
+
+  }
+  const check = function () {
+
+    if (checkhey == true) {
+      console.log('1 맞냐고')
+
+      return false;
+
+    }
+    else
+      return true;
+
+
+
+  }
+
+
   return (
     <View style={{
       backgroundColor: 'white',
@@ -85,6 +104,9 @@ const nickname = function ({ navigation }) {
         marginLeft: '3%'
 
       }}>
+        <Text>
+          {is_id}
+        </Text>
         <Text style={{
 
           fontSize: 20,
@@ -94,32 +116,54 @@ const nickname = function ({ navigation }) {
 
 
         }}>
-
-          닉네임을  입력해주세요
+          닉네임을 입력해주세요
         </Text>
       </View>
+
+
 
       <TextInput
         style={style.border}
         value={id}
         autoCorrect={false}
-        onChangeText={(ele) => setid(ele)}
+        onChangeText={(ele) => {
+          setid(ele);
+          setcheck(false)
+        }}
         onSubmitEditing={() => check_id()}>
       </TextInput>
-      {!checkcorrct() && <Text style={go_go_opacity()}>
-        존재하는 닉네임 입니다.
+      {!check() && <Text style={go_go_opacity()}>
+        중복된 닉네임 입니다.
       </Text>}
-
       < TouchableOpacity onPress={() => {
 
 
-        add_nickname(id)
-        navigation.navigate('second');
-      }
+        if (id.length >= 0) {
+          if (checkhey == false) {
 
-      }>
+            // die();
+
+
+            dispatch(authAction.setnickname(id))
+
+            // add_id(id);
+            navigation.navigate('second')
+
+
+          }
+
+
+
+
+
+
+
+        }
+
+
+      }}>
         <View style={{
-          backgroundColor: '#D2E6FF'
+          backgroundColor: 'pink'
           , width: '37%',
           height: '11%',
           borderRadius: 10,
@@ -143,7 +187,6 @@ const nickname = function ({ navigation }) {
         </View>
 
       </TouchableOpacity>
-
 
     </View >
 
@@ -175,6 +218,4 @@ const style = StyleSheet.create({
 
 })
 
-
 export default nickname;
-

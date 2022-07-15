@@ -18,8 +18,8 @@ const navigator = createBottomTabNavigator({
   signup: createStackNavigator({
 
     first: first,
-    second: second,
     nickname: nickname,
+    second: second,
     fifth: fifth,
     ingredient: ingredient,
 

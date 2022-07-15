@@ -16,6 +16,8 @@ var hey = -1;
 const Componn = function ({ vale, gogo }) {
     console.log(`vale ${vale}`)
     var [num, setnum] = useState(0);
+
+    const is_id = useSelector((state) => state.auth.array_list)
     const dispatch = useDispatch();
     const good_list = useSelector((state) => state.auth.array_list)
 
@@ -26,19 +28,74 @@ const Componn = function ({ vale, gogo }) {
     // const { check_corrct } = useContext(Context);
 
     const onpress = () => {
+        console.log('check')
+        console.log(is_id)
+        setnum((pre) => pre + 1)
+        //console.log(num)
+        if (tr == true) {
+            console.log(
+                ' 뭐냐'
+            )
+            dispatch(authAction.setallergy_0(vale.kr))
+            setnum(2)
+            return (
 
-        dispatch(authAction.setallergy_1(vale.kr))
+                {
+
+                    backgroundColor: '#D2D2D2',
+                    width: 89,
+                    height: 100,
+                    marginTop: 10,
+                    marginLeft: 20,
+                    padding: 0,
+                    borderRadius: 20,
+                    flexDirection: "row",
+
+                }
+            )
+        }
+        else if (num == 0) {
+
+            console.log('여기안ㅁ?')
+            dispatch(authAction.setallergy_1(vale.kr))
+        }
+        else if (num == 1) {
+            console.log('TD')
+            //  console.log(vale.kr)
+            dispatch(authAction.setallergy_0(vale.kr))
+            setnum(0);
+        }
     };
 
     const goto = function () {
 
 
+        if (num == 2) {
+            console.log('올로')
+            // console.log(num)
 
-        if (num == 1) {
+
+            return (
+                {
+                    backgroundColor: '#D2D2D2',
+                    width: 89,
+                    height: 100,
+                    marginTop: 10,
+                    marginLeft: 20,
+                    padding: 0,
+                    borderRadius: 20,
+
+                    flexDirection: "row",
+
+                }
+            )
+        }
+
+        else if (num == 1) {
             console.log('일로왈')
-            console.log(vale.kr)
+            //console.log(vale.kr)
 
-
+            console.log(is_id, num)
 
             //dispatch(authAction.setallergy_1(vale.kr))
 
@@ -129,6 +186,7 @@ const Componn = function ({ vale, gogo }) {
 
 
 
+
         <TouchableOpacity
             onPress={() => onpress()}>
             <View style={goto()}
@@ -142,6 +200,7 @@ const Componn = function ({ vale, gogo }) {
 
 
                 }}>
+
                     <Text style={{
                         fontSize: 16,
                         color: '#545252',

@@ -75,7 +75,7 @@ const first = function ({ navigation }) {
         //console.log(checkhey)
         // if (checkhey==true)
 
-        dispatch(authAction.setid(id))
+
 
     }
     const check = function () {
@@ -144,10 +144,10 @@ const first = function ({ navigation }) {
                         // die();
 
 
-
+                        dispatch(authAction.setid(id))
 
                         // add_id(id);
-                        navigation.navigate('second')
+                        navigation.navigate('nickname')
 
 
                     }
