@@ -28,8 +28,10 @@ const ingredient = function ({ navigation }) {
   var arry_list = useSelector((state) => state.auth.array_list)
   var arry_list_2 = useSelector((state) => state.auth.array_list_2)
   var id = useSelector((state) => state.auth.id)
-  var password = useSelector((state) => state.auth.password)
-  var nickname = useSelector((state) => state.auth.nickname)
+  var password = useSelector((state) => state.auth.password);
+
+  var nickname = useSelector((state) => state.auth.nickname);
+
   // console.log(mos, chekc)
 
   const check_most = function (el) {
@@ -344,6 +346,12 @@ const ingredient = function ({ navigation }) {
      });
   
   */
+
+    console.log('닉네임체크 ')
+    console.log(nickname);
+
+
+
     axios.post("http://13.209.83.188:5000/auth/join", {
       "userId": id,
       "password": password,

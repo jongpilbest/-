@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect } from "react"
 import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
 //import { Context } from '../contextv/DetailContext'
 import { authAction } from "../redux/auth";
-import { cos } from 'react-native-reanimated';
+//import { cos } from 'react-native-reanimated';
 //import { counterActions } from "../store"
 
 import axios from "axios"

@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect } from "react"
 import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
 //import { Context } from '../contextv/DetailContext'
 import { authAction } from "../redux/auth";
-import { cos } from 'react-native-reanimated';
+//import { cos } from 'react-native-reanimated';
 //import { counterActions } from "../store"
 
 import axios from "axios"
@@ -16,10 +16,12 @@ const nickname = function ({ navigation }) {
   const dispatch = useDispatch();
   const [id, setid] = useState("");
   const [checkhey, setcheck] = useState(false);
+
+  //const tr = useSelector((state) => state.auth.nickname)
   //const dispatch = useDispatch();
 
   const is_id = useSelector((state) => state.auth.nickname)
-
+ 
 
   // var userId = Math.floor(Math.random() * 10);
   // const { add_component, add_id, die } = useContext(Context)
@@ -58,9 +60,12 @@ const nickname = function ({ navigation }) {
     console.log('//')
     axios.get(`http://13.209.83.188:5000/auth/checkNickname/${id}`).then((response) => {
       if (response) {
-        console.log('?? first');
+        console.log('?? nickname');
         console.log(response.data)
         setcheck(response.data);
+        if (response.data == false) {
+          dispatch(authAction.setnickname(id))
+        }
 
         //setUser(response);
       } else {
@@ -87,6 +92,7 @@ const nickname = function ({ navigation }) {
 
     }
     else
+
       return true;
 
 

@@ -1,5 +1,4 @@
-import axios from "axios"
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Text, View, TouchableOpacity, Alert,
   Button,
@@ -8,97 +7,57 @@ import {
   Vibration,
 
 } from 'react-native';
-//import { Context } from '../contextv/DetailContext'
-
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux'
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-const Barcode = ({ navigation }) => {
-
-  const [hasPermission, setHasPermission] = useState(null);
-  //const { create_Barcode, delete_Barcode } = useContext(Context);
-  const [scanned, setScanned] = useState(false);
+const Barcode = function ({ navigation }) {
 
 
+  const token = useSelector((state) => state.token.token)
+  console.log(token);
+  var keyword = "1"
 
-  //const myIcon = (<Icon name="rocket" size={30} color="black" />)
-  useEffect(() => {
 
+  //var keyword_2 = '핫식스'
 
+  axios.post(`http://13.209.83.188:5000/likeproduct/list`,
 
-    (async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
-  }, []);
+    {
+      headers: {
+        'X-AUTH-TOKEN': token
 
-  const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true);
-    navigation.navigate('Enroll_page', { data: data })
-    //create_Barcode(data, () => navigation.pop())
-    /*
- axios.post("http://182.215.108.120:5000/product/detail", {
-   barcode: data
- })
-   .then((response) => {
-     if (response) {
-       console.log('?? first');
-       console.log(response.data)
-       setcheck(response.data);
-       //setUser(response);
-     } else {
-       alert("failed to ");
-     }
-   }).catch((err) => {
-     console.log(err.message);
-     console.log(err)
-     console.log('?');
-   });
-   */
-    alert(`바코드 번호는 ${data} 입니다. `);
+      }
+    }
+  ).then((response) => {
+    if (response) {
+      console.log('??서놓 상품>');
+      console.log(response.data)
+      // setcheck(response.data);
+
+      //setUser(response);
+    } else {
+      alert("failed to ");
+    }
+  }).catch((err) => {
+    console.log(err.message);
+    console.log(err)
+    console.log('?');
+  });
 
 
 
-  };
 
-  if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
 
   return (
     <View style={styles.container}>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
-      />
-      {scanned &&
-        <TouchableOpacity onPress={() => {
-          setScanned(false)
 
-        }} >
-          <View style={{
-            backgroundColor: 'white',
-            width: '22%',
-            height: '15%',
-            borderRadius: 90,
-            position: 'relative',
-            bottom: 0,
-            marginLeft: '75%',
-            marginTop: '130%'
-          }}>
+      <Text></Text>
 
-          </View>
-
-        </TouchableOpacity>
-
-
-      }
     </View>
   );
-
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -113,4 +72,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Barcode;
+export default Barcode

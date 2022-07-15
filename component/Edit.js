@@ -4,18 +4,21 @@ import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "rea
 //simport '../assets/font' as Font from "expo-font";
 //import { Context } from '../contextv/DetailContext'
 //import { Context2 } from '../contextv/DetailContext'
+import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux'
+//import { authAction } from "../redux/auth";
+import { tokenAction } from "../redux/token";
 
-import { authAction } from "../redux/auth";
+//import { tokenAction } from "../redux/token";
 
-
-
+//const dispatch = useDispatch();
 const Edit = function ({ navigation }) {
 
-
-    const is_id = useSelector((state) => state.auth.id)
-    const is_password = useSelector((state) => state.auth.password)
+    const dispatch = useDispatch();
+    // const is_id = useSelector((state) => state.auth.id)
+    //const is_password = useSelector((state) => state.auth.password)
     const [id, setid] = useState('');
-    const { signtoken } = useContext(Context);
+    // const { signtoken } = useContext(Context);
     // console.log(Context2._currentValue.state);
     // const { logicalWidth, logicalHeight } = Dimensions.get('window')
 
@@ -87,10 +90,10 @@ const Edit = function ({ navigation }) {
 
                     // tokevn(id, password)
 
-                    axios.post("http://172.30.1.13:5000/auth/login", {
+                    axios.post("http://13.209.83.188:5000/auth/login", {
 
-                        "userId": is_id,
-                        "password": is_password
+                        "userId": id,
+                        "password": password
 
 
                     }).then((response) => {
@@ -98,16 +101,16 @@ const Edit = function ({ navigation }) {
                             console.log('?? first');
                             total_response = response.data.token
                             console.log(total_response)
-
+                            dispatch(tokenAction.settoken(total_response))
                             //AsyncStorage.setItem('Token', total_response)
-                      
+
 
                         }
                     }).catch((err) => {
                         console.log(err.message);
 
                     });
-                   //signtoken(id, password)
+                    //signtoken(id, password)
 
                     // navigation.navigate('index')
                 }}

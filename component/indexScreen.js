@@ -3,7 +3,10 @@ import React, { useContext, useEffect } from "react";
 import { View, Text, FlatList, Button, StyleSheet, TouchableOpacity } from "react-native";
 
 //import { Context } from '../contextv/DetailContext'
+import { useSelector, useDispatch } from 'react-redux'
+//const good_list = useSelector((state) => state.auth.array_list)
 
+import { authAction } from "../redux/auth";
 
 
 const indexScreen = ({ navigation }) => {

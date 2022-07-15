@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { useSelector, useDispatch } from 'react-redux'
+import axios from "axios";
 const initialstate = {
  barcode: '',
  

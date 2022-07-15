@@ -167,7 +167,7 @@ const authslice = createSlice({
    state.id = action.payload
   },
   setnickname: (state, action) => {
-   state.setnickname = action.payload
+   state.nickname = action.payload
   },
   setpassword: (state, action) => {
    state.password = action.payload
