@@ -20,33 +20,33 @@ const Barcode = function ({ navigation }) {
 
 
   //var keyword_2 = '핫식스'
+  /*
+axios.post(`http://13.209.83.188:5000/likeproduct/list`,
 
-  axios.post(`http://13.209.83.188:5000/likeproduct/list`,
+  {
+    headers: {
+      'X-AUTH-TOKEN': token
 
-    {
-      headers: {
-        'X-AUTH-TOKEN': token
-
-      }
     }
-  ).then((response) => {
-    if (response) {
-      console.log('??서놓 상품>');
-      console.log(response.data)
-      // setcheck(response.data);
+  }
+).then((response) => {
+  if (response) {
+    console.log('??서놓 상품>');
+    console.log(response.data)
+    // setcheck(response.data);
 
-      //setUser(response);
-    } else {
-      alert("failed to ");
-    }
-  }).catch((err) => {
-    console.log(err.message);
-    console.log(err)
-    console.log('?');
-  });
+    //setUser(response);
+  } else {
+    alert("failed to ");
+  }
+}).catch((err) => {
+  console.log(err.message);
+  console.log(err)
+  console.log('?');
+});
 
 
-
+*/
 
 
   return (
