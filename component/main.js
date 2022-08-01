@@ -9,17 +9,92 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ScrollView } from "react-native-gesture-handler";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
+import { goodAction } from "../redux/good";
+var new_A = [];
+var index_array = [];
+//import { useSelector, useDispatch } from 'react-redux'
 
-//const dispatch = useDispatch();
 const main = function ({ navigation }) {
-
+  const dispatch = useDispatch();
   // const is_id = useSelector((state) => state.auth.id)
   //const is_password = useSelector((state) => state.auth.password)
   const [id, setid] = useState('');
   // const { signtoken } = useContext(Context);
   // console.log(Context2._currentValue.state);
   // const { logicalWidth, logicalHeight } = Dimensions.get('window')
+  var state_state = useSelector((state) => state.good.good);
+
+  var array_lst = ['콘칩', '콘사', '콘소메', '콘사사', '칩시', '시구', '시구시'];
   const token = useSelector((state) => state.token.token)
+  const nickname = useSelector((state) => state.owner.owner);
+
+  const goto_text = function (el) {
+
+    //setid(ele);
+    console.log(el)
+
+    if (id.length == 0) {
+
+      // delete_all();
+
+
+
+
+      new_A.length = 0;
+      array_lst.forEach(element => {
+        var ch = element.split('');
+        // console.log(ch);
+        new_A.push(ch)
+        //console.log(new_A)
+      });
+
+
+      dispatch(goodAction.setgood(new_A))
+
+
+
+
+    }
+
+    else if (id.length >= 1) {
+
+
+      var cc = [];
+      console.log(el)
+
+      state_state.forEach((EV, index) => {
+
+
+        var chec = el.length;
+        var good = el.toString().split('')
+        var misu = (good[chec - 1])
+
+
+        if (EV.includes(misu)) {
+
+          cc.push(EV);
+
+        }
+
+
+      })
+      console.log(cc, cc.length);
+      if (cc.length > 0) {
+
+
+
+        dispatch(goodAction.setgood(new_A))
+
+        console.log(state_state)
+
+      }
+
+
+    }
+
+
+
+  }
 
   const [password, setpassword] = useState('');
   return (
@@ -100,12 +175,18 @@ const main = function ({ navigation }) {
           placeholderTextColor={'#B9B9B9'}
           autoCorrect={false}
           clearTextOnFocus={true}
+          onChangeText={(ele) => {
+
+            setid(ele);
+            // goto_text(ele);
+
+          }}
           onSubmitEditing={() => {
             console.log('검색해보자고')
             ///product/search/{keyword}
             console.log(id, token);
 
-            axios.get(`http://13.209.83.188:5000/product/search/${id}`,
+            axios.get(`http://220.86.187.246:5000/product/search/${id}`,
 
               {
                 headers: {
@@ -116,9 +197,9 @@ const main = function ({ navigation }) {
             ).then((response) => {
               if (response) {
                 console.log('??서놓 상품>');
-                console.log(response.data)
+                //console.log(response.data)
                 // setcheck(response.data);
-
+                navigation.navigate('search_item_first', { data: response.data })
                 //setUser(response);
               } else {
                 alert("failed to ");
@@ -133,7 +214,7 @@ const main = function ({ navigation }) {
 
           }
           }
-          onChangeText={(ele) => setid(ele)}>
+        >
 
         </TextInput>
 
@@ -184,7 +265,7 @@ const main = function ({ navigation }) {
           marginTop: 13,
           marginLeft: 20
 
-        }}> 사용자 님을 위한 추천 상품 </Text>
+        }}> {`${nickname} 님을 위한 추천 상품`} </Text>
         <ScrollView
           style={{
             margin: 10
@@ -242,7 +323,7 @@ const main = function ({ navigation }) {
             marginTop: 10,
             marginLeft: 20
 
-          }}> 사용자 님을 위한 추천 기사 </Text>
+          }}> {`${nickname} 님을 위한 추천 기사`} </Text>
 
           <View style={{
             margin: 8,

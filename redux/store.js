@@ -6,12 +6,14 @@ import { combineReducers, createStore } from "redux";
 import authReducer from './auth';
 import barcodeReducer from './Barcode'
 import tokenReducer from './token'
+import goodReducer from './good'
 import favoriteReducer from './favorite'
+import ownerReducer from './owner_name'
 //import { combineReducers, createStore } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 const store = configureStore({
 
- reducer: { auth: authReducer, barcode: barcodeReducer, token: tokenReducer, favorite: favoriteReducer }
+ reducer: { auth: authReducer, owner: ownerReducer,barcode: barcodeReducer, good: goodReducer, token: tokenReducer, favorite: favoriteReducer }
 })
 
 export default store

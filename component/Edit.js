@@ -8,7 +8,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
 //import { authAction } from "../redux/auth";
 import { tokenAction } from "../redux/token";
-
+import { ownerAction } from "../redux/owner_name";
 //import { tokenAction } from "../redux/token";
 
 //const dispatch = useDispatch();
@@ -106,7 +106,7 @@ const Edit = function ({ navigation }) {
                         // tokevn(id, password)
                         console.log('?')
 
-                        axios.post("http://13.209.83.188:5000/auth/login", {
+                        axios.post("http://220.86.187.246:5000/auth/login", {
 
                             "userId": id,
                             "password": password
@@ -118,15 +118,17 @@ const Edit = function ({ navigation }) {
                                 total_response = response.data.token
                                 console.log(total_response)
 
+
                                 dispatch(tokenAction.settoken(total_response))
                                 //AsyncStorage.setItem('Token', total_response)
-
+                                dispatch(ownerAction.setowner(response.data.nickname))
 
                                 navigation.navigate('botton')
 
 
                             }
                         }).catch((err) => {
+                            console.log(err);
                             console.log(err.message);
 
                         });
