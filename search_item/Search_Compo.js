@@ -10,13 +10,22 @@ var hey = -1;
 
 
 import { useSelector, useDispatch } from 'react-redux'
+import first from "../signup/first";
 
 
 const Search_Compo = function ({ navigation, vale, touch }) {
  //console.log(`vale ${vale}`)
  var [num, setnum] = useState(0);
+ var fist = '';
+ var sec = '';
+ if (vale.name.length > 10) {
+  fist = vale.name.slice(0, 10);
+  sec = vale.name.slice(10, vale.name.length);
 
-
+ }
+ else if (vale.name.length < 10) {
+  fist = vale.name
+ }
  return (
 
   <TouchableOpacity onPress={() => {
@@ -28,13 +37,13 @@ const Search_Compo = function ({ navigation, vale, touch }) {
     backgroundColor: '#DDEEF2',
     width: 140,
     height: 170,
-    marginTop: 10,
+    marginTop: 5,
     marginLeft: 20,
-    marginRight: 10,
+    marginRight: 15,
     padding: 0,
     borderRadius: 100,
 
-    flexDirection: "row",
+
 
 
    }}
@@ -42,13 +51,22 @@ const Search_Compo = function ({ navigation, vale, touch }) {
    >
     <Text style={{
      fontFamily: "Nam-Bold",
-     fontSize: 11,
+     fontSize: 10,
      textAlign: 'center',
      marginTop: 130,
-     marginLeft: 30,
+     marginLeft: 20,
 
     }}>
-     {vale.name}
+     {fist}
+    </Text>
+    <Text style={{
+     fontFamily: "Nam-Bold",
+     fontSize: 10,
+     textAlign: 'center',
+
+
+    }}>
+     {sec}
     </Text>
 
    </View>

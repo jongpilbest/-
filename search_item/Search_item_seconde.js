@@ -1,22 +1,114 @@
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { Component, useContext, useEffect, useState } from "react";
 import { View, Pressable, Image, Text, ScrollView, FlatList, Button, StyleSheet, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 //import Animated from 'react-native-reanimated';
 import Allery_item from "./Allery_item";
 import { Feather } from '@expo/vector-icons';
-
+import { MaterialIcons } from '@expo/vector-icons';
 import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux'
+import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 
 
-
-
+const CONTENT = {};
 const Search_item_seconde = ({ navigation }) => {
+
+  const token = useSelector((state) => state.token.token)
+  var [data, setdata] = useState('');
+  //var data = '';
   var name = navigation.getParam('name');
   var mapv = navigation.getParam('mapv');
-  console.log(mapv);
+  //const token = useSelector((state) => state.token.token)
+
+  var id = navigation.getParam('id');
+  console.log('아이디 체크')
+  console.log(id);
+  useEffect(() => {
+    axios.get(`http://13.209.73.153:5000/product/detail/${id}`,
+      {
+        headers: {
+          'X-AUTH-TOKEN': token
+
+        }
+      }
+    ).then((response) => {
+      if (response) {
+
+        data = response.data
+        // setcheck(response.data);
+        console.log(data);
+        setdata(data);
+
+        //setUser(response);
+      } else {
+        alert("failed to ");
+      }
+    }).catch((err) => {
+      console.log(err.message);
+      console.log(err)
+
+      console.log('상세정보');
+    });
+
+    //var mapv = ['1', '2'];
+    console.log('데이터')
+
+  }, [])
+
+  const go_to_to = async function () {
+
+    await axios.get(`http://13.209.73.153:5000/product/detail/${id}`,
+
+      {
+        headers: {
+          'X-AUTH-TOKEN': token
+
+        }
+      }
+    ).then((response) => {
+      if (response) {
+        console.log('상세 정보 내역');
+        var data = (response.data)
+        // setcheck(response.data);
+
+        //setUser(response);
+      } else {
+        alert("failed to ");
+      }
+    }).catch((err) => {
+      console.log(err.message);
+      console.log(err)
+
+      console.log('상세정보');
+    });
 
 
+
+
+
+
+
+
+  }
+
+  console.log('상세 정보 내역');
+  //console.log(data);
+  data = {
+    tableHead: ['영양성분', '열량'],
+    tableData: [
+      ['칼로리', data.calorie],
+      ['용량', data.capacity],
+      ['탄수화물', data.carbohydrates],
+      ['콜레스트롤', data.cholesterol],
+      ['지방', data.fat],
+      ['나트륨', data.natrium],
+      ['단백질', data.protein],
+      ['당', data.sugar],
+      ['포하지방', data.saturated_fat],
+      ['트랜스지방', data.trans_fat]
+    ],
+  };
 
   const [modalVisible, setModalVisible] = useState(false);
   var [num, setnum] = useState(0);
@@ -26,6 +118,8 @@ const Search_item_seconde = ({ navigation }) => {
 
     setnum((pre) => pre + 1)
     if (num == 1) {
+
+
       /*
    axios.get(`http://220.86.187.246:5000/auth/checkNickname/${id}`, {
     nickname: id
@@ -58,9 +152,37 @@ const Search_item_seconde = ({ navigation }) => {
 
     ;
   const goto = function () {
-
+    console.log('좋앙?');
+    console.log(id, name, token)
     if (num == 2) {
 
+      axios.get(`http://13.209.73.153:5000/likeproduct/${id}`, {
+        "name": name
+      },
+
+
+        {
+          headers: {
+            'X-AUTH-TOKEN': token
+
+          }
+        }
+      ).then((response) => {
+        if (response) {
+          console.log('선호 상품 등록');
+          console.log(response.data)
+          // setcheck(response.data);
+
+          //setUser(response);
+        } else {
+          alert("failed to ");
+        }
+      }).catch((err) => {
+        console.log(err.message);
+        console.log(err)
+
+        console.log('에러 메세지/선호 식품');
+      });
 
       // check_one(1, vale.name);   context 사용해서 여기에서 바꾸는 걸로 한다.
       // 이때 check 를 바꿔야 하니 매개별수를 같이 넣어서 .. = 이름+ 매개변수 
@@ -82,6 +204,33 @@ const Search_item_seconde = ({ navigation }) => {
 
     else if (num == 1) {
 
+      axios.get(`http://13.209.73.153:5000/likeproduct/${id}`, {
+        "name": name
+      },
+
+
+        {
+          headers: {
+            'X-AUTH-TOKEN': token
+
+          }
+        }
+      ).then((response) => {
+        if (response) {
+          console.log('선호 상품 등록');
+          console.log(response.data)
+          // setcheck(response.data);
+
+          //setUser(response);
+        } else {
+          alert("failed to ");
+        }
+      }).catch((err) => {
+        console.log(err.message);
+        console.log(err)
+
+        console.log('에러 메세지/선호 식품');
+      });
 
       return (
         '#E44688'
@@ -135,7 +284,7 @@ const Search_item_seconde = ({ navigation }) => {
             }}>
 
               <Text style={styles.modalText}>상세정보</Text>
-              <Text style={{ fontSize: 40 }}>안녕</Text>
+
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
@@ -156,9 +305,7 @@ const Search_item_seconde = ({ navigation }) => {
                 backgroundColor: '#7C7C7C',
                 borderRadius: 20
               }}>
-                <Text style={{
-
-                }}>스피커</Text>
+                <MaterialIcons name="speaker" size={24} color="white" />
               </View>
 
               <View style={{
@@ -193,6 +340,12 @@ const Search_item_seconde = ({ navigation }) => {
               <Text style={styles.modalTextv}>
                 영양성분
               </Text>
+              <View style={styles.container}>
+                <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+                  <Row data={data.tableHead} style={styles.head} textStyle={styles.text} />
+                  <Rows data={data.tableData} textStyle={styles.text} />
+                </Table>
+              </View>
 
             </View>
             <View>
@@ -228,7 +381,7 @@ const Search_item_seconde = ({ navigation }) => {
           <Text style={
 
             {
-              fontSize: 30,
+              fontSize: 20,
               textAlign: 'center',
               fontFamily: "Nam-Regular",
 
@@ -262,13 +415,17 @@ const Search_item_seconde = ({ navigation }) => {
 
         }}>
           <TouchableOpacity onPress={() => {
+
+
+
             onpress();
+
 
           }}>
             <Feather name="heart" size={30} color={
               goto()
             } style={{
-              marginLeft: 10,
+              marginRight: 20,
             }} />
 
           </TouchableOpacity>
@@ -279,7 +436,9 @@ const Search_item_seconde = ({ navigation }) => {
           }}>
 
             <TouchableOpacity onPress={() => {
-              { console.log('>') }
+              // go_to_to();
+
+
 
 
               setModalVisible(true)
@@ -350,6 +509,15 @@ const Search_item_seconde = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    width: '100%', height: 330
+    , padding: 16, paddingTop: 30, backgroundColor: '#fff'
+  },
+  head: { height: 40, backgroundColor: '#f1f8ff' },
+  text: {
+    margin: 6, fontFamily: "Nam-Bold",
+    fontSize: 9,
+  },
   centeredView: {
     flex: 1,
     justifyContent: "center",
@@ -357,8 +525,8 @@ const styles = StyleSheet.create({
     marginTop: 22
   },
   modalView: {
-    width: '80%',
-    height: '60%',
+    width: '90%',
+    height: '90%',
     margin: 20,
     backgroundColor: "#545252",
     opacity: 0.96,
@@ -396,7 +564,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
     fontSize: 30,
-    color: '#71A6E3'
+    color: '#ffffff'
 
   },
   modalTextv: {

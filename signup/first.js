@@ -56,7 +56,7 @@ const first = function ({ navigation }) {
 
 
         console.log('//')
-        axios.get(`http://13.209.83.188:5000/auth/checkUserId/${id}`).then((response) => {
+        axios.get(`http://13.209.73.153:5000/auth/checkUserId/${id}`).then((response) => {
             if (response) {
                 console.log('?? first');
                 console.log(response.data)

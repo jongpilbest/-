@@ -106,7 +106,7 @@ const Edit = function ({ navigation }) {
                         // tokevn(id, password)
                         console.log('?')
 
-                        axios.post("http://220.86.187.246:5000/auth/login", {
+                        axios.post("http://13.209.73.153:5000/auth/login", {
 
                             "userId": id,
                             "password": password

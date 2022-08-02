@@ -20,7 +20,13 @@ const Allery_item = function ({ show }) {
 
 
   }}>
-   <Text>
+   <Text style={{
+    fontFamily: 'Nam-Regular',
+    fontSize: 13,
+    textAlign: 'center',
+    margin: 20,
+
+   }}>
     {show}
    </Text>
 

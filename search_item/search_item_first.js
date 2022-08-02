@@ -12,8 +12,159 @@ import axios from "axios"
 
 //import { useSelector, useDispatch } from 'react-redux'
 import Search_Compo from './Search_Compo';
-var mapv = [];
 
+
+var ingredient_kr = [{
+ name: 'natrium',
+ check: 0,
+
+
+ kr: '나트륨'
+
+
+},
+{
+ name: "carbohydrates",
+ check: 0,
+ kr: '탄수화물'
+
+}, {
+ name: "sugar",
+ check: 0,
+ kr: '당류'
+
+},
+{
+
+ name: "fat",
+ check: 0,
+ kr: '지방'
+
+
+}
+ , {
+ name: 'trans_fat',
+ check: 0,
+ kr: '트랜스지방'
+
+},
+{
+ name: "saturated_fat",
+ check: 0,
+ kr: '포화지방'
+},
+{
+ name: "cholesterol",
+ check: 0,
+ kr: '콜레스테롤'
+
+},
+{
+ name: "protein",
+ check: 0,
+ kr: '단백질'
+
+},
+{
+ name: "calorie",
+ check: 0,
+ kr: '칼로리'
+
+}]
+
+var allergy_kr = [
+
+ {
+  name: 'wheat',
+  check: 0,
+  kr: '밀가루'
+ },
+
+ {
+  name: 'milk',
+  check: 0,
+  kr: '우유'
+
+ }
+ , {
+  name: 'buckwheat',
+  check: 0,
+  kr: '메밀'
+
+ },
+
+ {
+  name: 'soybean',
+  check: 0,
+  kr: '콩'
+
+ }
+ , {
+  name: 'mackerel',
+  check: 0,
+  kr: '고등어'
+
+
+ }
+ , {
+  name: 'crab',
+  check: 0,
+  kr: '게'
+
+
+ }, {
+  name: 'shrimp',
+  check: 0,
+  kr: '새우'
+
+ }, {
+  name: 'pork',
+  check: 0,
+  kr: '돼지 고기'
+
+ }, {
+  name: 'peach',
+  check: 0,
+  kr: '복숭아'
+
+ }, {
+  name: 'tomato',
+  check: 0,
+  kr: '토마토'
+
+ }, {
+  name: 'walnut',
+  check: 0,
+  kr: '땅콩'
+ }, {
+  name: 'chicken',
+  check: 0,
+  kr: '닭'
+
+ }, {
+  name: 'beef',
+  check: 0,
+  kr: '쇠고기'
+
+ }, {
+  name: 'squid',
+  check: 0,
+  kr: '오징어'
+
+ }, {
+  name: 'shellfish',
+  check: 0,
+  kr: '조개'
+
+
+ },
+ {
+  name: 'egg',
+  check: 0,
+  kr: '달걀'
+
+
+ }]
 const search_item_first = function ({ navigation }) {
  const token = useSelector((state) => state.token.token)
  console.log('여기서 확인')
@@ -61,8 +212,11 @@ const search_item_first = function ({ navigation }) {
 
  const gopage = async function (elv) {
 
+  
 
-  await axios.post(`http://220.86.187.246:5000/product/custom`, {
+
+
+  await axios.post(`http://13.209.73.153:5000/product/custom`, {
    "name": elv
 
   },
@@ -76,17 +230,40 @@ const search_item_first = function ({ navigation }) {
    if (response) {
     console.log('확인해보자 ');
     console.log(response.data)
-
+    var mapv = [];
     var ee = (Object.keys(response.data.allergy));
-    ee.forEach(el => {
-     mapv.push(el);
+    allergy_kr.forEach(ev => {
+     ee.forEach(el => {
+      if (ev.name == el) {
+       mapv.push(ev.kr);
+      }
+
+     })
+
     })
+
     var key_f = (Object.keys(response.data.ingredient));
     var key_ff = (Object.values(response.data.ingredient));
+    var id_check = response.data.Id
     var em = [];
+    var em_kr = [];
+    ingredient_kr.forEach(ev => {
+     key_f.forEach(el => {
+      if (ev.name == el) {
+
+       em_kr.push(ev.kr);
+      }
+
+     })
+
+    })
+
+
+
+
 
     for (var i = 0; i < key_f.length; i++) {
-     em.push(`${key_f[i]}:${key_ff[i]}`)
+     em.push(`${em_kr[i]}\n\n ${key_ff[i]}`)
     }
     em.forEach(el => {
      mapv.push(el);
@@ -96,6 +273,9 @@ const search_item_first = function ({ navigation }) {
     // setcheck(response.data);
     //navigation.navigate('search_item_first', { data: response.data })
     //setUser(response);
+    
+    navigation.navigate('Search_item_seconde', { name: elv, mapv: mapv, id: id_check })
+
    } else {
     alert("failed to ");
    }
@@ -106,7 +286,6 @@ const search_item_first = function ({ navigation }) {
   });
 
 
-  navigation.navigate('Search_item_seconde', { name: elv, mapv: mapv })
 
  }
 

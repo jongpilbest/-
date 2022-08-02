@@ -352,7 +352,7 @@ const ingredient = function ({ navigation }) {
 
 
 
-    axios.post("http://13.209.83.188:5000/auth/join", {
+    axios.post("http://13.209.73.153:5000/auth/join", {
       "userId": id,
       "password": password,
       "nickname": nickname,
