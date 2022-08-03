@@ -212,7 +212,7 @@ const search_item_first = function ({ navigation }) {
 
  const gopage = async function (elv) {
 
-  
+
 
 
 
@@ -273,7 +273,7 @@ const search_item_first = function ({ navigation }) {
     // setcheck(response.data);
     //navigation.navigate('search_item_first', { data: response.data })
     //setUser(response);
-    
+
     navigation.navigate('Search_item_seconde', { name: elv, mapv: mapv, id: id_check })
 
    } else {
@@ -391,12 +391,12 @@ const search_item_first = function ({ navigation }) {
 
 }
 
-/*
+
 search_item_first.navigationOptions = () => {
  return {
   header: () => false,
  };
 };
-*/
+
 
 export default search_item_first;

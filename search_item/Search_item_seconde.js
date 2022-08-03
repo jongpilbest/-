@@ -9,21 +9,27 @@ import { MaterialIcons } from '@expo/vector-icons';
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
-
-
+import Ms from "../signup/Ms";
+import { AntDesign } from '@expo/vector-icons';
 const CONTENT = {};
 const Search_item_seconde = ({ navigation }) => {
 
   const token = useSelector((state) => state.token.token)
   var [data, setdata] = useState('');
+  var [ingr, setingr] = useState([]);
+  var [in_ar, setin_ar] = useState([]);
+
+  const [MS_good, misu] = Ms();
   //var data = '';
   var name = navigation.getParam('name');
   var mapv = navigation.getParam('mapv');
   //const token = useSelector((state) => state.token.token)
+  var ingr_arr = '';
 
   var id = navigation.getParam('id');
   console.log('아이디 체크')
   console.log(id);
+
   useEffect(() => {
     axios.get(`http://13.209.73.153:5000/product/detail/${id}`,
       {
@@ -39,6 +45,7 @@ const Search_item_seconde = ({ navigation }) => {
         // setcheck(response.data);
         console.log(data);
         setdata(data);
+        setingr(data.rawMaterial.split(','));
 
         //setUser(response);
       } else {
@@ -56,45 +63,14 @@ const Search_item_seconde = ({ navigation }) => {
 
   }, [])
 
-  const go_to_to = async function () {
 
-    await axios.get(`http://13.209.73.153:5000/product/detail/${id}`,
-
-      {
-        headers: {
-          'X-AUTH-TOKEN': token
-
-        }
-      }
-    ).then((response) => {
-      if (response) {
-        console.log('상세 정보 내역');
-        var data = (response.data)
-        // setcheck(response.data);
-
-        //setUser(response);
-      } else {
-        alert("failed to ");
-      }
-    }).catch((err) => {
-      console.log(err.message);
-      console.log(err)
-
-      console.log('상세정보');
-    });
-
-
-
-
-
-
-
-
-  }
 
   console.log('상세 정보 내역');
-  //console.log(data);
-  data = {
+  console.log(ingr);
+
+
+
+  data_goood = {
     tableHead: ['영양성분', '열량'],
     tableData: [
       ['칼로리', data.calorie],
@@ -109,6 +85,39 @@ const Search_item_seconde = ({ navigation }) => {
       ['트랜스지방', data.trans_fat]
     ],
   };
+
+
+
+  console.log('원재료 ')
+  console.log(ingr.length)
+  var ff = [];
+
+
+  const go_to_to = function () {
+    // MS_good();
+    if (ingr.length > 0) {
+
+      for (var i = 0; i < ingr.length; i += 3) {
+        var ff_Ar = [];
+
+        ff_Ar.push(ingr[i], ingr[i + 1], ingr[i + 2]);
+        ff.push(ff_Ar);
+
+      }
+      console.log('확인해보자')
+      console.log(ff);
+      setin_ar(ff)
+
+    }
+
+
+
+
+  }
+  ingre = {
+
+    tableData: in_ar
+  }
 
   const [modalVisible, setModalVisible] = useState(false);
   var [num, setnum] = useState(0);
@@ -156,9 +165,7 @@ const Search_item_seconde = ({ navigation }) => {
     console.log(id, name, token)
     if (num == 2) {
 
-      axios.get(`http://13.209.73.153:5000/likeproduct/${id}`, {
-        "name": name
-      },
+      axios.get(`http://13.209.73.153:5000/likeproduct/${id}`,
 
 
         {
@@ -170,7 +177,7 @@ const Search_item_seconde = ({ navigation }) => {
       ).then((response) => {
         if (response) {
           console.log('선호 상품 등록');
-          console.log(response.data)
+          // console.log(response.data)
           // setcheck(response.data);
 
           //setUser(response);
@@ -204,9 +211,7 @@ const Search_item_seconde = ({ navigation }) => {
 
     else if (num == 1) {
 
-      axios.get(`http://13.209.73.153:5000/likeproduct/${id}`, {
-        "name": name
-      },
+      axios.get(`http://13.209.73.153:5000/likeproduct/${id}`,
 
 
         {
@@ -218,7 +223,7 @@ const Search_item_seconde = ({ navigation }) => {
       ).then((response) => {
         if (response) {
           console.log('선호 상품 등록');
-          console.log(response.data)
+          // console.log(response.data)
           // setcheck(response.data);
 
           //setUser(response);
@@ -266,7 +271,10 @@ const Search_item_seconde = ({ navigation }) => {
   return (
     <View style={{ backgroundColor: 'white' }}>
       <Modal
-        animationType="slide"
+        propagateSwipe={true}
+        //scrollTo={true}
+        //animationType="slide"
+        //scrollHorizontal={true}
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -274,17 +282,17 @@ const Search_item_seconde = ({ navigation }) => {
           setModalVisible(!modalVisible);
         }}
       >
+
+
         <View style={styles.centeredView}>
 
           <View style={styles.modalView}>
             <View style={{
-              flexDirection: 'row',
-              alignItems: "center",
-              justifyContent: 'center'
+              flexDirection: 'row'
             }}>
 
-              <Text style={styles.modalText}>상세정보</Text>
 
+              <Text style={styles.modalText}>상세정보</Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
@@ -298,64 +306,89 @@ const Search_item_seconde = ({ navigation }) => {
               width: '60%',
               height: '10%',
 
-              marginLeft: 20
+              marginLeft: 10,
+              marginBottom: 10,
+
             }}>
               <View style={{
-                width: '20%',
-                backgroundColor: '#7C7C7C',
-                borderRadius: 20
+                width: 40,
+                height: 40,
+                backgroundColor: '#ffffff',
+                borderRadius: 20, margin: 10
               }}>
-                <MaterialIcons name="speaker" size={24} color="white" />
+                <MaterialIcons name="speaker" style={{
+                  margin: 8
+                }} size={24} color="black" />
               </View>
 
               <View style={{
-                backgroundColor: '#7C7C7C',
-                marginLeft: 20,
-                borderRadius: 20
+                width: 40,
+                height: 40,
+                backgroundColor: '#ffffff',
+                borderRadius: 20,
+                margin: 10
               }}>
                 <TouchableOpacity>
-                  <Text style={{
-                    color: 'white',
-                    fontSize: 20,
-
-                    textAlign: 'center'
-                  }}>+</Text>
+                  <AntDesign name="plus" style={{
+                    margin: 8
+                  }} size={24} color="black" />
                 </TouchableOpacity>
               </View>
 
               <View style={{
-                backgroundColor: '#7C7C7C',
-                marginLeft: 20,
-                borderRadius: 20
+                width: 40,
+                height: 40,
+                backgroundColor: '#ffffff',
+                borderRadius: 20,
+                margin: 10
               }}>
                 <TouchableOpacity>
-                  <Text style={{
-                    color: 'white',
-                    fontSize: 20
-                  }}>-</Text>
+                  <AntDesign name="minus" style={{
+                    margin: 8
+                  }} size={24} color="black" />
                 </TouchableOpacity>
               </View>
 
-            </View><View>
-              <Text style={styles.modalTextv}>
-                영양성분
-              </Text>
-              <View style={styles.container}>
-                <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
-                  <Row data={data.tableHead} style={styles.head} textStyle={styles.text} />
-                  <Rows data={data.tableData} textStyle={styles.text} />
-                </Table>
-              </View>
+            </View>
+            <ScrollView>
+              <View style={{
+                flexDirection: 'row',
+                alignItems: "center",
+                justifyContent: 'center'
+              }}>
 
-            </View>
-            <View>
-              <Text style={styles.modalTextv}>
-                원재료
-              </Text>
-            </View>
+
+
+
+              </View>
+              <View>
+                <Text style={styles.modalTextv}>
+                  영양성분
+                </Text>
+                <View style={styles.container}>
+                  <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+                    <Row data={data_goood.tableHead} style={styles.head} textStyle={styles.text} />
+                    <Rows data={data_goood.tableData} textStyle={styles.text} />
+                  </Table>
+                </View>
+
+              </View>
+              <View>
+                <Text style={styles.modalTextv}>
+                  원재료
+                </Text>
+                <View style={styles.container_2}>
+                  <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+
+                    <Rows data={ingre.tableData} textStyle={styles.text} />
+                  </Table>
+                </View>
+              </View>
+            </ScrollView>
           </View>
 
         </View>
+
       </Modal>
       <View style={{
 
@@ -436,7 +469,7 @@ const Search_item_seconde = ({ navigation }) => {
           }}>
 
             <TouchableOpacity onPress={() => {
-              // go_to_to();
+              go_to_to();
 
 
 
@@ -445,7 +478,7 @@ const Search_item_seconde = ({ navigation }) => {
 
             }}>
               <Text style={{
-                fontSize: 20,
+                fontSize: 18,
                 textAlign: 'center'
 
               }}>상세정보</Text>
@@ -513,6 +546,11 @@ const styles = StyleSheet.create({
     width: '100%', height: 330
     , padding: 16, paddingTop: 30, backgroundColor: '#fff'
   },
+  container_2: {
+    width: '100%', height: 250
+    , padding: 16, paddingTop: 30, backgroundColor: '#fff'
+  },
+
   head: { height: 40, backgroundColor: '#f1f8ff' },
   text: {
     margin: 6, fontFamily: "Nam-Bold",
@@ -557,21 +595,25 @@ const styles = StyleSheet.create({
   textStyle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 20
+    fontSize: 20,
+    marginLeft: 40,
+    fontFamily: "Nam-Bold"
 
   },
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+    fontFamily: "Nam-Bold",
     fontSize: 30,
-    color: '#ffffff'
+    color: '#ffffff',
+    marginLeft: 50
 
   },
   modalTextv: {
-    marginBottom: 15,
-
-    fontSize: 30,
-    color: '#71A6E3'
+    marginBottom: 20,
+    fontFamily: "Nam-Bold",
+    fontSize: 20,
+    color: '#FFFFFF'
 
   }
 

@@ -54,7 +54,7 @@ const Search_Compo = function ({ navigation, vale, touch }) {
      fontSize: 10,
      textAlign: 'center',
      marginTop: 130,
-     marginLeft: 20,
+     marginLeft: 10,
 
     }}>
      {fist}
