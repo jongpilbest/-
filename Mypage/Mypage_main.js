@@ -7,16 +7,16 @@ import { Pressable } from 'react-native';
 import Modal from "react-native-modal";
 
 
-
+import axios from "axios";
 //import { TapGestureHandler } from "react-native-gesture-handler";
 
-
+import { useSelector, useDispatch } from 'react-redux'
 import { createStackNavigator } from "react-navigation-stack";
 
 
 const Mypage_main = function ({ navigation }) {
-
-
+ const nickname = useSelector((state) => state.owner.owner);
+ const token = useSelector((state) => state.token.token)
  const [modalVisible, setModalVisible] = useState(false);
  const [imageUrl, setImageUrl] = useState('h');
  // 권한 요청을 위한 hooks
@@ -149,7 +149,7 @@ const Mypage_main = function ({ navigation }) {
      alignSelf: "center",
      //color: '#7C7C7C',
      position: 'absolute',
-     top: '40%',
+     top: '35%',
      left: '5%',
      marginTop: '5%',
      fontFamily: "Nam-Bold"
@@ -185,7 +185,8 @@ const Mypage_main = function ({ navigation }) {
         margin: 20,
         marginLeft: 20,
         borderRadius: 30,
-        position: 'relative'
+        position: 'relative',
+        flexDirection: 'row'
 
 
        }}>
@@ -219,7 +220,24 @@ const Mypage_main = function ({ navigation }) {
           </View>
          </Pressable>
         </View>
+        <View style={{
+         width: 200,
+         height: 100
+        }}>
+
+
+         <Text style={{
+          fontSize: 20,
+          fontFamily: "Nam-Bold",
+          margin: 20
+         }}>
+          {nickname}
+         </Text>
+        </View>
        </View>
+
+      </View>
+      <View>
 
       </View>
      </View>
@@ -234,25 +252,49 @@ const Mypage_main = function ({ navigation }) {
    }}>
     <View style={{
      backgroundColor: 'white',
-     height: '10%',
+     height: '12%',
      width: '95%',
      margin: 5,
      marginLeft: 10,
      borderRadius: 20
     }}>
-     <Text style={{
-      margin: 13,
-      fontSize: 13,
-      fontFamily: "Nam-Bold"
-     }}>
-      선호상품 확인
+     <TouchableOpacity onPress={() => {
+      console.log('선호 상품?');
+      axios.post("http://13.209.73.153:5000/likeproduct/list",
+       {
+        headers: {
+         'X-AUTH-TOKEN': token
 
-     </Text>
+        }
+       }
+      ).then((response) => {
+       if (response) {
+        console.log('선호 상품 리스트')
+        console.log(total_response)
+
+       }
+      }).catch((err) => {
+       console.log(err.message);
+
+      })
+     }
+     }>
+
+
+      <Text style={{
+       margin: 13,
+       fontSize: 13,
+       fontFamily: "Nam-Bold"
+      }}>
+       선호상품 확인
+
+      </Text>
+     </TouchableOpacity>
 
     </View>
     <View style={{
      backgroundColor: 'white',
-     height: '10%',
+     height: '12%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -272,7 +314,7 @@ const Mypage_main = function ({ navigation }) {
 
     <View style={{
      backgroundColor: 'white',
-     height: '10%',
+     height: '12%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -294,7 +336,7 @@ const Mypage_main = function ({ navigation }) {
 
     <View style={{
      backgroundColor: 'white',
-     height: '10%',
+     height: '12%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -312,7 +354,7 @@ const Mypage_main = function ({ navigation }) {
     </View>
     <View style={{
      backgroundColor: 'white',
-     height: '10%',
+     height: '12%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -330,7 +372,7 @@ const Mypage_main = function ({ navigation }) {
     </View>
     <View style={{
      backgroundColor: 'white',
-     height: '10%',
+     height: '12%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -349,7 +391,7 @@ const Mypage_main = function ({ navigation }) {
     <View style={{
      backgroundColor: '#D2D2D2',
      width: '30%',
-     height: '10%',
+     height: '12%',
      alignContent: 'center',
      alignSelf: 'center',
      margin: 10,
@@ -387,7 +429,11 @@ const Mypage_main = function ({ navigation }) {
 
  )
 }
-
+Mypage_main.navigationOptions = () => {
+ return {
+  header: () => false,
+ };
+};
 const styles = StyleSheet.create({
  centeredView: {
   flex: 1,

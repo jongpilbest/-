@@ -12,10 +12,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { goodAction } from "../redux/good";
 var new_A = [];
 var index_array = [];
+import Recomd from "./Recomd";
 //import { useSelector, useDispatch } from 'react-redux'
 
 const main = function ({ navigation }) {
+  var item = navigation.getParam('item');
+  //const item_show = navigation.getParam('data');
   const dispatch = useDispatch();
+
   // const is_id = useSelector((state) => state.auth.id)
   //const is_password = useSelector((state) => state.auth.password)
   const [id, setid] = useState('');
@@ -275,43 +279,14 @@ const main = function ({ navigation }) {
           showsHorizontalScrollIndicator={false}
           // showsHorizontalScrollIndicator={false}
           pagingEnabled={true}>
-          <View style={{
-            width: 100,
-            height: 140,
-            borderRadius: 50,
-            margin: 6,
-            marginLeft: 10,
-            backgroundColor: '#DDEEF2',
-          }}>
+          {item.map((el, index) => {
 
-          </View>
-          <View style={{
-            width: 100,
-            height: 140,
-            borderRadius: 50,
-            margin: 6,
-            backgroundColor: '#DDEEF2',
-          }}>
+            return (
 
-          </View>
-          <View style={{
-            width: 100,
-            height: 140,
-            borderRadius: 50,
-            margin: 6,
-            backgroundColor: '#DDEEF2',
-          }}>
+              <Recomd key={index} vale={el}></Recomd>
 
-          </View>
-          <View style={{
-            width: 100,
-            height: 140,
-            borderRadius: 50,
-            margin: 6,
-            backgroundColor: '#DDEEF2',
-          }}>
-
-          </View>
+            )
+          })}
 
         </ScrollView>
         <View style={{

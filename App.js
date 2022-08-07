@@ -3,6 +3,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 //import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Componn from "./signup/Componn";
 import { useFonts } from 'expo-font';
+import good_list from "./Mypage/good_list";
 import AppLoading from "expo-app-loading";
 import Edit from "./component/Edit";
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -61,7 +62,13 @@ const navigator =
       })
       ,
 
-      Mypage_main: Mypage_main
+      Mypage_main: createStackNavigator({
+
+        Mypage_main: Mypage_main,
+        good_list: good_list,
+
+      })
+
 
 
     })
@@ -83,6 +90,7 @@ export default () => {
       'Nam-Bold': require('./assets/fonts/NanumMyeongjo-Bold.ttf'),
       'Nam-ExtraBold': require('./assets/fonts/NanumMyeongjo-ExtraBold.ttf'),
     })
+
   if (!fontsLoading) {
     return <AppLoading></AppLoading>
   }

@@ -12,12 +12,16 @@ import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-componen
 import Ms from "../signup/Ms";
 import { AntDesign } from '@expo/vector-icons';
 const CONTENT = {};
+import * as Speech from 'expo-speech';
+//const googleTTS = require('google-tts-api');
+//import Tts from 'react-native-tts';
 const Search_item_seconde = ({ navigation }) => {
-
+  //Tts.setDefaultLanguage('ko-KR');
   const token = useSelector((state) => state.token.token)
   var [data, setdata] = useState('');
   var [ingr, setingr] = useState([]);
   var [in_ar, setin_ar] = useState([]);
+  var [image, setimage] = useState('');
 
   const [MS_good, misu] = Ms();
   //var data = '';
@@ -46,7 +50,7 @@ const Search_item_seconde = ({ navigation }) => {
         console.log(data);
         setdata(data);
         setingr(data.rawMaterial.split(','));
-
+        setimage(data.image);
         //setUser(response);
       } else {
         alert("failed to ");
@@ -85,7 +89,12 @@ const Search_item_seconde = ({ navigation }) => {
       ['트랜스지방', data.trans_fat]
     ],
   };
-
+  var speak = `칼로리 ${data.calorie}  용량 ${data.capacity} 
+   탄수화물 ${data.carbohydrates} 콜레스트롤 ${data.cholesterol} 
+   지방 ${data.fat}  나트륨 ${data.natrium} 단백질
+  ${data.protein}  당 
+  ${data.sugar} 포하지방  ${data.saturated_fat} 트랜스지방
+  ${data.trans_fat}`
 
 
   console.log('원재료 ')
@@ -238,7 +247,7 @@ const Search_item_seconde = ({ navigation }) => {
       });
 
       return (
-        '#E44688'
+        '#FF646D'
 
 
 
@@ -310,16 +319,7 @@ const Search_item_seconde = ({ navigation }) => {
               marginBottom: 10,
 
             }}>
-              <View style={{
-                width: 40,
-                height: 40,
-                backgroundColor: '#ffffff',
-                borderRadius: 20, margin: 10
-              }}>
-                <MaterialIcons name="speaker" style={{
-                  margin: 8
-                }} size={24} color="black" />
-              </View>
+
 
               <View style={{
                 width: 40,
@@ -365,6 +365,25 @@ const Search_item_seconde = ({ navigation }) => {
                 <Text style={styles.modalTextv}>
                   영양성분
                 </Text>
+                <TouchableOpacity onPress={() => {
+
+                  Speech.speak(speak, {
+                    rate: 0.8
+                  });
+
+
+                }}>
+                  <View style={{
+                    width: 40,
+                    height: 40,
+                    backgroundColor: '#ffffff',
+                    borderRadius: 20, margin: 10
+                  }}>
+                    <MaterialIcons name="speaker" style={{
+                      margin: 8
+                    }} size={24} color="black" />
+                  </View>
+                </TouchableOpacity>
                 <View style={styles.container}>
                   <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
                     <Row data={data_goood.tableHead} style={styles.head} textStyle={styles.text} />
@@ -404,6 +423,18 @@ const Search_item_seconde = ({ navigation }) => {
           backgroundColor: '#DDEEF2'
 
         }}>
+          <Image
+            style={{
+              height: '100%',
+              width: '100%',
+              margin: 0,
+              padding: 0,
+
+              //       borderRadius: '50%',
+            }}
+            source={{ uri: image ? image : null }}
+          //source={{ uri: image }}
+          />
 
         </View>
         <View style={{
@@ -415,6 +446,7 @@ const Search_item_seconde = ({ navigation }) => {
 
             {
               fontSize: 20,
+
               textAlign: 'center',
               fontFamily: "Nam-Regular",
 
@@ -437,35 +469,14 @@ const Search_item_seconde = ({ navigation }) => {
         }>
           {/*item_show.company*/}
         </Text>
-
-
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
-          alignItems: 'flex-end',
-          marginRight: 10,
-
-
-        }}>
-          <TouchableOpacity onPress={() => {
-
-
-
-            onpress();
-
-
-          }}>
-            <Feather name="heart" size={30} color={
-              goto()
-            } style={{
-              marginRight: 20,
-            }} />
-
-          </TouchableOpacity>
-
+        <View style={{ flexDirection: 'row', }}>
 
           <View style={{
-            backgroundColor: 'pink'
+            backgroundColor: '#DDEEF2',
+            width: 100,
+            height: 35,
+            borderRadius: 20,
+            marginLeft: 25
           }}>
 
             <TouchableOpacity onPress={() => {
@@ -478,8 +489,10 @@ const Search_item_seconde = ({ navigation }) => {
 
             }}>
               <Text style={{
-                fontSize: 18,
-                textAlign: 'center'
+                fontSize: 14,
+                textAlign: 'center',
+                margin: 10,
+                fontFamily: "Nam-Regular",
 
               }}>상세정보</Text>
 
@@ -487,7 +500,35 @@ const Search_item_seconde = ({ navigation }) => {
           </View>
 
 
+          <View style={{
 
+
+            marginLeft: 200,
+
+
+          }}>
+            <TouchableOpacity onPress={() => {
+
+
+
+              onpress();
+
+
+            }}>
+              <Feather name="heart" size={30} color={
+                goto()
+              } style={{
+                marginRight: 20,
+              }} />
+
+            </TouchableOpacity>
+
+
+
+
+
+
+          </View>
         </View>
 
 

@@ -13,6 +13,9 @@ import { ownerAction } from "../redux/owner_name";
 
 //const dispatch = useDispatch();
 const Edit = function ({ navigation }) {
+    var good = 0;
+    var total_response = 0;
+
 
     const dispatch = useDispatch();
     // const is_id = useSelector((state) => state.auth.id)
@@ -117,13 +120,14 @@ const Edit = function ({ navigation }) {
                                 console.log('?? first');
                                 total_response = response.data.token
                                 console.log(total_response)
+                                good = 1;
 
 
                                 dispatch(tokenAction.settoken(total_response))
                                 //AsyncStorage.setItem('Token', total_response)
                                 dispatch(ownerAction.setowner(response.data.nickname))
 
-                                navigation.navigate('botton')
+
 
 
                             }
@@ -133,9 +137,50 @@ const Edit = function ({ navigation }) {
 
                         });
                         //signtoken(id, password)
+                        if (good == 1) {
+                            console.log('???')
+                            console.log(total_response)
+
+                            axios.post("http://13.209.73.153:5000/product/recommend", {
+                                headers: {
+                                    'X-AUTH-TOKEN': total_response
+
+                                }
+                            }).then((response) => {
+                                if (response) {
+                                    console.log('추천상품')
+                                    item = response.data
+                                    console.log(item)
+
+
+                                    //navigation.navigate('botton', { item: item })
+
+
+                                }
+                            }).catch((err) => {
+                                console.log(err);
+                                console.log(err.message);
+
+                            });
+
+                            navigation.navigate('main', { item: [1, 2, 3] })
+
+
+                        }
 
                         // navigation.navigate('index')
-                    }}
+                    }
+
+
+
+
+
+                    }
+
+
+
+
+
                     >
 
 
