@@ -31,7 +31,7 @@ const Componn = function ({ vale, gogo }) {
         console.log('check')
         console.log(is_id)
         setnum((pre) => pre + 1)
-        //console.log(num)
+        console.log(num)
         if (tr == true) {
             console.log(
                 ' 뭐냐'
@@ -42,13 +42,13 @@ const Componn = function ({ vale, gogo }) {
 
                 {
 
-                    backgroundColor: '#D2D2D2',
+                    backgroundColor: '#ffffff',
                     width: 89,
                     height: 100,
                     marginTop: 10,
                     marginLeft: 20,
                     padding: 0,
-                    borderRadius: 20,
+                    borderRadius: 10,
                     flexDirection: "row",
 
                 }
@@ -73,11 +73,11 @@ const Componn = function ({ vale, gogo }) {
         if (num == 2) {
             console.log('올로')
             // console.log(num)
-
+            setnum(0)
 
             return (
                 {
-                    backgroundColor: '#D2D2D2',
+                    backgroundColor: '#ffffff',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -116,7 +116,7 @@ const Componn = function ({ vale, gogo }) {
             return (
                 {
 
-                    backgroundColor: '#D2E6FF',
+                    backgroundColor: '#FF4444',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -140,7 +140,7 @@ const Componn = function ({ vale, gogo }) {
 
                 {
 
-                    backgroundColor: '#D2E6FF',
+                    backgroundColor: '#FF4444',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -161,7 +161,7 @@ const Componn = function ({ vale, gogo }) {
             return (
                 {
 
-                    backgroundColor: '#D2D2D2',
+                    backgroundColor: '#ffffff',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -202,11 +202,12 @@ const Componn = function ({ vale, gogo }) {
                 }}>
 
                     <Text style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#545252',
                         fontWeight: 'bold',
                         marginLeft: 4,
-                        marginTop: 0
+                        marginTop: 0,
+                        fontFamily: 'Nam-Bold',
 
 
 

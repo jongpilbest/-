@@ -3,7 +3,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
 
-
+import { Ionicons } from '@expo/vector-icons';
 
 const SeachBar = function ({ onfinsh }) {
 
@@ -14,7 +14,10 @@ const SeachBar = function ({ onfinsh }) {
         onfinsh(com);
     }
     return (
-        <View>
+        <View style={{
+            flexDirection: 'row'
+        }}>
+
             <TextInput
 
                 autoCapitalize='none'
@@ -39,15 +42,17 @@ const style = StyleSheet.create({
     },
 
     border: {
-        width: '90%',
+        width: '85%',
         height: 40,
-        //borderColor: 'black',
-        borderWidth: 5,
-        marginTop: 26,
-        borderRadius: 10,
-        margin: 10,
-        borderColor: '#D2D2D2',
+        backgroundColor: 'white',
+        borderColor: 'white',
+
         borderWidth: 3,
+        margin: 10,
+        borderRadius: 10,
+
+        marginLeft: 25,
+        marginTop: '5%',
 
     }
 

@@ -5,6 +5,7 @@ import { View, ScrollView, TextInput, TouchableOpacity, Button, StyleSheet, Text
 import { Context } from "../contextv/DetailContext";
 import Componn from "./Componn"
 import BigContext from "../contextv/BigContext";
+
 import SeachBar from "./SearchBar"
 import Ms from "./Ms";
 //import { TapGestureHandler } from "react-native-gesture-handler";
@@ -156,12 +157,12 @@ const fifth = function ({ navigation }) {
     return (
 
         <View style={{
-            backgroundColor: 'white',
+            backgroundColor: '#DDEEF2',
             height: '100%'
         }}>
 
             <View style={{
-                marginTop: '10%',
+                marginTop: '15%',
                 marginLeft: '3%'
             }}>
                 <Text style={{
@@ -169,9 +170,10 @@ const fifth = function ({ navigation }) {
                 }}>
                     <Text style={{
                         fontSize: 22,
-                        color: '#71A6E3',
+                        color: '#545252',
 
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        fontFamily: 'Nam-Bold',
                     }}>
                         알레르기
                     </Text>
@@ -179,7 +181,8 @@ const fifth = function ({ navigation }) {
                         fontSize: 22,
                         color: '#545252',
 
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        fontFamily: 'Nam-Bold',
                     }}>
                         성분을 알려주세요
                     </Text>
@@ -190,7 +193,8 @@ const fifth = function ({ navigation }) {
                     marginLeft: 22,
                     marginTop: 10,
 
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    fontFamily: 'Nam-Bold',
                 }}>
                     마이페이지에서 변경 가능합니다.
 
@@ -260,9 +264,9 @@ const fifth = function ({ navigation }) {
 
             }>
                 <View style={{
-                    backgroundColor: '#D2E6FF'
-                    , width: '37%',
-                    height: '23%',
+                    backgroundColor: '#ffffff'
+                    , width: '45%',
+                    height: '22%',
                     borderRadius: 10,
                     marginTop: 19,
                     alignSelf: 'center',
@@ -273,13 +277,14 @@ const fifth = function ({ navigation }) {
 
                 }}>
                     <Text style={{
-                        fontSize: 19,
+                        fontSize: 16,
                         alignItems: 'center',
                         alignContent: 'center',
                         textAlign: 'center',
                         color: '#545252',
-                        marginTop: '10%',
-                        fontWeight: 'bold'
+                        marginTop: 10,
+                        fontWeight: 'bold',
+                        fontFamily: 'Nam-Bold',
                     }}>
                         다음
                     </Text>
@@ -318,7 +323,7 @@ const styles = StyleSheet.create({
 
         height: 600,
         // justifyContent: 'space-between',
-        backgroundColor: 'white',
+        backgroundColor: '#DDEEF2',
         // justifyContent: 'flex-start',
         flexWrap: 'wrap'
     }

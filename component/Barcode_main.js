@@ -93,22 +93,13 @@ const Barcode_main = ({ navigation }) => {
 
           })
 
-
-
-
-
           for (var i = 0; i < key_f.length; i++) {
             em.push(`${em_kr[i]}\n\n ${key_ff[i]}`)
           }
           em.forEach(el => {
             mapv.push(el);
           })
-          //  mapv.push(response.data.ingredient);
-          console.log(mapv)
-          // setcheck(response.data);
-          //navigation.navigate('search_item_first', { data: response.data })
-          //setUser(response);
-
+       
           navigation.navigate('Search_item_seconde', { name: elv, mapv: mapv, id: id_check })
         }
         if (typeof (response.data) == "string") {
@@ -146,7 +137,7 @@ const Barcode_main = ({ navigation }) => {
   */
     alert(`바코드 번호는 ${data} 입니다. `);
 
-    dispatch(barcodeAction.setbarcode(data));
+    //dispatch(barcodeAction.setbarcode(data));
 
 
 

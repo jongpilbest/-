@@ -25,9 +25,10 @@ const second = function ({ navigation }) {
         else {
             return {
                 fontSize: 15,
-                color: '#71A6E3',
+                color: '#FF4444',
                 fontWeight: 'bold',
-                marginLeft: '50%'
+                marginLeft: '40%',
+                fontFamily: 'Nam-Bold',
             }
         }
     }
@@ -58,7 +59,7 @@ const second = function ({ navigation }) {
 
     return (
         <View style={{
-            backgroundColor: 'white',
+            backgroundColor: '#DDEEF2',
             height: '100%'
         }}>
             <View style={{
@@ -71,7 +72,8 @@ const second = function ({ navigation }) {
                     fontSize: 20,
                     color: '#545252',
                     marginLeft: 15,
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    fontFamily: 'Nam-Bold',
 
 
                 }}>
@@ -91,7 +93,7 @@ const second = function ({ navigation }) {
 
             {
                 !checkcorrct(password) && <Text style={go_go_opacity()}>
-                    다시 입력해주세요!
+                    형식에 맞게 입력해주세요
                 </Text>
             }
 
@@ -109,24 +111,25 @@ const second = function ({ navigation }) {
 
             }}>
                 <View style={{
-                    backgroundColor: '#D2E6FF'
+                    backgroundColor: '#FFFFFF'
                     , width: '37%',
-                    height: '11%',
+                    height: 40,
                     borderRadius: 10,
-                    marginTop: '80%',
-                    marginLeft: '60%'
+                    marginTop: '30%',
+                    marginLeft: '55%'
                     //marginTop: '40%'
 
 
                 }}>
                     <Text style={{
-                        fontSize: 19,
+                        fontSize: 16,
                         alignItems: 'center',
                         alignContent: 'center',
                         textAlign: 'center',
                         color: '#545252',
                         marginTop: '10%',
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        fontFamily: 'Nam-Bold',
                     }}>
                         다음
                     </Text>
@@ -152,10 +155,12 @@ const style = StyleSheet.create({
     border: {
         width: '85%',
         height: 50,
-        borderColor: '#D2D2D2',
+        backgroundColor: 'white',
+        borderColor: 'white',
+
         borderWidth: 3,
         margin: 10,
-        borderRadius: 20,
+        borderRadius: 10,
         marginLeft: '3%',
         marginLeft: 15,
         marginTop: '5%',

@@ -252,15 +252,15 @@ const Mypage_main = function ({ navigation }) {
    }}>
     <View style={{
      backgroundColor: 'white',
-     height: '12%',
+     height: '11%',
      width: '95%',
      margin: 5,
      marginLeft: 10,
      borderRadius: 20
     }}>
      <TouchableOpacity onPress={() => {
-      console.log('선호 상품?');
-      axios.post("http://13.209.73.153:5000/likeproduct/list",
+      console.log('선호 상품?', token);
+      axios.get("http://13.209.73.153:5000/likeproduct/list",
        {
         headers: {
          'X-AUTH-TOKEN': token
@@ -270,7 +270,7 @@ const Mypage_main = function ({ navigation }) {
       ).then((response) => {
        if (response) {
         console.log('선호 상품 리스트')
-        console.log(total_response)
+        console.log(response.data)
 
        }
       }).catch((err) => {
@@ -294,7 +294,7 @@ const Mypage_main = function ({ navigation }) {
     </View>
     <View style={{
      backgroundColor: 'white',
-     height: '12%',
+     height: '11%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -314,7 +314,7 @@ const Mypage_main = function ({ navigation }) {
 
     <View style={{
      backgroundColor: 'white',
-     height: '12%',
+     height: '11%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -336,7 +336,7 @@ const Mypage_main = function ({ navigation }) {
 
     <View style={{
      backgroundColor: 'white',
-     height: '12%',
+     height: '11%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -352,27 +352,29 @@ const Mypage_main = function ({ navigation }) {
      </Text>
 
     </View>
-    <View style={{
-     backgroundColor: 'white',
-     height: '12%',
-     width: '95%',
-     marginLeft: 10,
-     margin: 5,
-     borderRadius: 20
-    }}>
-     <Text style={{
-      margin: 13,
-      fontSize: 13,
-
-      fontFamily: "Nam-Bold"
+    <TouchableOpacity onPress={() => navigation.navigate('Danger')}>
+     <View style={{
+      backgroundColor: 'white',
+      height: '11%',
+      width: '95%',
+      marginLeft: 10,
+      margin: 5,
+      borderRadius: 20
      }}>
-      위험성분 분석
-     </Text>
+      <Text style={{
+       margin: 13,
+       fontSize: 13,
 
-    </View>
+       fontFamily: "Nam-Bold"
+      }}>
+       위험성분 분석
+      </Text>
+
+     </View>
+    </TouchableOpacity>
     <View style={{
      backgroundColor: 'white',
-     height: '12%',
+     height: '11%',
      width: '95%',
      marginLeft: 10,
      margin: 5,
@@ -391,7 +393,7 @@ const Mypage_main = function ({ navigation }) {
     <View style={{
      backgroundColor: '#D2D2D2',
      width: '30%',
-     height: '12%',
+     height: '11%',
      alignContent: 'center',
      alignSelf: 'center',
      margin: 10,

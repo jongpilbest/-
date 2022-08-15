@@ -5,16 +5,18 @@ import Componn from "./signup/Componn";
 import { useFonts } from 'expo-font';
 import good_list from "./Mypage/good_list";
 import AppLoading from "expo-app-loading";
+import Enroll_page from "./Enroll_page/Enroll";
 import Edit from "./component/Edit";
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from "react-navigation-stack";
 import first from "./signup/first";
 import second from "./signup/second";
+import Danger from "./Mypage/Danger";
 import search_item_first from "./search_item/search_item_first";
 import fifth from "./signup/fifth";
 import main from "./component/main";
-import Barcode from "./component/barCode";
+import Barcode from "./component/Barcode";
 //import Barcode from "./redux/Barcode";
 import final from "./signup/fian";
 import ingredient from "./signup/ingredient";
@@ -28,7 +30,7 @@ import Search_item_seconde from "./search_item/Search_item_seconde";
 const navigator =
   createSwitchNavigator({
     //Mypage_main: Mypage_main,
-    //Search_item_seconde: Search_item_seconde,
+    //Danger: Danger,
     Edit: Edit,
     search: createStackNavigator({
       search_item_first: search_item_first,
@@ -36,6 +38,7 @@ const navigator =
 
 
     }),
+    Danger: Danger,
 
 
 
@@ -61,11 +64,16 @@ const navigator =
 
       })
       ,
+      Enroll_page: createStackNavigator({
+        Enroll_page: Enroll_page,
+        Barcode: Barcode
+      }),
 
       Mypage_main: createStackNavigator({
 
         Mypage_main: Mypage_main,
         good_list: good_list,
+
 
       })
 

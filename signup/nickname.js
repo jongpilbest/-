@@ -21,7 +21,7 @@ const nickname = function ({ navigation }) {
   //const dispatch = useDispatch();
 
   const is_id = useSelector((state) => state.auth.nickname)
- 
+
 
   // var userId = Math.floor(Math.random() * 10);
   // const { add_component, add_id, die } = useContext(Context)
@@ -41,7 +41,8 @@ const nickname = function ({ navigation }) {
         fontSize: 15,
         color: '#71A6E3',
         fontWeight: 'bold',
-        marginLeft: '50%'
+        marginLeft: '50%',
+        fontFamily: 'Nam-Bold',
       }
     }
   }
@@ -102,7 +103,7 @@ const nickname = function ({ navigation }) {
 
   return (
     <View style={{
-      backgroundColor: 'white',
+      backgroundColor: '#DDEEF2',
       height: '100%'
     }}>
       <View style={{
@@ -118,7 +119,8 @@ const nickname = function ({ navigation }) {
           fontSize: 20,
           color: '#545252',
           marginLeft: 15,
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          fontFamily: 'Nam-Bold',
 
 
         }}>
@@ -169,24 +171,25 @@ const nickname = function ({ navigation }) {
 
       }}>
         <View style={{
-          backgroundColor: 'pink'
+          backgroundColor: '#FFFFFF'
           , width: '37%',
-          height: '11%',
+          height: 40,
           borderRadius: 10,
-          marginTop: '80%',
-          marginLeft: '60%'
+          marginTop: '30%',
+          marginLeft: '55%'
           //marginTop: '40%'
 
 
         }}>
           <Text style={{
-            fontSize: 19,
+            fontSize: 16,
             alignItems: 'center',
             alignContent: 'center',
             textAlign: 'center',
             color: '#545252',
             marginTop: '10%',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            fontFamily: 'Nam-Bold',
           }}>
             다음
           </Text>
@@ -211,13 +214,16 @@ const style = StyleSheet.create({
   border: {
     width: '85%',
     height: 50,
-    borderColor: '#D2D2D2',
+    backgroundColor: 'white',
+    borderColor: 'white',
+
     borderWidth: 3,
     margin: 10,
-    borderRadius: 20,
+    borderRadius: 10,
     marginLeft: '3%',
     marginLeft: 15,
     marginTop: '5%',
+
 
 
   }

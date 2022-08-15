@@ -4,9 +4,11 @@ import { View, Pressable, Image, Text, ScrollView, FlatList, Button, StyleSheet,
 import Modal from "react-native-modal";
 //import Animated from 'react-native-reanimated';
 import Allery_item from "./Allery_item";
+import Ingre_item from "./Ingre_item";
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import axios from "axios";
+import { Ionicons } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux'
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 import Ms from "../signup/Ms";
@@ -27,6 +29,7 @@ const Search_item_seconde = ({ navigation }) => {
   //var data = '';
   var name = navigation.getParam('name');
   var mapv = navigation.getParam('mapv');
+  var ssec = navigation.getParam('ssec');
   //const token = useSelector((state) => state.token.token)
   var ingr_arr = '';
 
@@ -414,6 +417,25 @@ const Search_item_seconde = ({ navigation }) => {
 
         backgroundColor: 'white'
       }}>
+
+        <View style={{
+          width: '100%',
+          height: 65,
+
+        }}>
+          <TouchableOpacity onPress={() => {
+
+            console.log('엥')
+            navigation.pop()
+          }}>
+            <Ionicons style={{
+              marginTop: 15,
+              marginLeft: 15
+            }} name="arrow-back-circle" size={50} color="black" />
+
+          </TouchableOpacity>
+        </View>
+
         <View style={{
           width: '80%',
           height: 300,
@@ -566,6 +588,12 @@ const Search_item_seconde = ({ navigation }) => {
                   return <Allery_item key={index
                   } show={el} ></Allery_item>
                 })}
+              {
+
+                ssec.map((el, index) => {
+                  return <Ingre_item key={index
+                  } show={el} ></Ingre_item>
+                })}
 
             </View>
 
@@ -581,6 +609,11 @@ const Search_item_seconde = ({ navigation }) => {
     </View >
   )
 }
+Search_item_seconde.navigationOptions = () => {
+  return {
+    header: () => false,
+  };
+};
 
 const styles = StyleSheet.create({
   container: {

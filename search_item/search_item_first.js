@@ -77,97 +77,113 @@ var allergy_kr = [
  {
   name: 'wheat',
   check: 0,
-  kr: '밀가루'
+  kr: '밀가루',
+  image: 'https://cdn-icons-png.flaticon.com/512/992/992804.png'
  },
 
  {
   name: 'milk',
   check: 0,
-  kr: '우유'
+  kr: '우유',
+  image: 'https://cdn-icons-png.flaticon.com/512/372/372922.png'
 
  }
  , {
   name: 'buckwheat',
   check: 0,
-  kr: '메밀'
+  kr: '메밀',
+  image: 'https://cdn-icons-png.flaticon.com/512/6534/6534050.png'
 
  },
 
  {
   name: 'soybean',
   check: 0,
-  kr: '콩'
+  kr: '콩',
+  image: 'https://cdn-icons-png.flaticon.com/512/6931/6931713.png'
 
  }
  , {
   name: 'mackerel',
   check: 0,
-  kr: '고등어'
+  kr: '고등어',
+  image: 'https://cdn-icons-png.flaticon.com/512/6202/6202150.png'
 
 
  }
  , {
   name: 'crab',
   check: 0,
-  kr: '게'
+  kr: '게',
+  image: 'https://cdn-icons-png.flaticon.com/512/7260/7260090.png'
 
 
  }, {
   name: 'shrimp',
   check: 0,
-  kr: '새우'
+  kr: '새우',
+  image: 'https://cdn-icons.flaticon.com/png/512/3071/premium/3071050.png?token=exp=1659875711~hmac=910f926525ea0c00f462a93949f731b6'
 
  }, {
   name: 'pork',
   check: 0,
-  kr: '돼지 고기'
+  kr: '돼지 고기',
+  image: 'https://cdn-icons-png.flaticon.com/512/7293/7293206.png'
 
  }, {
   name: 'peach',
   check: 0,
-  kr: '복숭아'
+  kr: '복숭아',
+  image: "https://cdn-icons.flaticon.com/png/512/2521/premium/2521253.png?token=exp=1659872566~hmac=b23b1bfc9e7b9e387f5927c524bf8a3d"
 
  }, {
   name: 'tomato',
   check: 0,
-  kr: '토마토'
+  kr: '토마토',
+  image: 'https://cdn-icons-png.flaticon.com/512/135/135471.png'
 
  }, {
-  name: 'walnut',
+  name: 'peanut',
   check: 0,
-  kr: '땅콩'
+  kr: '땅콩',
+  image: 'https://cdn-icons-png.flaticon.com/512/811/811663.png'
  }, {
   name: 'chicken',
   check: 0,
-  kr: '닭'
+  kr: '닭',
+  image: 'https://cdn-icons-png.flaticon.com/512/7776/7776068.png'
 
  }, {
   name: 'beef',
   check: 0,
-  kr: '쇠고기'
+  kr: '쇠고기',
+  image: "https://cdn-icons-png.flaticon.com/512/6272/6272228.png"
 
  }, {
   name: 'squid',
   check: 0,
-  kr: '오징어'
+  kr: '오징어',
+  image: 'https://cdn-icons-png.flaticon.com/512/7593/7593225.png'
 
  }, {
   name: 'shellfish',
   check: 0,
-  kr: '조개'
+  kr: '조개',
+  image: 'https://cdn-icons-png.flaticon.com/512/8048/8048050.png'
 
 
  },
  {
   name: 'egg',
   check: 0,
-  kr: '달걀'
+  kr: '달걀',
+  image: 'https://cdn-icons-png.flaticon.com/512/193/193701.png'
 
 
  }]
 const search_item_first = function ({ navigation }) {
  const token = useSelector((state) => state.token.token)
- console.log('여기서 확인')
+ console.log('내역확인')
  var item = navigation.getParam('data');
  /*
  var item = [
@@ -232,10 +248,17 @@ const search_item_first = function ({ navigation }) {
     console.log(response.data)
     var mapv = [];
     var ee = (Object.keys(response.data.allergy));
+
     allergy_kr.forEach(ev => {
      ee.forEach(el => {
+
       if (ev.name == el) {
-       mapv.push(ev.kr);
+
+       var ob = {
+        name: ev.kr,
+        image: ev.image
+       }
+       mapv.push(ob);
       }
 
      })
@@ -260,21 +283,22 @@ const search_item_first = function ({ navigation }) {
 
 
 
+    var ssec = [];
 
 
     for (var i = 0; i < key_f.length; i++) {
      em.push(`${em_kr[i]}\n\n ${key_ff[i]}`)
     }
     em.forEach(el => {
-     mapv.push(el);
+     ssec.push(el);
     })
     //  mapv.push(response.data.ingredient);
-    console.log(mapv)
+    console.log(mapv, ssec)
     // setcheck(response.data);
     //navigation.navigate('search_item_first', { data: response.data })
     //setUser(response);
 
-    navigation.navigate('Search_item_seconde', { name: elv, mapv: mapv, id: id_check })
+    navigation.navigate('Search_item_seconde', { name: elv, ssec: ssec, mapv: mapv, id: id_check })
 
    } else {
     alert("failed to ");
@@ -308,7 +332,7 @@ const search_item_first = function ({ navigation }) {
 
     //eight: '35%'
    }}>
-    
+
     <Text style={{
      fontSize: 20,
      alignSelf: "flex-start",

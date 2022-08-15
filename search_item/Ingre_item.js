@@ -6,7 +6,7 @@ import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } fr
 
 
 
-const Allery_item = function ({ show }) {
+const Ingre_item = function ({ show }) {
  console.log(show)
  return (
 
@@ -20,28 +20,15 @@ const Allery_item = function ({ show }) {
 
 
   }}>
-   <Image
-    style={{
-     height: 40,
-     width: 40,
-     marginTop: 20,
-     marginLeft: 30,
-     padding: 0,
-
-     //       borderRadius: '50%',
-    }}
-    source={{ uri: show.image ? show.image : null }}
-   //source={{ uri: image }}
-   />
 
    <Text style={{
     fontFamily: 'Nam-Regular',
     fontSize: 13,
     textAlign: 'center',
-    margin: 5,
+    margin: 20,
 
    }}>
-    {show.name}
+    {show}
    </Text>
 
   </View>
@@ -51,4 +38,4 @@ const Allery_item = function ({ show }) {
  )
 }
 
-export default Allery_item;
+export default Ingre_item;

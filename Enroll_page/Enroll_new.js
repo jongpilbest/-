@@ -13,7 +13,7 @@ var check = 1;
 var hangul = '아라'
 const Enroll_new = ({ navigation, misu, hey }) => {
 
-
+ const [name, setname] = useState('');
  const [modalVisible, setModalVisible] = useState(false);
  const [heyvalue, setvalue] = useState('')
  const [imageUrl, setImageUrl] = useState('h');
@@ -56,13 +56,13 @@ const Enroll_new = ({ navigation, misu, hey }) => {
  }
 
  const full_of = function () {
-  if (id && imageUrl && heyvalue && hey) {
+  if (name && imageUrl && heyvalue && hey) {
 
    console.log('다 채움요')
   }
-  else if (!id || !imageUrl || !heyvalue || !hey) {
+  else if (!name || !imageUrl || !heyvalue || !hey) {
    console.log('비어잇는듯')
-   check = '채워주세요!'
+   check = '비어있는 항목이 존재합니다.'
    return check
 
   }
@@ -75,55 +75,31 @@ const Enroll_new = ({ navigation, misu, hey }) => {
   <View style={{
    flexDirection: 'row',
    width: '95%',
-   height: 200,
-   backgroundColor: '#D2D2D2',
-   marginTop: '10%',
+   height: 330,
+   backgroundColor: '#DDEEF2',
+   marginTop: '15%',
    flexDirection: 'column',
    borderRadius: 20,
    marginLeft: 10
 
   }}>
    <View style={{
-    width: '90%',
-    height: 40,
-    alignContent: 'center',
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
 
+    width: '100%',
+    height: 200,
+    // backgroundColor: 'pink'
    }}>
-
-
-    <TextInput
-     style={{
-      margin: 10
-     }}
-     value={id}
-     placeholder="   상품 이름을 입력해주세요"
-     placeholderTextColor={'#B9B9B9'}
-     autoCorrect={false}
-     onChangeText={(ele) => setid(ele)}>
-
-    </TextInput>
-
-   </View>
-
-   <View style={{
-    width: '90%',
-    height: 100,
-
-
-   }}>
-
 
     <TouchableOpacity onPress={uploadImage}>
 
      <View style={{
-      width: 140,
-      height: 100,
+      width: 160,
+      height: 180,
       borderRadius: 20,
       marginLeft: 20,
-      backgroundColor: 'white'
+      marginTop: 10,
+      backgroundColor: 'white',
+      alignSelf: 'center'
      }}>
 
       <Image
@@ -141,63 +117,193 @@ const Enroll_new = ({ navigation, misu, hey }) => {
 
      </View>
     </TouchableOpacity>
+   </View>
+
+   <View style={
+
+    {
+     width: '100%',
+     height: 100,
+     // backgroundColor: 'pink'
+    }
+   }>
     <View style={{
-     width: 150,
-     height: 40,
-     position: 'absolute',
-     left: 180,
-     backgroundColor: 'white',
-     borderRadius: 20,
-     margin: 0,
-     padding: 0
+     width: '100%',
+     height: 50,
+     flexDirection: 'row'
+    }}>
+     <Text style={{
+      fontFamily: "Nam-Bold",
+      fontSize: 13,
+      margin: 15
+     }}> 상품명</Text>
+
+
+     <TextInput
+      style={{
+       width: '75%',
+       height: 35,
+       borderRadius: 10,
+       borderColor: 'transparent',
+       borderWidth: 3,
+
+       justifyContent: 'center',
+       alignSelf: 'center',
+       backgroundColor: 'white',
+       margin: 10,
+       //padding: 20,
+       fontSize: 10,
+       fontFamily: "Nam-Bold"
+      }}
+      value={name}
+      placeholder="상품명을 입력해주세요"
+      placeholderTextColor={'#B9B9B9'}
+      autoCorrect={false}
+      onChangeText={(ele) => setname(ele)}>
+
+     </TextInput>
+    </View>
+    <View style={{
+     width: '100%',
+     height: 50,
+     // backgroundColor: 'blue',
+
+
 
     }}>
-     <RNPickerSelect
-      onValueChange={(value) => {
-
-       setvalue(value);
-       console.log(value)
-      }}
-      items={[
-       { label: 'Football', value: 'football' },
-       { label: 'Baseball', value: 'baseball' },
-       { label: 'Hockey', value: 'hockey' },
-      ]}
-     />
-     <TouchableOpacity onPress={() => {
-      misu();
+     <View style={{
+      flexDirection: 'row'
      }}>
+      <Text style={{
+       fontFamily: "Nam-Bold",
+       fontSize: 13,
+       margin: 15
+      }}> 바코드</Text>
+      <TouchableOpacity onPress={() => {
+       misu();
+      }}>
+       <View style={{
+        width: 100,
+
+        height: 35,
+
+        margin: 10,
+        backgroundColor: 'white',
+        borderRadius: 10
+
+       }}>
+
+        <View>
+         <Text style={{
+          color: '#B9B9B9',
+          marginTop: 10,
+
+          //padding: 20,
+          fontSize: 10,
+          marginLeft: 5,
+          fontFamily: "Nam-Bold",
+          // textAlign: 'center'
+         }}>{checkmisu()}</Text>
+
+         <Text style={{
+          fontSize: 10,
+          marginLeft: 5,
+          fontFamily: "Nam-Bold",
+
+         }}>{hey}</Text>
+        </View>
+
+
+       </View>
+
+      </TouchableOpacity>
+      <Text style={{
+       fontFamily: "Nam-Bold",
+       fontSize: 13,
+       marginTop: 15,
+       margin: 5,
+      }}> 회사</Text>
       <View style={{
-       width: 150,
-       height: 40,
-       marginTop: 50,
-       //position: 'absolute',
-       //left: 180,
-       //top: 0,
+       width: 110,
 
+       height: 35,
 
+       margin: 10,
        backgroundColor: 'white',
-       borderRadius: 20
+       borderRadius: 10
+
 
       }}>
+       <RNPickerSelect
+        onValueChange={(value) => {
 
-       <View>
-        <Text style={{
-         color: '#B9B9B9',
-         marginTop: 10,
-         marginLeft: 20,
-         // textAlign: 'center'
-        }}>{checkmisu()}</Text>
-
-        <Text>{hey}</Text>
-       </View>
+         setvalue(value);
+         console.log(value)
+        }}
+        items={[
+         { label: 'Football', value: 'football' },
+         { label: 'Baseball', value: 'baseball' },
+         { label: 'Hockey', value: 'hockey' },
+        ]}
+       />
 
 
       </View>
 
-     </TouchableOpacity>
+     </View>
+
 
     </View>
+
+    <View>
+
+    </View>
+
+   </View>
+
+
+   <View style={{
+    width: '90%',
+    height: 90,
+    marginTop: 10,
+    //backgroundColor: 'pink'
+
+
+   }}>
+    <Text style={{
+     fontSize: 13,
+     marginLeft: 20,
+     fontFamily: "Nam-Bold",
+     marginTop: 40,
+     color: 'red',
+
+     fontWeight: 'bold',
+    }}>{full_of()}</Text>
+
+    <TouchableOpacity onPress={() => {
+
+    }}>
+     <View style={{
+      borderRadius: 20,
+      width: '60%',
+      height: 35,
+      marginTop: 30,
+      marginLeft: 90,
+      backgroundColor: '#DDEEF2'
+     }}>
+      <Text style={{
+       fontSize: 13,
+       alignSelf: "center",
+
+       position: 'absolute',
+       fontWeight: 'bold',
+       fontFamily: "Nam-Bold",
+       marginTop: 10,
+      }}>추가하기</Text>
+
+     </View>
+    </TouchableOpacity>
+
 
 
    </View >
@@ -205,35 +311,8 @@ const Enroll_new = ({ navigation, misu, hey }) => {
    <View style={{
 
    }}>
-    <Text style={{
-     fontSize: 18,
-     marginLeft: 20,
-     color: '#7C7C7C',
-     marginTop: 30,
-     fontWeight: 'bold',
-    }}>{full_of()}</Text>
-    <TouchableOpacity onPress={() => {
-     full_of();
-    }}>
-     <View style={{
-      borderRadius: 20,
-      width: '70%',
-      height: 40,
-      margin: 60,
-      backgroundColor: '#D2E6FF'
-     }}>
-      <Text style={{
-       fontSize: 20,
-       alignSelf: "center",
-       color: '#7C7C7C',
-       position: 'absolute',
-       fontWeight: 'bold',
 
-       marginTop: '5%',
-      }}>추가하기</Text>
 
-     </View>
-    </TouchableOpacity>
    </View>
   </View >
 

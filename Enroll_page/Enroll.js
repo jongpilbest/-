@@ -3,7 +3,7 @@
 
 import React, { useState, useContext, useEffect, useRef } from "react"
 import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
-
+import Barcode from "../component/Barcode";
 //import { Context } from "../contextv/DetailContext";
 import Enroll_new from "./Enroll_new";
 var check = 1;
@@ -39,7 +39,7 @@ const Enroll_page = function ({ navigation }) {
  }
  const goto_barcode = function () {
   //console.log('hey')
-  // navigation.navigate('Barcode')
+  navigation.navigate('Barcode')
  }
  return (
 
@@ -49,19 +49,21 @@ const Enroll_page = function ({ navigation }) {
   }}>
 
    <View style={{
-    backgroundColor: '#D2E6FF',
-    height: 220
+    backgroundColor: '#F4F4F4',
+    width: '100%',
+    height: 100
     //eight: '35%'
    }}>
     <Text style={{
-     fontSize: 58,
+     fontSize: 20,
      alignSelf: "center",
-     color: '#7C7C7C',
+     //color: '#7C7C7C',
      position: 'absolute',
-     top: '40%',
+     top: '35%',
      left: '5%',
      marginTop: '5%',
-    }}>plus</Text>
+     fontFamily: "Nam-Bold"
+    }}>추가하기</Text>
    </View>
    <View style={{
     height: '40%',
@@ -89,7 +91,11 @@ const Enroll_page = function ({ navigation }) {
 
  )
 }
-
+Enroll_page.navigationOptions = () => {
+ return {
+  header: () => false,
+ };
+};
 const styles = StyleSheet.create({
 
 

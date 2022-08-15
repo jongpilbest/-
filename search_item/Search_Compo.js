@@ -34,7 +34,7 @@ const Search_Compo = function ({ navigation, vale, touch }) {
   }}>
 
    <View style={{
-    backgroundColor: '#DDEEF2',
+    backgroundColor: 'white',
     width: 140,
     height: 170,
     marginTop: 5,
@@ -42,6 +42,8 @@ const Search_Compo = function ({ navigation, vale, touch }) {
     marginRight: 15,
     padding: 0,
     borderRadius: 100,
+    borderColor: '#DDEEF2',
+    borderWidth: 3
 
 
 
@@ -49,11 +51,26 @@ const Search_Compo = function ({ navigation, vale, touch }) {
    }}
 
    >
+    <Image
+     style={{
+      height: '50%',
+      width: '50%',
+      marginTop: 30,
+      marginLeft: 35,
+
+      padding: 0,
+
+      //       borderRadius: '50%',
+     }}
+     source={{ uri: vale.image ? vale.image : null }}
+    //source={{ uri: image }}
+    />
+
     <Text style={{
      fontFamily: "Nam-Bold",
      fontSize: 10,
      textAlign: 'center',
-     marginTop: 130,
+     marginTop: 5,
      marginLeft: 10,
 
     }}>

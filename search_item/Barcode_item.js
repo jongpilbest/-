@@ -10,6 +10,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 import Ms from "../signup/Ms";
+import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 const CONTENT = {};
 import * as Speech from 'expo-speech';
