@@ -16,7 +16,7 @@ var chek = 0;
 var text_input = 0;
 //import { useSelector, useDispatch } from 'react-redux'
 import { authAction } from "../redux/auth";
-
+import { Ionicons } from '@expo/vector-icons';
 
 
 const fifth = function ({ navigation }) {
@@ -161,8 +161,21 @@ const fifth = function ({ navigation }) {
             height: '100%'
         }}>
 
+            <TouchableOpacity onPress={() => {
+
+                console.log('엥')
+                navigation.pop()
+            }}>
+                <Ionicons style={{
+
+                    marginLeft: 15,
+                    marginTop: 20,
+                }} name="arrow-back-circle" size={50} color="black" />
+
+            </TouchableOpacity>
+
             <View style={{
-                marginTop: '15%',
+                marginTop: '3%',
                 marginLeft: '3%'
             }}>
                 <Text style={{
@@ -302,7 +315,11 @@ const fifth = function ({ navigation }) {
     )
 
 }
-
+fifth.navigationOptions = () => {
+    return {
+        header: () => false,
+    };
+};
 
 const styles = StyleSheet.create({
 
@@ -321,7 +338,7 @@ const styles = StyleSheet.create({
 
         flexDirection: 'row',
 
-        height: 600,
+        height: 700,
         // justifyContent: 'space-between',
         backgroundColor: '#DDEEF2',
         // justifyContent: 'flex-start',

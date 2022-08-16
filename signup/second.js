@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react"
 import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text, Alert } from "react-native"
 import { useSelector, useDispatch } from 'react-redux'
 import { Context } from '../contextv/DetailContext'
-
+import { Ionicons } from '@expo/vector-icons';
 var id = 0;
 import { authAction } from "../redux/auth";
 
@@ -62,8 +62,21 @@ const second = function ({ navigation }) {
             backgroundColor: '#DDEEF2',
             height: '100%'
         }}>
+
+            <TouchableOpacity onPress={() => {
+
+                console.log('엥')
+                navigation.pop()
+            }}>
+                <Ionicons style={{
+
+                    marginLeft: 15,
+                    marginTop: 20,
+                }} name="arrow-back-circle" size={50} color="black" />
+
+            </TouchableOpacity>
             <View style={{
-                marginTop: '30%',
+                marginTop: '15%',
                 marginLeft: '3%'
 
             }}>
@@ -143,7 +156,11 @@ const second = function ({ navigation }) {
 
 
 }
-
+second.navigationOptions = () => {
+    return {
+        header: () => false,
+    };
+};
 
 const style = StyleSheet.create({
     text: {

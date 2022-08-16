@@ -8,7 +8,7 @@ import { authAction } from "../redux/auth";
 //import { counterActions } from "../store"
 
 import axios from "axios"
-
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -106,8 +106,21 @@ const nickname = function ({ navigation }) {
       backgroundColor: '#DDEEF2',
       height: '100%'
     }}>
+
+      <TouchableOpacity onPress={() => {
+
+        console.log('엥')
+        navigation.pop()
+      }}>
+        <Ionicons style={{
+
+          marginLeft: 15,
+          marginTop: 20,
+        }} name="arrow-back-circle" size={50} color="black" />
+
+      </TouchableOpacity>
       <View style={{
-        marginTop: '30%',
+        marginTop: '10%',
         marginLeft: '3%'
 
       }}>
@@ -203,6 +216,11 @@ const nickname = function ({ navigation }) {
 
 
 }
+nickname.navigationOptions = () => {
+  return {
+    header: () => false,
+  };
+};
 
 const style = StyleSheet.create({
   text: {

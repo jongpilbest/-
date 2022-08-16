@@ -3,10 +3,12 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 //import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Componn from "./signup/Componn";
 import { useFonts } from 'expo-font';
+import Change_State from "./Mypage/Change_State.js/Change_state";
 import good_list from "./Mypage/good_list";
 import AppLoading from "expo-app-loading";
 import Enroll_page from "./Enroll_page/Enroll";
 import Edit from "./component/Edit";
+import point from "./Mypage/point/point";
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from "react-navigation-stack";
@@ -15,6 +17,7 @@ import second from "./signup/second";
 import Danger from "./Mypage/Danger";
 import search_item_first from "./search_item/search_item_first";
 import fifth from "./signup/fifth";
+import like_list from "./Mypage/like_list/like_list";
 import main from "./component/main";
 import Barcode from "./component/Barcode";
 //import Barcode from "./redux/Barcode";
@@ -38,7 +41,7 @@ const navigator =
 
 
     }),
-    Danger: Danger,
+
 
 
 
@@ -73,6 +76,10 @@ const navigator =
 
         Mypage_main: Mypage_main,
         good_list: good_list,
+        like_list: like_list,
+        point: point,
+        Danger: Danger,
+        Change_State: Change_State
 
 
       })

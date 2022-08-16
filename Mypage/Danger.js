@@ -2,20 +2,18 @@
 import { useSelector, useDispatch } from 'react-redux'
 import React, { useState, useContext, useEffect } from "react"
 import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
-//import { Context } from '../contextv/DetailContext'
-import { authAction } from "../redux/auth";
-//import { cos } from 'react-native-reanimated';
-//import { counterActions } from "../store"
+
 import Danger_line from './Danger_line';
-import axios from "axios"
+import { Ionicons } from '@expo/vector-icons';
+
 import Danger_com from './Danger_com';
-import Search_Compo from '../search_item/Search_Compo';
+
 import { ScrollView } from 'react-native-gesture-handler';
-//import { useSelector, useDispatch } from 'react-redux'
+
 import Danger_Text from './Danger_text';
 import Danger_iter from './Danger_iter';
 import Danger_your from './Danger_your';
-
+import Danger_fin from './Danger_fin';
 
 const Danger = function ({ navigation }) {
    const token = useSelector((state) => state.token.token)
@@ -50,6 +48,18 @@ const Danger = function ({ navigation }) {
 
             //eight: '35%'
          }}>
+            <TouchableOpacity onPress={() => {
+
+
+               navigation.pop();
+            }}>
+               <Ionicons style={{
+
+                  marginLeft: 15,
+                  marginTop: 20,
+               }} name="arrow-back-circle" size={50} color="black" />
+
+            </TouchableOpacity>
 
             <Text style={{
                fontSize: 20,
@@ -108,6 +118,12 @@ const Danger = function ({ navigation }) {
 
                })}
 
+               {
+
+                  <Danger_fin jhey={gey[gey.length - 1]}></Danger_fin>
+               }
+
+
 
 
             </View>
@@ -128,14 +144,7 @@ const Danger = function ({ navigation }) {
 
                   flexDirection: 'row'
                }}>
-                  {gey.map((el, index) => {
 
-
-                     return <Danger_Text key={index} text={el}></Danger_Text>
-
-
-
-                  })}
 
 
                </View>
@@ -155,6 +164,7 @@ const Danger = function ({ navigation }) {
 
 
                   })}
+
 
 
 

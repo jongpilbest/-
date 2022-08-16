@@ -271,6 +271,8 @@ const Mypage_main = function ({ navigation }) {
        if (response) {
         console.log('선호 상품 리스트')
         console.log(response.data)
+        navigation.navigate('like_list', { data: response.data })
+
 
        }
       }).catch((err) => {
@@ -355,7 +357,7 @@ const Mypage_main = function ({ navigation }) {
     <TouchableOpacity onPress={() => navigation.navigate('Danger')}>
      <View style={{
       backgroundColor: 'white',
-      height: '11%',
+      height: 40,
       width: '95%',
       marginLeft: 10,
       margin: 5,
@@ -372,24 +374,54 @@ const Mypage_main = function ({ navigation }) {
 
      </View>
     </TouchableOpacity>
-    <View style={{
-     backgroundColor: 'white',
-     height: '11%',
-     width: '95%',
-     marginLeft: 10,
-     margin: 5,
-     borderRadius: 20
+    <TouchableOpacity onPress={() => {
+
+
+
+     axios.get("http://13.209.73.153:5000/mypage/pointdetail",
+      {
+       headers: {
+        'X-AUTH-TOKEN': token
+
+       }
+      }
+     ).then((response) => {
+      if (response) {
+       console.log('누적포인트')
+       var data = response.data
+
+
+       navigation.navigate('point', { data: data })
+
+
+      }
+     }).catch((err) => {
+      console.log(err.message);
+
+     })
+
+     //navigation.navigate('point')
+
     }}>
-     <Text style={{
-      margin: 13,
-      fontSize: 13,
-
-      fontFamily: "Nam-Bold"
+     <View style={{
+      backgroundColor: 'white',
+      height: 40,
+      width: '95%',
+      marginLeft: 10,
+      margin: 5,
+      borderRadius: 20
      }}>
-      누적 포인트내역
-     </Text>
+      <Text style={{
+       margin: 13,
+       fontSize: 13,
 
-    </View>
+       fontFamily: "Nam-Bold"
+      }}>
+       누적 포인트내역
+      </Text>
+
+     </View>
+    </TouchableOpacity>
     <View style={{
      backgroundColor: '#D2D2D2',
      width: '30%',

@@ -15,7 +15,7 @@ import fian from "./fian";
 var chekc = -1;
 var chek = 0;
 var text_input = 0;
-
+import { Ionicons } from '@expo/vector-icons';
 
 const ingredient = function ({ navigation }) {
 
@@ -386,6 +386,19 @@ const ingredient = function ({ navigation }) {
       backgroundColor: 'white',
       height: '100%'
     }}>
+
+      <TouchableOpacity onPress={() => {
+
+        console.log('엥')
+        navigation.pop()
+      }}>
+        <Ionicons style={{
+
+          marginLeft: 15,
+          marginTop: 20,
+        }} name="arrow-back-circle" size={50} color="black" />
+
+      </TouchableOpacity>
       <View style={{
         marginTop: '10%',
         marginLeft: '3%'
@@ -520,7 +533,11 @@ const ingredient = function ({ navigation }) {
 
   )
 }
-
+ingredient.navigationOptions = () => {
+  return {
+    header: () => false,
+  };
+};
 
 const styles = StyleSheet.create({
 

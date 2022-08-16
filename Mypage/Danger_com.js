@@ -29,8 +29,8 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
          positon: 'absolute',
          top: hey,
          backgroundColor: 'white',
-         width: 21,
-         height: 21,
+         width: 24,
+         height: 24,
          borderRadius: 30,
          margin: 15,
          flexDirection: 'row'
@@ -50,17 +50,18 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
       }}>
 
 
-         <View onLayout={event => {
-            const layout = event.nativeEvent.layout;
-            console.log(jhey)
-            console.log(' 찾아라')
-            console.log('height:', layout.height);
-            console.log('width:', layout.width);
-            console.log('x:', layout.x);
-            console.log('y:', layout.y);
-         }} style={good(jhey)}>
+         <View
+            style={good(jhey)}>
 
+            <Text style={{
 
+               fontSize: 13,
+
+               fontFamily: "Nam-Bold"
+               , margin: 5,
+            }}>
+               {jhey}
+            </Text>
 
          </View>
          <Danger_line jhey={jhey} good_bo={good_bo}></Danger_line>
