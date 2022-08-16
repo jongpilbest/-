@@ -9,7 +9,7 @@ const Point_inner = function ({ data }) {
  var hey = data.productname.split(' ');
  var data_he = data.date.split(' ');
 
-
+ console.log('?')
  return (
   <View style={{
 
