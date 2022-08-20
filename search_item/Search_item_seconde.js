@@ -34,8 +34,8 @@ const Search_item_seconde = ({ navigation }) => {
   var ingr_arr = '';
 
   var id = navigation.getParam('id');
-  console.log('아이디 체크')
-  console.log(id);
+  console.log(`id 체크해보자 ${id}`)
+
 
   useEffect(() => {
     axios.get(`http://13.209.73.153:5000/product/detail/${id}`,
@@ -51,6 +51,7 @@ const Search_item_seconde = ({ navigation }) => {
         data = response.data
         // setcheck(response.data);
         console.log(data);
+        console.log('id 체크')
         setdata(data);
         setingr(data.rawMaterial.split(','));
         setimage(data.image);
@@ -72,8 +73,8 @@ const Search_item_seconde = ({ navigation }) => {
 
 
 
-  console.log('상세 정보 내역');
-  console.log(ingr);
+  //console.log('상세 정보 내역');
+  //console.log(ingr);
 
 
 
@@ -133,56 +134,34 @@ const Search_item_seconde = ({ navigation }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   var [num, setnum] = useState(0);
-
+  var [num2, setnum2] = useState(0);
   console.log(name)
   const onpress = () => {
 
     setnum((pre) => pre + 1)
-    if (num == 1) {
 
 
-      /*
-   axios.get(`http://220.86.187.246:5000/auth/checkNickname/${id}`, {
-    nickname: id
-   })
-    .then((response) => {
-      if (response) {
-        console.log('?');
-   
-        console.log(response.data)
-        bol_check = response.data
-   
-        //console.log(response.data);
-        //setUser(response);
-      } else {
-        alert("failed to ");
-      }
-    }).catch((err) => {
-      console.log(err.message);
-      console.log(err)
-      console.log('?');
-    });
-   
-   
-   이게 선호 상품 보내는 axios인지 모르겠는데요 
-   */
-    }
+  }
 
+  const onpress_2 = () => {
+
+    setnum2((pre) => pre + 1)
 
   }
 
     ;
   const goto = function () {
-    console.log('좋앙?');
-    console.log(id, name, token)
+    // console.log('좋앙?');
+    //console.log(id, name, token)
     if (num == 2) {
 
-      axios.get(`http://13.209.73.153:5000/likeproduct/${id}`,
+      axios.put(`http://13.209.73.153:5000/likeproduct/${id}`,
 
 
         {
           headers: {
-            'X-AUTH-TOKEN': token
+            'X-AUTH-TOKEN': token,
+            "Content-Type": `multipart/form-data`,
 
           }
         }
@@ -223,31 +202,7 @@ const Search_item_seconde = ({ navigation }) => {
 
     else if (num == 1) {
 
-      axios.get(`http://13.209.73.153:5000/likeproduct/${id}`,
 
-
-        {
-          headers: {
-            'X-AUTH-TOKEN': token
-
-          }
-        }
-      ).then((response) => {
-        if (response) {
-          console.log('선호 상품 등록');
-          // console.log(response.data)
-          // setcheck(response.data);
-
-          //setUser(response);
-        } else {
-          alert("failed to ");
-        }
-      }).catch((err) => {
-        console.log(err.message);
-        console.log(err)
-
-        console.log('에러 메세지/선호 식품');
-      });
 
       return (
         '#FF646D'
@@ -256,11 +211,6 @@ const Search_item_seconde = ({ navigation }) => {
 
       )
     }
-
-
-
-
-
 
 
 
@@ -277,6 +227,159 @@ const Search_item_seconde = ({ navigation }) => {
       )
     }
   }
+  const goto_2 = function () {
+
+
+    if (num2 == 2) {
+      console.log(id);
+      console.log('비선호 체크하기 ')
+      console.log(' 아이디 체크 ');
+      axios.put(`http://13.209.73.153:5000/dislikeproduct/${id}`,
+        {},
+
+        {
+          headers: {
+            'X-AUTH-TOKEN': token
+
+
+          }
+        }
+      ).then((response) => {
+        if (response) {
+          console.log('선호 상품 등록');
+          // console.log(response.data)
+          // setcheck(response.data);
+          console.log('?');
+          console.log(response.data)
+          //setUser(response);
+        } else {
+          alert("failed to ");
+        }
+      }).catch((err) => {
+        console.log(err.message);
+        console.log(err)
+
+        console.log('에러 메세지/비선호 식품');
+      });
+
+
+
+      // check_one(1, vale.name);   context 사용해서 여기에서 바꾸는 걸로 한다.
+      // 이때 check 를 바꿔야 하니 매개별수를 같이 넣어서 .. = 이름+ 매개변수 
+
+
+
+
+      setnum2(0);
+      return (
+
+        '#D2D2D2'
+
+
+
+
+
+      )
+    }
+
+    else if (num2 == 1) {
+
+
+      console.log(id);
+      console.log('비선호 체크하기 ')
+      console.log(' 아이디 체크 ');
+      axios.put(`http://13.209.73.153:5000/dislikeproduct/${id}`, {},
+
+
+        {
+          headers: {
+            'X-AUTH-TOKEN': token
+
+
+          }
+        }
+      ).then((response) => {
+        if (response) {
+          console.log('비선호 상품 등록');
+          // console.log(response.data)
+          // setcheck(response.data);
+          console.log('?');
+          console.log(response.data)
+          //setUser(response);
+        } else {
+          alert("failed to ");
+        }
+      }).catch((err) => {
+        console.log(err.message);
+        console.log(err)
+
+        console.log('에러 메세지/비선호 식품');
+      });
+
+
+
+      return (
+        '#FF646D'
+
+
+
+      )
+    }
+
+
+
+
+
+
+
+
+    else if (num2 == 0) {
+      console.log(id);
+      console.log('비선호 체크하기 ')
+      console.log(' 아이디 체크 ');
+      axios.put(`http://13.209.73.153:5000/dislikeproduct/${id}`, {
+
+      },
+
+
+        {
+          headers: {
+            'X-AUTH-TOKEN': token
+
+
+          }
+        }
+      ).then((response) => {
+        if (response) {
+          console.log('선호 상품 등록');
+          // console.log(response.data)
+          // setcheck(response.data);
+          console.log('?');
+          console.log(response.data)
+          //setUser(response);
+        } else {
+          alert("failed to ");
+        }
+      }).catch((err) => {
+        console.log(err.message);
+        console.log(err)
+
+        console.log('에러 메세지/비선호 식품');
+      });
+
+      //check_corrct(vale.name, 0);
+      return (
+
+
+        '#D2D2D2'
+
+
+
+
+      )
+    }
+  }
+
   //const item_show = navigation.getParam('el');
   //var image = (item_show.src)
 
@@ -498,7 +601,8 @@ const Search_item_seconde = ({ navigation }) => {
             width: 100,
             height: 35,
             borderRadius: 20,
-            marginLeft: 25
+            marginLeft: 25,
+            flexDirection: 'row'
           }}>
 
             <TouchableOpacity onPress={() => {
@@ -522,82 +626,71 @@ const Search_item_seconde = ({ navigation }) => {
           </View>
 
 
+
           <View style={{
 
 
-            marginLeft: 200,
+            marginLeft: 50,
+            backgroundColor: 'pink',
+            width: '100%',
+            height: 35,
+            flexDirection: 'row'
+
 
 
           }}>
-            <TouchableOpacity onPress={() => {
-
-
-
-              onpress();
-
-
-            }}>
-              <Feather name="heart" size={30} color={
-                goto()
-              } style={{
-                marginRight: 20,
-              }} />
-
-            </TouchableOpacity>
-
-
-
-
-
-
-          </View>
-        </View>
-
-
-        <View style={{
-          width: '100%',
-          height: 190,
-          backgroundColor: '#DDEEF2',
-          marginTop: 45,
-
-          flexDirection: 'row',
-
-          // justifyContent: 'space-between',
-
-          // justifyContent: 'flex-start',
-          //flexWrap: 'wrap'
-        }}>
-
-
-          <ScrollView
-            horizontal={true}
-            showsVerticalScrollIndicator={false}
-            // showsHorizontalScrollIndicator={false}
-            pagingEnabled={true}
-          >
-
             <View style={{
-              width: '100%',
-              flex: 1,
-              flexDirection: 'row',
+              marginLeft: 40,
 
             }}>
-              {
 
-                mapv.map((el, index) => {
-                  return <Allery_item key={index
-                  } show={el} ></Allery_item>
-                })}
-              {
 
-                ssec.map((el, index) => {
-                  return <Ingre_item key={index
-                  } show={el} ></Ingre_item>
-                })}
+              <TouchableOpacity onPress={() => {
+
+
+
+                onpress_2();
+
+
+              }}>
+                <AntDesign name="dislike2" size={30} color={
+                  goto_2()
+                } style={{
+                  marginRight: 10,
+                }} />
+
+              </TouchableOpacity>
+            </View>
+            <View style={{
+
+
+              marginLeft: 40,
+
+
+
+
+            }}>
+
+
+              <TouchableOpacity onPress={() => {
+
+
+
+                onpress();
+
+
+              }}>
+
+                <Feather name="heart" size={30} color={
+                  goto()
+                } style={{
+                  marginRight: 10,
+                }} />
+              </TouchableOpacity>
+
 
             </View>
-
-          </ScrollView>
+          </View>
 
 
 
@@ -605,8 +698,68 @@ const Search_item_seconde = ({ navigation }) => {
         </View>
 
 
-      </View >
+
+
+
+
+
+      </View>
+
+
+      <View style={{
+        width: '100%',
+        height: 190,
+        backgroundColor: '#DDEEF2',
+        marginTop: 45,
+
+        flexDirection: 'row',
+
+        // justifyContent: 'space-between',
+
+        // justifyContent: 'flex-start',
+        //flexWrap: 'wrap'
+      }}>
+
+
+        <ScrollView
+          horizontal={true}
+          showsVerticalScrollIndicator={false}
+          // showsHorizontalScrollIndicator={false}
+          pagingEnabled={true}
+        >
+
+          <View style={{
+            width: '100%',
+            flex: 1,
+            flexDirection: 'row',
+
+          }}>
+            {
+
+              mapv.map((el, index) => {
+                return <Allery_item key={index
+                } show={el} ></Allery_item>
+              })}
+            {
+
+              ssec.map((el, index) => {
+                return <Ingre_item key={index
+                } show={el} ></Ingre_item>
+              })}
+
+          </View>
+
+        </ScrollView>
+
+
+
+
+      </View>
+
+
     </View >
+
+
   )
 }
 Search_item_seconde.navigationOptions = () => {

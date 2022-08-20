@@ -8,18 +8,48 @@ import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } fr
 
 const Allery_item = function ({ show }) {
  console.log(show)
+
+ const hey_che = function () {
+  if (show.check == 1) {
+   return (
+    {
+     backgroundColor: 'white',
+     marginRight: 10,
+     width: 100,
+     height: 100,
+     borderRadius: 50,
+     marginTop: 10,
+     backgroundColor: '#FF4444',
+
+
+    }
+
+   )
+
+  }
+  if (show.check == 0) {
+   return ({
+    backgroundColor: 'white',
+    marginRight: 10,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginTop: 10,
+    backgroundColor: '#BDBDBD',
+    opacity: 0.2
+   })
+
+  }
+
+ }
+
+
  return (
 
-  <View style={{
-   backgroundColor: 'white',
-   marginRight: 10,
-   width: 100,
-   height: 100,
-   borderRadius: 50,
-   marginTop: 10,
+  <View
 
 
-  }}>
+   style={hey_che()}>
    <Image
     style={{
      height: 40,

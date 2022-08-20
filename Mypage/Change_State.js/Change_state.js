@@ -3,12 +3,12 @@ import React, { useState, useContext, useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { View, ScrollView, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
 
-import Componn from "../../signup/Componn";
+import Change_Com from "./Change_Com";
 
 
 import SeachBar from "../../signup/SearchBar";
 import Ms from "../../signup/Ms";
-
+import axios from "axios";
 //import { TapGestureHandler } from "react-native-gesture-handler";
 
 var chekc = -1;
@@ -16,22 +16,68 @@ var chek = 0;
 var text_input = 0;
 //import { useSelector, useDispatch } from 'react-redux'
 
-import { authAction } from "../../redux/auth";
+import { changeAction } from "../../redux/change";
 import { Ionicons } from '@expo/vector-icons';
 
 
 const Change_State = function ({ navigation }) {
+    const token = useSelector((state) => state.token.token)
+
+    useEffect(() => {
+        axios.get(`http://13.209.73.153:5000/mypage/checkUserInfo`, { aa: 'd' },
+            {
+                headers: {
+                    'X-AUTH-TOKEN': token
+
+                }
+            }
+        ).then((response) => {
+            if (response) {
+
+                var data = response.data.allergy
+
+                // setcheck(response.data);
+
+                console.log(data)
+
+                for (const pro in data) {
+
+                    if (data[pro] == 1) {
+                        dispatch(changeAction.setallergy_1(pro))
+                    }
+
+
+                }
+
+                //dispatch(changeAction.setallergy_1(vale.kr))
+                //setUser(response);
+            } else {
+                alert("failed to ");
+            }
+        }).catch((err) => {
+            console.log(err.message);
+            console.log(err)
+
+            console.log('상세정보');
+        });
+
+        //var mapv = ['1', '2'];
+
+
+    }, [])
+
+
     const dispatch = useDispatch();
     const [MS_good, misu] = Ms();
     // const [chna, mos_original] = fian();
     //console.log(misu);
     //  console.log('에러십활')
-
-    const mos = useSelector((state) => state.auth.allergy)
+    const data_change = navigation.getParam('data');
+    const mos = useSelector((state) => state.change.allergy)
     // console.log(mos)
 
     const misugo = function (el) {
-        dispatch(authAction.setallergy_1(el))
+        dispatch(changeAction.setallergy_1(el))
 
 
     }
@@ -255,7 +301,7 @@ const Change_State = function ({ navigation }) {
                         }
                         {
                             chekc == -1 && mos.map((el, index) => {
-                                return < Componn key={index} gogo={(el) => misugo(el)} vale={el}></Componn>
+                                return < Change_Com key={index} gogo={(el) => misugo(el)} vale={el}></Change_Com>
                             })
 
                         }
@@ -272,7 +318,7 @@ const Change_State = function ({ navigation }) {
             < TouchableOpacity onPress={() => {
 
 
-                navigation.navigate('ingredient');
+                //navigation.navigate('ingredient');
 
             }
 

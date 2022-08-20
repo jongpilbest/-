@@ -142,6 +142,9 @@ const Edit = function ({ navigation }) {
                             console.log(total_response)
 
                             axios.post("http://13.209.73.153:5000/product/recommend", {
+
+
+                            }, {
                                 headers: {
                                     'X-AUTH-TOKEN': total_response
 

@@ -9,7 +9,7 @@ import { authAction } from "../redux/auth";
 
 import axios from "axios"
 
-
+import { Ionicons } from '@expo/vector-icons';
 //import { useSelector, useDispatch } from 'react-redux'
 import Search_Compo from './Search_Compo';
 
@@ -247,27 +247,37 @@ const search_item_first = function ({ navigation }) {
     console.log('확인해보자 ');
     console.log(response.data)
     var mapv = [];
-    var ee = (Object.keys(response.data.allergy));
+    var ee = response.data.allergy;
 
     allergy_kr.forEach(ev => {
-     ee.forEach(el => {
 
-      if (ev.name == el) {
+     for (const pro in ee) {
 
+      if (ev.name == pro) {
        var ob = {
         name: ev.kr,
-        image: ev.image
+        image: ev.image,
+        check: ee[pro]
+
        }
+       console.log('확인해보기')
+       console.log(ob)
        mapv.push(ob);
+
       }
 
-     })
+
+     }
+
+
 
     })
 
     var key_f = (Object.keys(response.data.ingredient));
     var key_ff = (Object.values(response.data.ingredient));
     var id_check = response.data.Id
+    console.log(`ididididididididid-first`);
+    console.log(id_check)
     var em = [];
     var em_kr = [];
     ingredient_kr.forEach(ev => {
@@ -332,13 +342,25 @@ const search_item_first = function ({ navigation }) {
 
     //eight: '35%'
    }}>
+    <TouchableOpacity onPress={() => {
+
+     console.log('엥')
+     navigation.navigate('main', { item: [1, 2, 3] })
+    }}>
+     <Ionicons style={{
+
+      marginLeft: 15,
+      marginTop: 20,
+     }} name="arrow-back-circle" size={50} color="black" />
+
+    </TouchableOpacity>
 
     <Text style={{
      fontSize: 20,
      alignSelf: "flex-start",
      //color: '#7C7C7C',
      marginTop: 30,
-     marginLeft: 10,
+     marginLeft: 40,
      position: 'absolute',
 
 

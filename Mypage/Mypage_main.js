@@ -323,6 +323,31 @@ const Mypage_main = function ({ navigation }) {
      borderRadius: 20
     }}>
      <TouchableOpacity onPress={() => {
+
+
+      axios.get("http://13.209.73.153:5000/mypage/checkUserInfo",
+       {}, {
+       headers: {
+        'X-AUTH-TOKEN': token
+
+       }
+      }
+      ).then((response) => {
+       if (response) {
+        console.log('누적포인트')
+        var data = response.data
+
+
+
+        navigation.navigate('Change_State', { data: data });
+
+
+       }
+      }).catch((err) => {
+       console.log(err.message);
+
+      })
+
       navigation.navigate('Change_State');
      }}>
       <Text style={{

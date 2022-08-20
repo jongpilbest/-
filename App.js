@@ -36,6 +36,7 @@ const navigator =
     //Danger: Danger,
     Edit: Edit,
     search: createStackNavigator({
+     
       search_item_first: search_item_first,
       Search_item_seconde: Search_item_seconde
 
