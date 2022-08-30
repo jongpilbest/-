@@ -42,13 +42,13 @@ const Componcopy = function ({ vale, gogo }) {
 
                 {
 
-                    backgroundColor: '#D2D2D2',
+                    backgroundColor: '#ffffff',
                     width: 89,
                     height: 100,
                     marginTop: 10,
                     marginLeft: 20,
                     padding: 0,
-                    borderRadius: 20,
+                    borderRadius: 10,
                     flexDirection: "row",
 
                 }
@@ -75,9 +75,10 @@ const Componcopy = function ({ vale, gogo }) {
             console.log(num)
 
             setnum(0);
+
             return (
                 {
-                    backgroundColor: '#D2D2D2',
+                    backgroundColor: '#ffffff',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -116,7 +117,7 @@ const Componcopy = function ({ vale, gogo }) {
             return (
                 {
 
-                    backgroundColor: '#D2E6FF',
+                    backgroundColor: '#FF4444',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -138,9 +139,10 @@ const Componcopy = function ({ vale, gogo }) {
 
             return (
 
+
                 {
 
-                    backgroundColor: '#D2E6FF',
+                    backgroundColor: '#FF4444',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -159,9 +161,10 @@ const Componcopy = function ({ vale, gogo }) {
         else if (num == 0) {
             //check_corrct(vale.name, 0);
             return (
+
                 {
 
-                    backgroundColor: '#D2D2D2',
+                    backgroundColor: '#ffffff',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -202,11 +205,12 @@ const Componcopy = function ({ vale, gogo }) {
                 }}>
 
                     <Text style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#545252',
                         fontWeight: 'bold',
                         marginLeft: 4,
-                        marginTop: 0
+                        marginTop: 0,
+                        fontFamily: 'Nam-Bold',
 
 
 

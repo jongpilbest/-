@@ -35,13 +35,7 @@ const navigator =
     //Mypage_main: Mypage_main,
     //Danger: Danger,
     Edit: Edit,
-    search: createStackNavigator({
-     
-      search_item_first: search_item_first,
-      Search_item_seconde: Search_item_seconde
 
-
-    }),
 
 
 
@@ -63,8 +57,9 @@ const navigator =
 
       mainn: createStackNavigator({
         main: main,
-        //search_item_first: search_item_first,
-        Barcode_main: Barcode_main
+        Barcode_main: Barcode_main,
+        search_item_first: search_item_first,
+        Search_item_seconde: Search_item_seconde
 
       })
       ,

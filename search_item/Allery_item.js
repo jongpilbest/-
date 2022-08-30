@@ -8,6 +8,16 @@ import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } fr
 
 const Allery_item = function ({ show }) {
  console.log(show)
+ const whwh = function () {
+  if (show.check == 1) {
+   return ({ uri: show.image ? show.image[1] : null })
+
+  }
+  if (show.check == 0) {
+   return ({ uri: show.image ? show.image[0] : null })
+
+  }
+ }
 
  const hey_che = function () {
   if (show.check == 1) {
@@ -19,7 +29,7 @@ const Allery_item = function ({ show }) {
      height: 100,
      borderRadius: 50,
      marginTop: 10,
-     backgroundColor: '#FF4444',
+     borderColor: '#FF4444',
 
 
     }
@@ -35,7 +45,7 @@ const Allery_item = function ({ show }) {
     height: 100,
     borderRadius: 50,
     marginTop: 10,
-    backgroundColor: '#BDBDBD',
+
     opacity: 0.2
    })
 
@@ -60,7 +70,7 @@ const Allery_item = function ({ show }) {
 
      //       borderRadius: '50%',
     }}
-    source={{ uri: show.image ? show.image : null }}
+    source={whwh()}
    //source={{ uri: image }}
    />
 

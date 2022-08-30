@@ -329,7 +329,7 @@ const styles = StyleSheet.create({
         height: 800,
 
         borderWidth: 3,
-        margin: 10,
+        margin: 3,
         borderColor: 'transparent'
 
 

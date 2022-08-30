@@ -10,8 +10,9 @@ import {
 } from 'react-native';
 import { Context } from '../contextv/DetailContext'
 import { barcodeAction } from "../redux/auth";
+import { Ionicons } from '@expo/vector-icons';
 
-
+import { AntDesign } from '@expo/vector-icons';
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -49,14 +50,15 @@ const Barcode_main = ({ navigation }) => {
     console.log('?')
 
 
-
+    //바코드 백에서 정보 제공
     await axios.post(`http://13.209.73.153:5000/product/custom`, {
       "barcode": data
+      //현재 바코드가 데이터 베이스에 존재하는가 
 
     },
       {
         headers: {
-          'X-AUTH-TOKEN': token
+          'X-AUTH-TOKEN': token //토큰으로 사용자 정보 확인
 
         }
       }
@@ -67,6 +69,7 @@ const Barcode_main = ({ navigation }) => {
         if (typeof (response.data) == Object) {
           var mapv = [];
           var ee = (Object.keys(response.data.allergy));
+          //알러지 정보 key 값만 뽑아서 
           allergy_kr.forEach(ev => {
             ee.forEach(el => {
               if (ev.name == el) {
@@ -76,12 +79,16 @@ const Barcode_main = ({ navigation }) => {
             })
 
           })
+          //알러지 키값을 영어에서 한글로 변경
 
           var key_f = (Object.keys(response.data.ingredient));
+          //비선호 성분 key 값
           var key_ff = (Object.values(response.data.ingredient));
+          //비선호 성분 value 값
           var id_check = response.data.Id
           var em = [];
           var em_kr = [];
+          //비선호 성분도 영어에서 한글로 이름 변경
           ingredient_kr.forEach(ev => {
             key_f.forEach(el => {
               if (ev.name == el) {
@@ -99,7 +106,7 @@ const Barcode_main = ({ navigation }) => {
           em.forEach(el => {
             mapv.push(el);
           })
-       
+
           navigation.navigate('Search_item_seconde', { name: elv, mapv: mapv, id: id_check })
         }
         if (typeof (response.data) == "string") {
@@ -152,15 +159,39 @@ const Barcode_main = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
+      <View style={{
+        backgroundColor: 'white',
+        width: 60,
+        height: 60,
+        borderRadius: '50%',
+        marginTop: 20,
+
+      }}>
+
+
+        <TouchableOpacity onPress={() => {
+
+          console.log('엥')
+          navigation.pop()
+        }}>
+          <Ionicons style={{
+            margin: 5
+          }} name="chevron-back-circle-outline" size={50} color="black" />
+
+
+        </TouchableOpacity>
+      </View>
       {scanned &&
         <TouchableOpacity onPress={() => {
           setScanned(false)
 
         }} >
+
           <View style={{
             backgroundColor: 'white',
             width: '22%',
@@ -169,9 +200,11 @@ const Barcode_main = ({ navigation }) => {
             position: 'relative',
             bottom: 0,
             marginLeft: '75%',
-            marginTop: '130%'
+            marginTop: '70%'
           }}>
-
+            <AntDesign style={{
+              margin: 10
+            }} name="reload1" size={30} color="black" />
           </View>
 
         </TouchableOpacity>
@@ -183,6 +216,12 @@ const Barcode_main = ({ navigation }) => {
 
 }
 
+
+Barcode_main.navigationOptions = () => {
+  return {
+    header: () => false,
+  };
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,

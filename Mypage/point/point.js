@@ -115,7 +115,7 @@ const point = function ({ navigation }) {
 
          //       borderRadius: '50%',
         }}
-        source={{ uri: 'https://post-phinf.pstatic.net/MjAyMDA4MjVfMTIy/MDAxNTk4MzM5Mjg4MDg4.xXm22YECdVxMJ5o1M37qaKDeCcfJQhHZg3htFL3mNWkg.Mv2sYB2Xez1v4Bo3VBLIf2R73d0rQVjIkwdZYP4VAnsg.PNG/20200825_160713.png?type=w1200' }}
+        source={{ uri: ' https://mblogthumb-phinf.pstatic.net/20161008_248/sasa9508_1475929220263OMzsO_JPEG/2.jpg?type=w2' }}
        />
 
        <View style={{

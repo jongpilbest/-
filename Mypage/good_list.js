@@ -1,12 +1,12 @@
 
 import { useSelector, useDispatch } from 'react-redux'
 import React, { useState, useContext, useEffect } from "react"
-import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
+import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text, ScrollView } from "react-native"
 //import { Context } from '../contextv/DetailContext'
 import { authAction } from "../redux/auth";
 //import { cos } from 'react-native-reanimated';
 //import { counterActions } from "../store"
-
+import { Ionicons } from '@expo/vector-icons';
 import axios from "axios"
 
 import Search_Compo from '../search_item/Search_Compo';
@@ -18,6 +18,17 @@ const good_list = function ({ navigation }) {
  const token = useSelector((state) => state.token.token)
  console.log('여기서 확인')
  var item = navigation.getParam('data');
+ var check = navigation.getParam('check');
+ const name = function () {
+  if (check == 1) {
+   return '선호상품 상품 리스트'
+  }
+  if (check == 0) {
+   return '비선호상품 상품 리스트'
+  }
+ }
+
+
  /*
  var item = [
   {
@@ -82,10 +93,6 @@ const good_list = function ({ navigation }) {
 
 
 
-
-
-
-    //  mapv.push(response.data.ingredient);
     console.log(mapv)
     // setcheck(response.data);
     //navigation.navigate('search_item_first', { data: response.data })
@@ -125,18 +132,30 @@ const good_list = function ({ navigation }) {
 
     //eight: '35%'
    }}>
+    <TouchableOpacity onPress={() => {
+
+     navigation.pop();
+    }}>
+     <Ionicons style={{
+
+      marginLeft: 15,
+      marginTop: 20,
+     }} name="arrow-back-circle" size={50} color="black" />
+
+    </TouchableOpacity>
     <Text style={{
      fontSize: 20,
      alignSelf: "flex-start",
      //color: '#7C7C7C',
      marginTop: 30,
-     marginLeft: 10,
+     marginLeft: 70,
      position: 'absolute',
 
 
      fontFamily: "Nam-Bold"
-    }}>선호상품 상품 리스트</Text>
+    }}>{name()}</Text>
    </View>
+
 
    <View
     style={{
@@ -146,59 +165,43 @@ const good_list = function ({ navigation }) {
 
 
     } >
+    <ScrollView
+     style={{
 
-    <TouchableOpacity onPress={() => {
+      height: 1400,
 
+     }}
 
+    // showsVerticalScrollIndicator={false}
 
-    }}>
+    // showsHorizontalScrollIndicator={false}
+    >
+
      <View style={{
-      width: 130,
-      height: 30,
-      borderRadius: 20,
-      marginTop: 20,
+      flexDirection: 'row',
 
-      marginLeft: 220,
-      backgroundColor: '#DDEEF2'
-
-
+      height: 1300,
+      // justifyContent: 'space-between',
+      backgroundColor: 'white',
+      // justifyContent: 'flex-start',
+      flexWrap: 'wrap',
+      marginTop: 15
      }}>
-      <Text style={{
-       textAlign: 'center',
-       //margin: 10,
-       margin: 5,
-       fontFamily: "Nam-Bold"
-      }}>
-       필터
-      </Text>
 
+
+
+      {item.map((el, index) => {
+
+       return (
+
+        <Search_Compo key={index} touch={(vv) => gopage(vv)} vale={el}></Search_Compo>
+
+       )
+      })}
      </View>
+    </ScrollView>
 
-    </TouchableOpacity>
-    <View style={{
-     flexDirection: 'row',
-
-     height: 300,
-     // justifyContent: 'space-between',
-     backgroundColor: 'white',
-     // justifyContent: 'flex-start',
-     flexWrap: 'wrap',
-     marginTop: 15
-    }}>
-
-
-
-     {item.map((el, index) => {
-
-      return (
-
-       <Search_Compo key={index} touch={(vv) => gopage(vv)} vale={el}></Search_Compo>
-
-      )
-     })}
-    </View>
    </View >
-
 
 
   </View >
@@ -208,12 +211,12 @@ const good_list = function ({ navigation }) {
 
 }
 
-/*
+
 good_list.navigationOptions = () => {
  return {
   header: () => false,
  };
 };
-*/
+
 
 export default good_list;

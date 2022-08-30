@@ -13,10 +13,13 @@ import { goodAction } from "../redux/good";
 var new_A = [];
 var index_array = [];
 import Recomd from "./Recomd";
+import Allery_item from "../search_item/Allery_item";
 //import { useSelector, useDispatch } from 'react-redux'
-
+import Kisa from "./Kisa";
 const main = function ({ navigation }) {
   var item = navigation.getParam('item');
+  var main_kisa = navigation.getParam('main_kisa');
+  console.log(`기사 내용${main_kisa}`)
   //const item_show = navigation.getParam('data');
   const dispatch = useDispatch();
 
@@ -283,7 +286,7 @@ const main = function ({ navigation }) {
 
             return (
 
-              <Recomd key={index} vale={el}></Recomd>
+              <Recomd key={index} show={el}></Recomd>
 
             )
           })}
@@ -304,48 +307,20 @@ const main = function ({ navigation }) {
             margin: 8,
             marginLeft: 15,
             width: '90%',
-            height: 130,
+            height: 140,
             backgroundColor: '#DDEEF2',
             borderRadius: 20,
           }}>
-            <View style={{
-              width: '90%',
-              marginTop: 15,
-              height: 40,
-              marginLeft: 15,
-              borderRadius: 20,
-              backgroundColor: 'white'
-            }}>
-              <Text style={{
-                fontFamily: "Nam-Bold"
-                , fontSize: 12,
-                marginTop: 10,
-                marginLeft: 20
+            <ScrollView>
+              {main_kisa.map((el, index) => {
 
-              }}>
-                어쩌구
-              </Text>
+                return (
+                  <Kisa key={index} show={el}></Kisa>
+                )
+              })}
 
-            </View>
-            <View style={{
-              width: '90%',
-              marginTop: 15,
-              height: 40,
-              marginLeft: 15,
-              borderRadius: 20,
-              backgroundColor: 'white'
-            }}>
-              <Text style={{
-                fontFamily: "Nam-Bold"
-                , fontSize: 12,
-                marginTop: 10,
-                marginLeft: 20
+            </ScrollView>
 
-              }}>
-                어쩌구
-              </Text>
-
-            </View>
           </View>
 
           <View style={{

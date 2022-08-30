@@ -38,7 +38,7 @@ const first = function ({ navigation }) {
         else {
             return {
                 fontSize: 15,
-                color: '#71A6E3',
+                color: '#FF4444',
                 fontWeight: 'bold',
                 marginLeft: '50%',
                 fontFamily: 'Nam-Bold',
@@ -119,9 +119,7 @@ const first = function ({ navigation }) {
                 marginLeft: '3%'
 
             }}>
-                <Text>
-                    {is_id}
-                </Text>
+
                 <Text style={{
 
                     fontSize: 20,

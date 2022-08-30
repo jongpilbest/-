@@ -15,13 +15,144 @@ import Danger_iter from './Danger_iter';
 import Danger_your from './Danger_your';
 import Danger_fin from './Danger_fin';
 
+
 const Danger = function ({ navigation }) {
    const token = useSelector((state) => state.token.token)
+   var item = navigation.getParam('data');
+   var full = [];
+
 
    const nickname = useSelector((state) => state.owner.owner);
+   console.log(' 여기서 확인하기 ')
 
-   var gey_fo = ['지방', '소금', '트랜스지방', '탄수화물', '포화지방산', '단백질', '설탕']
-   var gey = [44, 60, 14, 20, 8, 50, 10];
+   var fir = navigation.getParam('gey_fo');
+
+
+
+   var sec = navigation.getParam('gey');
+   for (var misu = 0; misu < fir.length; misu++) {
+
+      var at = {
+         name: sec[misu],
+         value: fir[misu]
+      }
+
+      full.push(at);
+   }
+
+   full.sort(function (a, b) {
+      if (a.value > b.value) {
+         return -1;
+      }
+      if (a.value < b.value) {
+         return +1;
+      }
+      // a must be equal to b
+      return 0;
+   });
+   console.log('상위 순위')
+   var final = full.slice(0, 3);
+   console.log(final)
+
+   var alee = [
+
+      {
+         name: 'wheat',
+         check: 0,
+         kr: '밀가루'
+      },
+
+      {
+         name: 'milk',
+         check: 0,
+         kr: '우유'
+
+      }
+      , {
+         name: 'buckwheat',
+         check: 0,
+         kr: '메밀'
+
+      },
+
+      {
+         name: 'soybean',
+         check: 0,
+         kr: '콩'
+
+      }
+      , {
+         name: 'mackerel',
+         check: 0,
+         kr: '고등어'
+
+
+      }
+      , {
+         name: 'crab',
+         check: 0,
+         kr: '게'
+
+
+      }, {
+         name: 'shrimp',
+         check: 0,
+         kr: '새우'
+
+      }, {
+         name: 'pork',
+         check: 0,
+         kr: '돼지 고기'
+
+      }, {
+         name: 'peach',
+         check: 0,
+         kr: '복숭아'
+
+      }, {
+         name: 'tomato',
+         check: 0,
+         kr: '토마토'
+
+      }, {
+         name: 'walnut',
+         check: 0,
+         kr: '땅콩'
+      }, {
+         name: 'chicken',
+         check: 0,
+         kr: '닭'
+
+      }, {
+         name: 'beef',
+         check: 0,
+         kr: '쇠고기'
+
+      }, {
+         name: 'squid',
+         check: 0,
+         kr: '오징어'
+
+      }, {
+         name: 'shellfish',
+         check: 0,
+         kr: '조개'
+
+
+      },
+      {
+         name: 'egg',
+         check: 0,
+         kr: '달걀'
+
+
+      }]
+   var kr = ['콩', '닭', '달걀', '우유', '밀가루', '쇠고기', '토마토', '돼지고기'];
+
+
+
+
+
 
    const check_line = function () {
 
@@ -85,99 +216,109 @@ const Danger = function ({ navigation }) {
 
             </Text>
          </View>
-
-         <View style={{
-
-            width: '95%',
-            height: 240,
-            marginLeft: 10,
-            marginTop: 20,
-            backgroundColor: "#EAEAEA",
-            borderRadius: 10,
-
-         }}>
+         <ScrollView
+            showsHorizontalScrollIndicator={true}
+            horizontal={true}>
             <View style={{
 
                width: '100%',
-               height: 100,
-               marginLeft: 0,
-               //backgroundColor: 'pink',
-               flexDirection: 'row',
-
-
-
-            }}>
-
-
-               {gey.map((el, index) => {
-
-                  if (index == 6) {
-                     return;
-                  }
-                  return <Danger_com key_r={index} key={index} heck={gey} jhey={el} ></Danger_com>
-
-               })}
-
-               {
-
-                  <Danger_fin jhey={gey[gey.length - 1]}></Danger_fin>
-               }
-
-
-
-
-            </View>
-            <View style={{
-
-               width: '95%',
-               height: 90,
-
-               marginTop: 50,
-               marginRight: 10,
-               marginLeft: 10
+               height: 190,
+               marginLeft: 10,
+               marginTop: 20,
+               backgroundColor: "#EAEAEA",
+               borderRadius: 10,
 
             }}>
+
+
+
+
                <View style={{
 
                   width: '100%',
-                  height: 30,
+                  height: 100,
+                  marginLeft: 0,
+                  //backgroundColor: 'pink',
+                  flexDirection: 'row',
 
-                  flexDirection: 'row'
+
+
                }}>
 
 
 
-               </View>
-               <View style={{
+                  {fir.map((el, index) => {
 
-                  width: '100%',
-                  height: 40,
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                  flexDirection: 'row'
-               }}>
-                  {gey_fo.map((el, index) => {
+                     if (index == 7) {
+                        return;
 
-
-                     return <Danger_Text key={index} text={el}></Danger_Text>
-
+                     }
+                     else if (index < 7) {
+                        return <Danger_com key_r={index} key={index} heck={fir} jhey={el} ></Danger_com>
+                     }
 
 
                   })}
 
 
+                  {
+
+                     <Danger_fin jhey={fir[fir.length - 1]}></Danger_fin>
+                  }
+
+
+
+
 
 
                </View>
 
-            </View>
+
+               <View style={{
+
+                  width: '100%',
+                  height: 90,
+
+                  marginTop: 30,
+                  marginRight: 10,
+                  marginLeft: 10
+
+               }}>
+
+
+                  <View style={{
+
+                     width: '100%',
+                     height: 40,
+                     backgroundColor: 'white',
+                     borderRadius: 10,
+                     flexDirection: 'row',
+                     marginTop: 10,
+                  }}>
+                     {sec.map((el, index) => {
+
+
+                        return <Danger_Text key={index} text={el}></Danger_Text>
+
+
+
+                     })}
+
+
+
+
+                  </View>
+
+
+               </View>
 
 
 
 
 
 
-         </View >
+            </View >
+         </ScrollView>
          <View style={{
 
             height: 500,
@@ -191,8 +332,16 @@ const Danger = function ({ navigation }) {
                   height: 700,
 
                }}>
+                  {final.map((el, index) => {
 
-                  <Danger_your></Danger_your>
+
+                     return <Danger_your hey={el} key={index}></Danger_your>
+
+
+
+                  })}
+
+
                </View>
 
             </ScrollView>

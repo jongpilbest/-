@@ -383,7 +383,7 @@ const ingredient = function ({ navigation }) {
   return (
 
     <View style={{
-      backgroundColor: 'white',
+      backgroundColor: '#DDEEF2',
       height: '100%'
     }}>
 
@@ -400,7 +400,7 @@ const ingredient = function ({ navigation }) {
 
       </TouchableOpacity>
       <View style={{
-        marginTop: '10%',
+        marginTop: '3%',
         marginLeft: '3%'
       }}>
         <Text style={{
@@ -408,17 +408,20 @@ const ingredient = function ({ navigation }) {
         }}>
           <Text style={{
             fontSize: 22,
-            color: '#71A6E3',
+            color: '#545252',
 
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            fontFamily: 'Nam-Bold',
+
           }}>
-            알레르기
+            비선호
           </Text>
           <Text style={{
             fontSize: 22,
             color: '#545252',
 
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            fontFamily: 'Nam-Bold',
           }}>
             성분을 알려주세요
           </Text>
@@ -429,7 +432,8 @@ const ingredient = function ({ navigation }) {
           marginLeft: 22,
           marginTop: 10,
 
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          fontFamily: 'Nam-Bold',
         }}>
           마이페이지에서 변경 가능합니다.
 
@@ -459,7 +463,7 @@ const ingredient = function ({ navigation }) {
       }
       <View style={{
         height: '60%',
-        marginTop: 10,
+
       }}>
         <ScrollView style={styles.border}>
 
@@ -499,9 +503,9 @@ const ingredient = function ({ navigation }) {
 
       }>
         <View style={{
-          backgroundColor: '#D2E6FF'
-          , width: '37%',
-          height: '23%',
+          backgroundColor: '#ffffff'
+          , width: '45%',
+          height: '22%',
           borderRadius: 10,
           marginTop: 19,
           alignSelf: 'center',
@@ -512,24 +516,25 @@ const ingredient = function ({ navigation }) {
 
         }}>
           <Text style={{
-            fontSize: 19,
+            fontSize: 16,
             alignItems: 'center',
             alignContent: 'center',
             textAlign: 'center',
             color: '#545252',
-            marginTop: '10%',
-            fontWeight: 'bold'
+            marginTop: 10,
+            fontWeight: 'bold',
+            fontFamily: 'Nam-Bold',
           }}>
-            다음
+            완료
           </Text>
         </View>
 
-      </TouchableOpacity>
+      </TouchableOpacity >
 
 
 
 
-    </View>
+    </View >
 
   )
 }
@@ -541,15 +546,13 @@ ingredient.navigationOptions = () => {
 
 const styles = StyleSheet.create({
 
-
   border: {
     width: '90%',
-    height: '100%',
-    flexGrow: 1,
+    height: 400,
+
     borderWidth: 3,
-    margin: 10,
-    borderColor: 'transparent',
-    // flexDirection: 'row',
+    margin: 3,
+    borderColor: 'transparent'
 
 
   },
@@ -557,15 +560,12 @@ const styles = StyleSheet.create({
 
     flexDirection: 'row',
 
-    height: 300,
+    height: 400,
     // justifyContent: 'space-between',
-    backgroundColor: 'white',
+    backgroundColor: '#DDEEF2',
     // justifyContent: 'flex-start',
-    flexWrap: 'wrap',
-    marginTop: 15
-    //position: 'absolute', left: 0, right: 0, bottom: 0
+    flexWrap: 'wrap'
   }
-
 
 
 

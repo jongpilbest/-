@@ -16,9 +16,11 @@ import first from "../signup/first";
 const Search_Compo = function ({ navigation, vale, touch }) {
  //console.log(`vale ${vale}`)
  var [num, setnum] = useState(0);
+ console.log('이름도 안나오네 ㅋㅋㅋ ㅜ ㅎ')
+ console.log(vale.name)
  var fist = '';
  var sec = '';
- if (vale.name.length > 10) {
+ if (vale.name.length >= 10) {
   fist = vale.name.slice(0, 10);
   sec = vale.name.slice(10, vale.name.length);
 
@@ -37,13 +39,14 @@ const Search_Compo = function ({ navigation, vale, touch }) {
     backgroundColor: 'white',
     width: 140,
     height: 170,
-    marginTop: 5,
+    marginTop: 15,
     marginLeft: 20,
     marginRight: 15,
     padding: 0,
     borderRadius: 100,
     borderColor: '#DDEEF2',
-    borderWidth: 3
+    borderWidth: 3,
+
 
 
 
@@ -53,10 +56,10 @@ const Search_Compo = function ({ navigation, vale, touch }) {
    >
     <Image
      style={{
-      height: '50%',
-      width: '50%',
+      height: 90,
+      width: 90,
       marginTop: 30,
-      marginLeft: 35,
+      marginLeft: 20,
 
       padding: 0,
 

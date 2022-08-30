@@ -19,6 +19,7 @@ const Danger_line = function ({ navigation, jhey, good_bo }) {
    const token = useSelector((state) => state.token.token)
    var first = good_bo[0];
    var second = good_bo[1]
+   console.log(`왜 다르지? ${first},${second}`)
    const nickname = useSelector((state) => state.owner.owner);
    console.log(jhey);
    const good = function (al) {
@@ -63,7 +64,7 @@ const Danger_line = function ({ navigation, jhey, good_bo }) {
                x1="0"
                y1={first}
                x2="40"
-               y2={second - 5}
+               y2={second}
                stroke="black"
                strokeWidth="0.7"></Line>
          </Svg>

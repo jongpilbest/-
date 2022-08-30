@@ -29,10 +29,11 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
          positon: 'absolute',
          top: hey,
          backgroundColor: 'white',
-         width: 24,
-         height: 24,
+         width: 25,
+         height: 25,
          borderRadius: 30,
          margin: 15,
+         marginLeft: 16,
          flexDirection: 'row'
       }
 
@@ -49,13 +50,12 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
 
       }}>
 
-
          <View
             style={good(jhey)}>
 
             <Text style={{
 
-               fontSize: 13,
+               fontSize: 10,
 
                fontFamily: "Nam-Bold"
                , margin: 5,
@@ -65,6 +65,7 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
 
          </View>
          <Danger_line jhey={jhey} good_bo={good_bo}></Danger_line>
+
       </View>
 
 

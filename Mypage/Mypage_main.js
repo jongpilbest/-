@@ -5,18 +5,21 @@ import { Context } from "../contextv/DetailContext";
 import * as ImagePicker from 'expo-image-picker';
 import { Pressable } from 'react-native';
 import Modal from "react-native-modal";
-
-
 import axios from "axios";
-//import { TapGestureHandler } from "react-native-gesture-handler";
-
+import good_list from "./good_list";
+import { changeAction } from "../redux/change";
 import { useSelector, useDispatch } from 'react-redux'
-import { createStackNavigator } from "react-navigation-stack";
-
-
+//import { changeAction } from "../../redux/change";
 const Mypage_main = function ({ navigation }) {
- const nickname = useSelector((state) => state.owner.owner);
  const token = useSelector((state) => state.token.token)
+ const dispatch = useDispatch();
+ dispatch(changeAction.setarray_list())
+
+
+
+
+ const nickname = useSelector((state) => state.owner.owner);
+
  const [modalVisible, setModalVisible] = useState(false);
  const [imageUrl, setImageUrl] = useState('h');
  // 권한 요청을 위한 hooks
@@ -260,25 +263,38 @@ const Mypage_main = function ({ navigation }) {
     }}>
      <TouchableOpacity onPress={() => {
       console.log('선호 상품?', token);
+
       axios.get("http://13.209.73.153:5000/likeproduct/list",
        {
         headers: {
-         'X-AUTH-TOKEN': token
+         'X-AUTH-TOKEN': token,
+
 
         }
        }
       ).then((response) => {
        if (response) {
-        console.log('선호 상품 리스트')
-        console.log(response.data)
-        navigation.navigate('like_list', { data: response.data })
+
+        var data = response.data
+
+        // setcheck(response.data);
+
+        console.log(data)
+        navigation.navigate('good_list', { data: response.data, check: 1 })
 
 
+        //dispatch(changeAction.setallergy_1(vale.kr))
+        //setUser(response);
+       } else {
+        alert("failed to ");
        }
       }).catch((err) => {
        console.log(err.message);
+       console.log(err)
 
-      })
+       console.log('상세정보');
+      });
+
      }
      }>
 
@@ -294,23 +310,60 @@ const Mypage_main = function ({ navigation }) {
      </TouchableOpacity>
 
     </View>
+
+
     <View style={{
      backgroundColor: 'white',
      height: '11%',
      width: '95%',
-     marginLeft: 10,
      margin: 5,
+     marginLeft: 10,
      borderRadius: 20
-    }}>
-     <Text style={{
-      margin: 13,
-      fontSize: 13,
-      fontFamily: "Nam-Bold"
-     }}>
-      비선호상품 확인
-     </Text>
+    }}><TouchableOpacity onPress={() => {
+     console.log('비선호 상품?', token);
 
+     axios.get("http://13.209.73.153:5000/dislikeproduct/list",
+      {
+       headers: {
+        'X-AUTH-TOKEN': token,
+
+
+       }
+      }
+     ).then((response) => {
+      if (response) {
+
+       var data = response.data
+
+       // setcheck(response.data);
+
+       console.log(data)
+       navigation.navigate('good_list', { data: response.data, check: 0 })
+
+
+       //dispatch(changeAction.setallergy_1(vale.kr))
+       //setUser(response);
+      } else {
+       alert("failed to ");
+      }
+     }).catch((err) => {
+      console.log(err.message);
+      console.log(err)
+
+      console.log('상세정보');
+     });
+    }
+    }>
+      <Text style={{
+       margin: 13,
+       fontSize: 13,
+       fontFamily: "Nam-Bold"
+      }}>
+       비선호상품 확인
+      </Text>
+     </TouchableOpacity>
     </View>
+
 
 
 
@@ -324,31 +377,46 @@ const Mypage_main = function ({ navigation }) {
     }}>
      <TouchableOpacity onPress={() => {
 
+      //  check_state();
 
-      axios.get("http://13.209.73.153:5000/mypage/checkUserInfo",
-       {}, {
-       headers: {
-        'X-AUTH-TOKEN': token
+      dispatch(changeAction.setarray_list());
+      dispatch(changeAction.setchange_list());
+      axios.get(`http://13.209.73.153:5000/mypage/checkUserInfo`,
+       {
+        headers: {
+         'X-AUTH-TOKEN': token
 
+        }
        }
-      }
       ).then((response) => {
        if (response) {
-        console.log('누적포인트')
-        var data = response.data
+        console.log('수정')
+        data = response.data
+        console.log(data)
+        item = response.data.allergy
+        console.log(item)
+
+        for (const pro in item) {
+         console.log(pro)
+         if (item[pro] == 1) {
+          dispatch(changeAction.setallergy_1(pro));
+          dispatch(changeAction.original(pro));
+         }
 
 
+        }
 
-        navigation.navigate('Change_State', { data: data });
+        //navigation.navigate('Change_State', { data: item });
 
-
+        navigation.navigate('Change_State', { item: item });
        }
       }).catch((err) => {
        console.log(err.message);
 
       })
 
-      navigation.navigate('Change_State');
+
+
      }}>
       <Text style={{
        margin: 13,
@@ -379,7 +447,45 @@ const Mypage_main = function ({ navigation }) {
      </Text>
 
     </View>
-    <TouchableOpacity onPress={() => navigation.navigate('Danger')}>
+    <TouchableOpacity onPress={() => {
+     axios.get("http://13.209.73.153:5000/mypage/danger",
+      {
+       headers: {
+        'X-AUTH-TOKEN': token
+
+       }
+      }
+     ).then((response) => {
+      if (response) {
+       console.log('위험')
+       var datac = response.data
+       console.log(datac);
+
+       var gey_fo = [];
+       var gey = [];
+       //var gey_fo = Object.values(item)
+       //var gey = Object.keys(item);
+       for (const wha in datac) {
+        gey.push(wha);
+        gey_fo.push(datac[wha])
+
+       }
+       console.log(gey, gey_fo)
+       navigation.navigate('Danger', { full: datac, gey: gey, gey_fo: gey_fo })
+
+
+      }
+     }).catch((err) => {
+      console.log(err.message);
+
+     })
+
+     //navigation.navigate('point')
+
+    }
+    }
+
+    >
      <View style={{
       backgroundColor: 'white',
       height: 40,

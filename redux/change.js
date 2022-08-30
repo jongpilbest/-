@@ -6,13 +6,16 @@ const initialstate = {
  nickname: '',
  array_list: [],
  array_list_2: [],
+ change_list: [],
+ original_list: [],
+ total_list: [],
  allergy: [
 
   {
    name: 'wheat',
 
    kr: '밀가루',
- 
+
   },
 
   {
@@ -95,8 +98,15 @@ const initialstate = {
   },
   {
    name: 'egg',
-   check: 0,
+
    kr: '달걀'
+
+
+  },
+  {
+   name: 'peanut',
+
+   kr: '땅콩'
 
 
   }],
@@ -171,12 +181,40 @@ const changeslice = createSlice({
 
 
   },
+  push_change_arr: (state, action) => {
+   state.change_list.push(action.payload)
+  },
+  pop_change_arr: (state, action) => {
+   state.change_list.splice(state.change_list.indexOf(action.payload), 1);
+  },
+  concat_allergy: (state, action) => {
+   state.total_list = state.change_list.concat(state.array_list);
+  },
+
+  setarray_list: (state, action) => {
+
+   state.array_list.length = 0;
+
+  }
+  ,
+  setchange_list: (state, action) => {
+
+   state.change_list.length = 0;
+
+  },
+  original: (state, action) => {
+
+
+   state.original_list.push(action.payload)
+
+
+  },
   setallergy_1: (state, action) => {
 
-   console.log('not?')
+
    state.array_list.push(action.payload)
 
-  
+
   },
   setingredient_0: (state, action) => {
 

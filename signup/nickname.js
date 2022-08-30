@@ -39,7 +39,7 @@ const nickname = function ({ navigation }) {
     else {
       return {
         fontSize: 15,
-        color: '#71A6E3',
+        color: '#FF4444',
         fontWeight: 'bold',
         marginLeft: '50%',
         fontFamily: 'Nam-Bold',
@@ -124,9 +124,7 @@ const nickname = function ({ navigation }) {
         marginLeft: '3%'
 
       }}>
-        <Text>
-          {is_id}
-        </Text>
+      
         <Text style={{
 
           fontSize: 20,
@@ -154,7 +152,7 @@ const nickname = function ({ navigation }) {
         onSubmitEditing={() => check_id()}>
       </TextInput>
       {!check() && <Text style={go_go_opacity()}>
-        중복된 닉네임 입니다.
+        존재하는 닉네임 입니다
       </Text>}
       < TouchableOpacity onPress={() => {
 

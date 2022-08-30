@@ -15,12 +15,111 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 import { AntDesign } from '@expo/vector-icons';
 
-const Danger_your = function ({ text }) {
+const Danger_your = function ({ text, hey }) {
  const token = useSelector((state) => state.token.token)
-
+ console.log(hey)
  const nickname = useSelector((state) => state.owner.owner);
- var chek = `${text}%`
+ var chek = `${hey.value}%`
+ var your = '';
+ var al = [
 
+  {
+   name: 'wheat',
+
+   kr: '밀가루'
+  },
+
+  {
+   name: 'milk',
+
+   kr: '우유'
+
+  }
+  , {
+   name: 'buckwheat',
+
+   kr: '메밀'
+
+  },
+
+  {
+   name: 'soybean',
+
+   kr: '콩'
+
+  }
+  , {
+   name: 'mackerel',
+
+   kr: '고등어'
+
+
+  }
+  , {
+   name: 'crab',
+
+   kr: '게'
+
+
+  }, {
+   name: 'shrimp',
+
+   kr: '새우'
+
+  }, {
+   name: 'pork',
+
+   kr: '돼지 고기'
+
+  }, {
+   name: 'peach',
+
+   kr: '복숭아'
+
+  }, {
+   name: 'tomato',
+
+   kr: '토마토'
+
+  }, {
+   name: 'walnut',
+
+   kr: '땅콩'
+  }, {
+   name: 'chicken',
+
+   kr: '닭'
+
+  }, {
+   name: 'beef',
+
+   kr: '쇠고기'
+
+  }, {
+   name: 'squid',
+
+   kr: '오징어'
+
+  }, {
+   name: 'shellfish',
+
+   kr: '조개'
+
+
+  },
+  {
+   name: 'egg',
+   check: 0,
+   kr: '달걀'
+
+
+  }]
+ for (var i = 0; i < al.length; i++) {
+  if (hey.name == al[i].name) {
+   your = `  ${al[i].kr} `;
+   break;
+  }
+ }
  return (
   <View style={{
 
@@ -62,7 +161,7 @@ const Danger_your = function ({ text }) {
      fontFamily: 'Nam-Bold',
      marginLeft: 15
     }}>
-     84%
+     {chek}
     </Text>
 
    </View>
@@ -80,7 +179,7 @@ const Danger_your = function ({ text }) {
      fontSize: 15,
      marginTop: 30
     }}>
-     {`${nickname}님은 지방 성분을 주의하세요`}
+     {`${nickname}님은${your} 성분을 주의하세요`}
     </Text>
 
    </View>

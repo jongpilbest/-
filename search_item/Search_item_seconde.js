@@ -541,7 +541,7 @@ const Search_item_seconde = ({ navigation }) => {
 
         <View style={{
           width: '80%',
-          height: 300,
+          height: 280,
           marginTop: 30,
           marginLeft: 40,
           borderRadius: 40,
@@ -617,7 +617,9 @@ const Search_item_seconde = ({ navigation }) => {
               <Text style={{
                 fontSize: 14,
                 textAlign: 'center',
-                margin: 10,
+                marginTop: 10,
+                marginLeft: 20,
+                textAlign: 'center',
                 fontFamily: "Nam-Regular",
 
               }}>상세정보</Text>
@@ -631,7 +633,7 @@ const Search_item_seconde = ({ navigation }) => {
 
 
             marginLeft: 50,
-            backgroundColor: 'pink',
+
             width: '100%',
             height: 35,
             flexDirection: 'row'
@@ -710,7 +712,7 @@ const Search_item_seconde = ({ navigation }) => {
         width: '100%',
         height: 190,
         backgroundColor: '#DDEEF2',
-        marginTop: 45,
+        marginTop: 30,
 
         flexDirection: 'row',
 

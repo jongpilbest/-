@@ -1,0 +1,38 @@
+
+
+import React, { useState, useContext, useEffect, useRef } from "react"
+import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
+
+
+
+
+const Kisa = function ({ show }) {
+
+ return (
+  <View style={{
+   width: '90%',
+   marginTop: 15,
+   height: 40,
+   marginLeft: 15,
+   borderRadius: 20,
+   backgroundColor: 'white'
+  }}>
+   <Text style={{
+    fontFamily: "Nam-Bold"
+    , fontSize: 10,
+    marginTop: 10,
+    marginLeft: 20,
+    margin: 10
+
+   }}>
+    {show}
+   </Text>
+
+  </View>
+
+
+
+ )
+}
+
+export default Kisa;

@@ -16,65 +16,27 @@ var chek = 0;
 var text_input = 0;
 //import { useSelector, useDispatch } from 'react-redux'
 
+
 import { changeAction } from "../../redux/change";
 import { Ionicons } from '@expo/vector-icons';
 
 
 const Change_State = function ({ navigation }) {
-    const token = useSelector((state) => state.token.token)
-
-    useEffect(() => {
-        axios.get(`http://13.209.73.153:5000/mypage/checkUserInfo`, { aa: 'd' },
-            {
-                headers: {
-                    'X-AUTH-TOKEN': token
-
-                }
-            }
-        ).then((response) => {
-            if (response) {
-
-                var data = response.data.allergy
-
-                // setcheck(response.data);
-
-                console.log(data)
-
-                for (const pro in data) {
-
-                    if (data[pro] == 1) {
-                        dispatch(changeAction.setallergy_1(pro))
-                    }
-
-
-                }
-
-                //dispatch(changeAction.setallergy_1(vale.kr))
-                //setUser(response);
-            } else {
-                alert("failed to ");
-            }
-        }).catch((err) => {
-            console.log(err.message);
-            console.log(err)
-
-            console.log('상세정보');
-        });
-
-        //var mapv = ['1', '2'];
-
-
-    }, [])
-
-
     const dispatch = useDispatch();
+    const token = useSelector((state) => state.token.token);
+    //  const item = useSelector((state) => state.token.token);
+
+    const check_change_arr = useSelector((state) => state.change.change_list)
+
+    const check_array_list = useSelector((state) => state.change.array_list)
     const [MS_good, misu] = Ms();
     // const [chna, mos_original] = fian();
     //console.log(misu);
     //  console.log('에러십활')
-    const data_change = navigation.getParam('data');
+    const final = useSelector((state) => state.change.array_list)
+    // const data_change = navigation.getParam('data');
     const mos = useSelector((state) => state.change.allergy)
-    // console.log(mos)
+    //console.log(mos)
 
     const misugo = function (el) {
         dispatch(changeAction.setallergy_1(el))
@@ -207,19 +169,60 @@ const Change_State = function ({ navigation }) {
             backgroundColor: '#DDEEF2',
             height: '100%'
         }}>
-
-            <TouchableOpacity onPress={() => {
-
-                console.log('엥')
-                navigation.pop()
+            <View style={{
+                width: '100%',
+                height: 70,
+                backgroundColor: 'pink',
+                flexDirection: 'row'
             }}>
-                <Ionicons style={{
+                <View style={{
+                    width: '18%',
+                    backgroundColor: '#DDEEF2',
 
-                    marginLeft: 15,
-                    marginTop: 20,
-                }} name="arrow-back-circle" size={50} color="black" />
+                }}>
+                    <TouchableOpacity onPress={() => {
 
-            </TouchableOpacity>
+                        console.log('엥')
+                        navigation.pop()
+                    }}>
+                        <Ionicons style={{
+
+                            marginLeft: 15,
+                            marginTop: 20,
+                        }} name="arrow-back-circle" size={50} color="black" />
+
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    width: '43%',
+                    backgroundColor: '#DDEEF2',
+                }}>
+                    <Text style={{
+                        fontFamily: 'Nam-Bold',
+                        fontSize: 15,
+                        marginTop: 30,
+                        marginLeft: 15
+                    }}>
+                        알레르기 성분 수정
+                    </Text>
+                </View>
+                <View style={{
+                    width: '43%',
+                    backgroundColor: 'white'
+                }}>
+                    <Text style={{
+                        fontFamily: 'Nam-Bold',
+                        fontSize: 15,
+                        marginTop: 30,
+                        marginLeft: 15
+                    }}>
+                        비선호 성분 수정
+                    </Text>
+                </View>
+
+            </View>
+
+
 
             <View style={{
                 marginTop: '3%',
@@ -244,21 +247,10 @@ const Change_State = function ({ navigation }) {
                         fontWeight: 'bold',
                         fontFamily: 'Nam-Bold',
                     }}>
-                        성분을 알려주세요
+                        성분 수정
                     </Text>
                 </Text>
-                <Text style={{
-                    fontSize: 13,
-                    color: '#545252',
-                    marginLeft: 22,
-                    marginTop: 10,
 
-                    fontWeight: 'bold',
-                    fontFamily: 'Nam-Bold',
-                }}>
-                    마이페이지에서 변경 가능합니다.
-
-                </Text>
             </View>
             <SeachBar onfinsh={(vl) => {
                 MS_good()
@@ -267,6 +259,7 @@ const Change_State = function ({ navigation }) {
             }} >
 
             </SeachBar>
+
 
             {
                 text_input == 1 && <Text style={{
@@ -296,7 +289,7 @@ const Change_State = function ({ navigation }) {
                         {
 
 
-                            chekc == 11 && check_good() && < Componn vale={chek[0]}></Componn>
+                            chekc == 11 && check_good() && < Change_Com vale={chek[0]}></Change_Com>
 
                         }
                         {
@@ -316,7 +309,9 @@ const Change_State = function ({ navigation }) {
                 </ScrollView>
             </View>
             < TouchableOpacity onPress={() => {
-
+                console.log('수정완료')
+                console.log(check_change_arr)
+                console.log(check_array_list);
 
                 //navigation.navigate('ingredient');
 
@@ -326,9 +321,9 @@ const Change_State = function ({ navigation }) {
                 <View style={{
                     backgroundColor: '#ffffff'
                     , width: '45%',
-                    height: '22%',
+                    height: '25%',
                     borderRadius: 10,
-                    marginTop: 19,
+                    marginTop: 5,
                     alignSelf: 'center',
                     alignContent: 'center'
 
@@ -346,7 +341,7 @@ const Change_State = function ({ navigation }) {
                         fontWeight: 'bold',
                         fontFamily: 'Nam-Bold',
                     }}>
-                        다음
+                        수정 완료
                     </Text>
                 </View>
 
