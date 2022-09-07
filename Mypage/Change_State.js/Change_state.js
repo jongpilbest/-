@@ -29,13 +29,17 @@ const Change_State = function ({ navigation }) {
     const check_change_arr = useSelector((state) => state.change.change_list)
 
     const check_array_list = useSelector((state) => state.change.array_list)
+    const allergy = useSelector((state) => state.change.allergy);
     const [MS_good, misu] = Ms();
     // const [chna, mos_original] = fian();
     //console.log(misu);
     //  console.log('에러십활')
-    const final = useSelector((state) => state.change.array_list)
+    //const final = useSelector((state) => state.change.array_list)
     // const data_change = navigation.getParam('data');
     const mos = useSelector((state) => state.change.allergy)
+    const original = useSelector((state) => state.change.original_list);
+    console.log('오리지널', original);
+
     //console.log(mos)
 
     const misugo = function (el) {
@@ -183,7 +187,7 @@ const Change_State = function ({ navigation }) {
                     <TouchableOpacity onPress={() => {
 
                         console.log('엥')
-                        navigation.pop()
+                        navigation.navigate("Mypage_main");
                     }}>
                         <Ionicons style={{
 
@@ -312,6 +316,161 @@ const Change_State = function ({ navigation }) {
                 console.log('수정완료')
                 console.log(check_change_arr)
                 console.log(check_array_list);
+
+                var ob = {
+                    allergy: {
+
+                    }
+                }
+
+                var final = {
+                    allergy: [
+
+                        {
+                            name: 'wheat',
+                            check: 0,
+                            kr: '밀가루',
+
+                        },
+
+                        {
+                            name: 'milk',
+                            check: 0,
+                            kr: '우유'
+
+                        }
+                        , {
+                            name: 'buckwheat',
+                            check: 0,
+                            kr: '메밀'
+
+                        },
+
+                        {
+                            name: 'soybean',
+                            check: 0,
+                            kr: '콩'
+
+                        }
+                        , {
+                            name: 'mackerel',
+                            check: 0,
+                            kr: '고등어'
+
+
+                        }
+                        , {
+                            name: 'crab',
+                            check: 0,
+                            kr: '게'
+
+
+                        }, {
+                            name: 'shrimp',
+                            check: 0,
+                            kr: '새우'
+
+                        }, {
+                            name: 'pork',
+                            check: 0,
+                            kr: '돼지 고기'
+
+                        }, {
+                            name: 'peach',
+                            check: 0,
+                            kr: '복숭아'
+
+                        }, {
+                            name: 'tomato',
+                            check: 0,
+                            kr: '토마토'
+
+                        }, {
+                            name: 'walnut',
+                            check: 0,
+                            kr: '땅콩'
+                        }, {
+                            name: 'chicken',
+                            check: 0,
+                            kr: '닭'
+
+                        }, {
+                            name: 'beef',
+                            check: 0,
+                            kr: '쇠고기'
+
+                        }, {
+                            name: 'squid',
+                            check: 0,
+                            kr: '오징어'
+
+                        }, {
+                            name: 'shellfish',
+                            check: 0,
+                            kr: '조개'
+
+
+                        },
+                        {
+                            name: 'egg',
+                            check: 0,
+                            kr: '달걀'
+
+
+                        },
+                    ]
+                }
+
+                check_array_list.map(ev => {
+                    final.allergy.map(el => {
+                        if (ev == el.name) {
+                            el.check = 1;
+                        }
+                    })
+
+                })
+                console.log(final.allergy);
+                for (var pro in final.allergy) {
+                    var cc = final.allergy[pro];
+                    var oj_ = Object.values(cc);
+                    //console.log(oj_)
+                    ob.allergy[oj_[0]] = oj_[1];
+
+
+                }
+                console.log(ob.allergy)
+
+
+                axios.patch(`http://13.209.73.153:5000/mypage/updateUser`, {
+                    "allergy": ob.allergy
+                },
+
+                    {
+                        headers: {
+                            'X-AUTH-TOKEN': token
+
+                        }
+                    }
+                ).then((response) => {
+                    if (response) {
+                        console.log('성공했습니다')
+                        console.log(response.data);
+                        if (response.data == true) {
+                            dispatch(changeAction.setarray_list());
+                        }
+                        else if (response.data == false) {
+                            console.log('변경된게 없습니다 를 선언하세요')
+                        }
+
+
+                    } else {
+                        alert("failed to ");
+                    }
+                }).catch((err) => {
+                    console.log(err.message);
+                    console.log(err)
+                    console.log('?');
+                });
 
                 //navigation.navigate('ingredient');
 

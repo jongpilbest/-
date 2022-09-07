@@ -103,13 +103,7 @@ const initialstate = {
 
 
   },
-  {
-   name: 'peanut',
-
-   kr: '땅콩'
-
-
-  }],
+ ],
  ingredient: [{
   name: 'natrium',
 
@@ -175,9 +169,10 @@ const changeslice = createSlice({
  initialState: initialstate,
  reducers: {
 
+
   setallergy_0: (state, action) => {
    state.array_list.splice(state.array_list.indexOf(action.payload), 1);
-   // console.log(state.array_list)
+   console.log(state.array_list)
 
 
   },
@@ -193,13 +188,13 @@ const changeslice = createSlice({
 
   setarray_list: (state, action) => {
 
+   state.original_list.length = 0;
    state.array_list.length = 0;
-
   }
   ,
   setchange_list: (state, action) => {
 
-   state.change_list.length = 0;
+   state.array_list.length = 0;
 
   },
   original: (state, action) => {

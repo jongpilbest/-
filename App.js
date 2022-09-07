@@ -1,3 +1,5 @@
+
+import { AntDesign } from '@expo/vector-icons';
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 //import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -9,17 +11,20 @@ import AppLoading from "expo-app-loading";
 import Enroll_page from "./Enroll_page/Enroll";
 import Edit from "./component/Edit";
 import point from "./Mypage/point/point";
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+//import { createBottomTabNavigator } from 'react-navigation-tabs';
+//import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from "react-navigation-stack";
 import first from "./signup/first";
 import second from "./signup/second";
+import Empty from "./signup/Empty";
 import Danger from "./Mypage/Danger";
 import search_item_first from "./search_item/search_item_first";
 import fifth from "./signup/fifth";
 import like_list from "./Mypage/like_list/like_list";
 import main from "./component/main";
 import Barcode from "./component/Barcode";
+import Qna from "./Mypage/Qna/Qna";
 //import Barcode from "./redux/Barcode";
 import final from "./signup/fian";
 import ingredient from "./signup/ingredient";
@@ -34,6 +39,8 @@ const navigator =
   createSwitchNavigator({
     //Mypage_main: Mypage_main,
     //Danger: Danger,
+
+    ///Qna: Qna,
     Edit: Edit,
 
 
@@ -41,6 +48,8 @@ const navigator =
 
 
     signnup: createStackNavigator({
+
+
       Edit: Edit,
 
       first: first,
@@ -52,8 +61,24 @@ const navigator =
 
 
     }),
-    botton: createBottomTabNavigator({
+    botton: createMaterialBottomTabNavigator({
+      Empty: {
 
+        screen: Empty,
+        navigationOptions: {
+          tabBarLabel: ' ',
+          tabBarIcon: ({ tintColor }) => (
+
+            <AntDesign name="Trophy" size={25} style={{ color: tintColor }} />
+
+
+          ),
+          activeColor: '#404040',
+          inactiveColor: '#404040',
+          barStyle: { backgroundColor: '#DDEEF2' },
+        }
+
+      },
 
       mainn: createStackNavigator({
         main: main,
@@ -61,11 +86,38 @@ const navigator =
         search_item_first: search_item_first,
         Search_item_seconde: Search_item_seconde
 
-      })
+      },
+        {
+          navigationOptions: {
+            tabBarLabel: ' ',
+            tabBarIcon: ({ tintColor }) => (
+
+              <AntDesign name="home" size={25} style={{ color: tintColor }} />
+
+
+            ),
+            activeColor: '#404040',
+            inactiveColor: '#404040',
+            barStyle: { backgroundColor: '#DDEEF2' },
+          }
+        })
       ,
       Enroll_page: createStackNavigator({
         Enroll_page: Enroll_page,
         Barcode: Barcode
+      }, {
+        navigationOptions: {
+          tabBarLabel: ' ',
+          tabBarIcon: ({ tintColor }) => (
+
+            <AntDesign name="upload" size={25} style={{ color: tintColor }} />
+
+
+          ),
+          activeColor: '#404040',
+          inactiveColor: '#404040',
+          barStyle: { backgroundColor: '#DDEEF2' },
+        }
       }),
 
       Mypage_main: createStackNavigator({
@@ -78,6 +130,23 @@ const navigator =
         Change_State: Change_State
 
 
+      }, {
+        navigationOptions: {
+          tabBarLabel: ' ',
+          tabBarIcon: ({ tintColor }) => (
+
+            <AntDesign name="setting" size={25} style={{ color: tintColor }} />
+
+
+          ),
+          activeColor: '#404040',
+          inactiveColor: '#404040',
+          barStyle: { backgroundColor: '#DDEEF2' },
+        },
+
+      }, {
+
+        shifting: true,
       })
 
 
@@ -85,9 +154,7 @@ const navigator =
     })
 
 
-
   })
-
 
 
 const App = createAppContainer(navigator);

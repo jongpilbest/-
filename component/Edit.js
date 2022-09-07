@@ -186,6 +186,13 @@ const Edit = function ({ navigation }) {
                     </TouchableOpacity>
 
                 </View>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('Empty')
+                }}>
+                    <Text style={style.bottmm}>
+                        어쩌피 지울건데
+                    </Text>
+                </TouchableOpacity>
 
 
 

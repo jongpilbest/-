@@ -24,7 +24,7 @@ const Change_Com = function ({ vale, gogo }) {
     const original_list = useSelector((state) => state.change.original_list);
     const check_change_arr = useSelector((state) => state.change.change_list)
     // console.log('ARRAU& 리스트')
-    // console.log(good_list);
+
     const tr = original_list.includes(vale.name);
     //var imagepath = require(`${vale.image}`)
 
@@ -38,7 +38,7 @@ const Change_Com = function ({ vale, gogo }) {
         //console.log('ㅇㅅㅇ ')
         console.log(num)
 
-        if (tr == true && num == 0) {
+        if (tr == true && num == 1) {
             var nma = '';
             for (var i = 0; i < allergy_name.length; i++) {
                 if (vale.kr == allergy_name[i].kr) {
@@ -48,15 +48,16 @@ const Change_Com = function ({ vale, gogo }) {
 
             }
             console.log('여기로 가?', good_list, nma)
-            dispatch(changeAction.setallergy_0(nma));
+            dispatch(changeAction.setallergy_1(nma));
             return;
 
         }
 
+
         if (num == 0) {
 
             console.log('처음누름?')
-
+          /*
             var nma = '';
 
             for (var i = 0; i < allergy_name.length; i++) {
@@ -68,23 +69,23 @@ const Change_Com = function ({ vale, gogo }) {
             }
             dispatch(changeAction.push_change_arr(nma))
             //dispatch(changeAction.setallergy_0(nma))
-            console.log(check_change_arr)
+          */  console.log(check_change_arr)
         }
         else if (num == 1) {
             console.log('두번째')
             //  console.log(vale.kr)
 
-            var nma = '';
+            var nmav = '';
 
             for (var i = 0; i < allergy_name.length; i++) {
                 if (vale.kr == allergy_name[i].kr) {
-                    nma = allergy_name[i].name;
+                    nmav = allergy_name[i].name;
                     break;
                 }
 
             }
-            dispatch(changeAction.setallergy_1(nma))
-            dispatch(changeAction.pop_change_arr(nma))
+            //dispatch(changeAction.setallergy_1(nmav))
+            dispatch(changeAction.setallergy_1(nmav))
             console.log(check_change_arr)
             // setnum(0);
         }
@@ -95,7 +96,8 @@ const Change_Com = function ({ vale, gogo }) {
 
         if (num == 2) {
             console.log('올로')
-            // console.log(num)
+
+
             setnum(0)
 
             return (
@@ -140,20 +142,6 @@ const Change_Com = function ({ vale, gogo }) {
             //console.log(vale.kr)
             //setfirst((pre) => pre + 1)
             console.log(is_id, num)
-
-            //dispatch(authAction.setallergy_1(vale.kr))
-
-
-
-            /*
-            if (vale.check == 1) {
-         
-                setnum(2);
-                //return;
-         
-            }
-         */
-            //vale.check = 1;
 
 
 
