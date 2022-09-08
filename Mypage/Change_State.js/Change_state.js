@@ -32,12 +32,30 @@ const Change_State = function ({ navigation }) {
     const allergy = useSelector((state) => state.change.allergy);
     const [MS_good, misu] = Ms();
     // const [chna, mos_original] = fian();
+
+    const [checkhey, setcheck] = useState(false);
     //console.log(misu);
     //  console.log('에러십활')
     //const final = useSelector((state) => state.change.array_list)
     // const data_change = navigation.getParam('data');
     const mos = useSelector((state) => state.change.allergy)
     const original = useSelector((state) => state.change.original_list);
+    const check = function () {
+
+        if (checkhey == true) {
+            console.log('1 맞냐고')
+
+            return false;
+
+        }
+        else
+            return true;
+
+
+
+    }
+
+
     console.log('오리지널', original);
 
     //console.log(mos)
@@ -214,14 +232,18 @@ const Change_State = function ({ navigation }) {
                     width: '43%',
                     backgroundColor: 'white'
                 }}>
-                    <Text style={{
-                        fontFamily: 'Nam-Bold',
-                        fontSize: 15,
-                        marginTop: 30,
-                        marginLeft: 15
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('Change_ingre')
                     }}>
-                        비선호 성분 수정
-                    </Text>
+                        <Text style={{
+                            fontFamily: 'Nam-Bold',
+                            fontSize: 15,
+                            marginTop: 30,
+                            marginLeft: 15
+                        }}>
+                            비선호 성분 수정
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
@@ -263,6 +285,22 @@ const Change_State = function ({ navigation }) {
             }} >
 
             </SeachBar>
+            <View>
+                {
+                    !check() && <Text style={{
+                        fontSize: 12,
+                        color: '#FF4444',
+                        marginLeft: 140,
+                        flexDirection: 'column',
+                        fontWeight: 'bold',
+                        fontFamily: 'Nam-Bold',
+                    }}>
+                        아전과 바뀐 상태가 존재하지 않습니다
+                    </Text>
+
+                }
+
+            </View>
 
 
             {
@@ -456,10 +494,12 @@ const Change_State = function ({ navigation }) {
                         console.log('성공했습니다')
                         console.log(response.data);
                         if (response.data == true) {
-                            dispatch(changeAction.setarray_list());
+                            dispatch(changeAction.setarray_list());//dispatch(changeAction.setarray_list());
                         }
                         else if (response.data == false) {
-                            console.log('변경된게 없습니다 를 선언하세요')
+                            dispatch(changeAction.setchange_list());
+                            setcheck(true)
+
                         }
 
 

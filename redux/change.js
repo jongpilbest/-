@@ -9,6 +9,8 @@ const initialstate = {
  change_list: [],
  original_list: [],
  total_list: [],
+ ingre_list: [],
+ ingre_original: [],
  allergy: [
 
   {
@@ -176,32 +178,45 @@ const changeslice = createSlice({
 
 
   },
-  push_change_arr: (state, action) => {
-   state.change_list.push(action.payload)
-  },
-  pop_change_arr: (state, action) => {
-   state.change_list.splice(state.change_list.indexOf(action.payload), 1);
-  },
+
   concat_allergy: (state, action) => {
    state.total_list = state.change_list.concat(state.array_list);
   },
 
   setarray_list: (state, action) => {
 
-   state.original_list.length = 0;
-   state.array_list.length = 0;
+   state.original_list = [];
+   state.array_list = [];
   }
   ,
   setchange_list: (state, action) => {
 
-   state.array_list.length = 0;
+   state.array_list = [];
 
   },
-  original: (state, action) => {
 
+
+  setingre_change_list: (state, action) => {
+
+   state.ingre_original = [];
+   state.array_list_2 = [];
+  }
+  ,
+  set_ingre_change_list: (state, action) => {
+
+   state.array_list_2 = [];
+
+  },
+
+
+  original: (state, action) => {
 
    state.original_list.push(action.payload)
 
+  },
+  original_ingre: (state, action) => {
+
+   state.ingre_original.push(action.payload)
 
   },
   setallergy_1: (state, action) => {

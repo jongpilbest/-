@@ -38,7 +38,7 @@ const Change_Com = function ({ vale, gogo }) {
         //console.log('ㅇㅅㅇ ')
         console.log(num)
 
-        if (tr == true && num == 1) {
+        if (tr == true && num == 0) {
             var nma = '';
             for (var i = 0; i < allergy_name.length; i++) {
                 if (vale.kr == allergy_name[i].kr) {
@@ -48,7 +48,7 @@ const Change_Com = function ({ vale, gogo }) {
 
             }
             console.log('여기로 가?', good_list, nma)
-            dispatch(changeAction.setallergy_1(nma));
+            dispatch(changeAction.setallergy_0(nma));
             return;
 
         }
@@ -57,7 +57,7 @@ const Change_Com = function ({ vale, gogo }) {
         if (num == 0) {
 
             console.log('처음누름?')
-          /*
+
             var nma = '';
 
             for (var i = 0; i < allergy_name.length; i++) {
@@ -67,9 +67,9 @@ const Change_Com = function ({ vale, gogo }) {
                 }
 
             }
-            dispatch(changeAction.push_change_arr(nma))
+            dispatch(changeAction.setallergy_1(nma))
             //dispatch(changeAction.setallergy_0(nma))
-          */  console.log(check_change_arr)
+            console.log(check_change_arr)
         }
         else if (num == 1) {
             console.log('두번째')

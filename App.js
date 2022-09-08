@@ -33,6 +33,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import Barcode_main from "./component/Barcode_main";
 import Mypage_main from './Mypage/Mypage_main';
+import Change_ingre from './Mypage/Change_State.js/Change_ingre';
 import Search_item_seconde from "./search_item/Search_item_seconde";
 //import Mypage_main from "./Mypage/Mypage_main";
 const navigator =
@@ -66,7 +67,7 @@ const navigator =
 
         screen: Empty,
         navigationOptions: {
-          tabBarLabel: ' ',
+          tabBarLabel: '랭킹',
           tabBarIcon: ({ tintColor }) => (
 
             <AntDesign name="Trophy" size={25} style={{ color: tintColor }} />
@@ -89,7 +90,7 @@ const navigator =
       },
         {
           navigationOptions: {
-            tabBarLabel: ' ',
+            tabBarLabel: '메인',
             tabBarIcon: ({ tintColor }) => (
 
               <AntDesign name="home" size={25} style={{ color: tintColor }} />
@@ -107,7 +108,7 @@ const navigator =
         Barcode: Barcode
       }, {
         navigationOptions: {
-          tabBarLabel: ' ',
+          tabBarLabel: '등록',
           tabBarIcon: ({ tintColor }) => (
 
             <AntDesign name="upload" size={25} style={{ color: tintColor }} />
@@ -127,12 +128,13 @@ const navigator =
         like_list: like_list,
         point: point,
         Danger: Danger,
-        Change_State: Change_State
+        Change_State: Change_State,
+        Change_ingre: Change_ingre,
 
 
       }, {
         navigationOptions: {
-          tabBarLabel: ' ',
+          tabBarLabel: '설정',
           tabBarIcon: ({ tintColor }) => (
 
             <AntDesign name="setting" size={25} style={{ color: tintColor }} />
