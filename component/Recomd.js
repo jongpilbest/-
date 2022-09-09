@@ -12,7 +12,7 @@ const Recomd = function ({ show }) {
   var firs = show.name.split(' ');
   var first = '';
   var second = '';
-  console.log(firs)
+
   if (firs.length >= 2) {
     for (var i = 0; i < 2; i++) {
       first += `${firs[i]} `;
@@ -21,7 +21,7 @@ const Recomd = function ({ show }) {
     for (var g = 2; g <= firs.length - 1; g++) {
       second += `${firs[g]} `;
     }
-    console.log(firs, second)
+
   }
   if (firs.length < 2) {
     first = firs[0];

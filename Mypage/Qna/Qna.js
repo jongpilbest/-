@@ -13,8 +13,8 @@ import { Ionicons } from '@expo/vector-icons';
 import Qna_Com from './Qna_Com';
 const Qna = function ({ navigation, }) {
  // const token = useSelector((state) => state.token.token)
+ const arr = navigation.getParam('item');
 
- var arr = [1, 2, 3, 4, 5, 6];
 
  return (
   <View style={{
@@ -73,7 +73,7 @@ const Qna = function ({ navigation, }) {
      }}>
 
       {arr.map((el, index) => {
-       return <Qna_Com key={index
+       return <Qna_Com item={el} key={index
        }></Qna_Com>
 
       })}

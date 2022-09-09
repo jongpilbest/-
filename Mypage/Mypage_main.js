@@ -15,7 +15,7 @@ const Mypage_main = function ({ navigation }) {
   const dispatch = useDispatch();
   dispatch(changeAction.setarray_list())
 
-
+  dispatch(changeAction.setingre_change_list())
 
 
   const nickname = useSelector((state) => state.owner.owner);
@@ -394,7 +394,8 @@ const Mypage_main = function ({ navigation }) {
                 console.log('수정')
                 data = response.data
                 console.log(data)
-                item = response.data.allergy
+                item = response.data.allergy;
+                item2 = response.data.ingredient
                 console.log(item)
 
                 for (const pro in item) {
@@ -406,10 +407,21 @@ const Mypage_main = function ({ navigation }) {
 
 
                 }
+                for (const pro in item2) {
+                  // console.log(pro)
+                  if (item2[pro] == 1) {
+                    dispatch(changeAction.setingredient_1(pro));
+                    dispatch(changeAction.original_ingre(pro));
+                  }
+
+
+                }
 
                 //navigation.navigate('Change_State', { data: item });
 
-                navigation.navigate('Change_State', { item: item });
+                navigation.navigate('Change_State');
+
+
               }
             }).catch((err) => {
               console.log(err.message);
@@ -438,14 +450,46 @@ const Mypage_main = function ({ navigation }) {
           margin: 5,
           borderRadius: 20
         }}>
-          <Text style={{
-            margin: 13,
-            fontSize: 13,
+          <TouchableOpacity onPress={() => {
 
-            fontFamily: "Nam-Bold"
+
+
+            axios.get("http://13.209.73.153:5000/mypage/faq",
+              {
+                headers: {
+                  'X-AUTH-TOKEN': token
+
+                }
+              }
+            ).then((response) => {
+              if (response) {
+
+                console.log(response.data)
+                navigation.navigate('Qna', {
+                  item: response.data
+                })
+
+              }
+            }).catch((err) => {
+              console.log(err.message);
+
+            })
+
+            //navigation.navigate('point')
+
+
+
+
           }}>
-            FAQ
-          </Text>
+            <Text style={{
+              margin: 13,
+              fontSize: 13,
+
+              fontFamily: "Nam-Bold"
+            }}>
+              FAQ
+            </Text>
+          </TouchableOpacity>
 
         </View>
         <TouchableOpacity onPress={() => {

@@ -1,4 +1,5 @@
 
+
 import { AntDesign } from '@expo/vector-icons';
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 //import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,13 +12,14 @@ import AppLoading from "expo-app-loading";
 import Enroll_page from "./Enroll_page/Enroll";
 import Edit from "./component/Edit";
 import point from "./Mypage/point/point";
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-//import { createBottomTabNavigator } from 'react-navigation-tabs';
+//import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 //import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from "react-navigation-stack";
+import Gisa from './Gisa.js/Gisa';
 import first from "./signup/first";
 import second from "./signup/second";
-import Empty from "./signup/Empty";
+import Ranking from './Ranking/Ranking';
 import Danger from "./Mypage/Danger";
 import search_item_first from "./search_item/search_item_first";
 import fifth from "./signup/fifth";
@@ -62,10 +64,10 @@ const navigator =
 
 
     }),
-    botton: createMaterialBottomTabNavigator({
+    botton: createBottomTabNavigator({
       Empty: {
 
-        screen: Empty,
+        screen: Ranking,
         navigationOptions: {
           tabBarLabel: '랭킹',
           tabBarIcon: ({ tintColor }) => (
@@ -85,7 +87,8 @@ const navigator =
         main: main,
         Barcode_main: Barcode_main,
         search_item_first: search_item_first,
-        Search_item_seconde: Search_item_seconde
+        Search_item_seconde: Search_item_seconde,
+        Gisa: Gisa
 
       },
         {
@@ -130,6 +133,7 @@ const navigator =
         Danger: Danger,
         Change_State: Change_State,
         Change_ingre: Change_ingre,
+        Qna: Qna
 
 
       }, {
@@ -153,7 +157,16 @@ const navigator =
 
 
 
-    })
+    }, {
+
+      tabBarOptions: {
+        activeTintColor: 'black',
+        inactiveTintColor: 'black',
+        style: {
+          backgroundColor: '#DDEEF2',
+        },
+      },
+    },)
 
 
   })

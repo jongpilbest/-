@@ -16,13 +16,13 @@ var hey = -1;
 const Change_ingre_Com = function ({ vale, gogo }) {
  //console.log(`vale ${vale}`)
  var [num, setnum] = useState(0);
- var [first, setfirst] = useState(0);
- const is_id = useSelector((state) => state.change.array_list);
- const allergy_name = useSelector((state) => state.change.allergy)
+
+
+ const allergy_name = useSelector((state) => state.change.ingredient)
  const dispatch = useDispatch();
- const good_list = useSelector((state) => state.change.array_list);
- const original_list = useSelector((state) => state.change.original_list);
- const check_change_arr = useSelector((state) => state.change.change_list)
+ const good_list = useSelector((state) => state.change.array_list_2);
+ const original_list = useSelector((state) => state.change.ingre_original);
+ //const check_change_arr = useSelector((state) => state.change.change_list)
  // console.log('ARRAU& 리스트')
 
  const tr = original_list.includes(vale.name);
@@ -48,7 +48,7 @@ const Change_ingre_Com = function ({ vale, gogo }) {
 
    }
    console.log('여기로 가?', good_list, nma)
-   dispatch(changeAction.setallergy_0(nma));
+   dispatch(changeAction.setingredient_0(nma));
    return;
 
   }
@@ -67,9 +67,10 @@ const Change_ingre_Com = function ({ vale, gogo }) {
     }
 
    }
-   dispatch(changeAction.setallergy_1(nma))
+   dispatch(changeAction.setingredient_1(nma))
    //dispatch(changeAction.setallergy_0(nma))
-   console.log(check_change_arr)
+
+
   }
   else if (num == 1) {
    console.log('두번째')
@@ -85,8 +86,8 @@ const Change_ingre_Com = function ({ vale, gogo }) {
 
    }
    //dispatch(changeAction.setallergy_1(nmav))
-   dispatch(changeAction.setallergy_1(nmav))
-   console.log(check_change_arr)
+   dispatch(changeAction.setingredient_1(nmav))
+
    // setnum(0);
   }
  };
@@ -141,8 +142,8 @@ const Change_ingre_Com = function ({ vale, gogo }) {
    console.log('일로왈')
    //console.log(vale.kr)
    //setfirst((pre) => pre + 1)
-   console.log(is_id, num)
-
+   console.log(good_list)
+   
 
 
    return (

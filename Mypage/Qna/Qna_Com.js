@@ -7,13 +7,13 @@ import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } fr
 
 var hey = -1;
 
-
-import { Octicons } from '@expo/vector-icons';
+import Qna_inner from "./Qna_inner";
+import { AntDesign } from '@expo/vector-icons';
 
 
 var check = 1;
 
-const Qna_Com = function ({ navigation, vale, touch }) {
+const Qna_Com = function ({ item }) {
  var [check, setcheck] = useState(0)
  const onshow = function () {
 
@@ -32,6 +32,26 @@ const Qna_Com = function ({ navigation, vale, touch }) {
 
 
  }
+
+ const hey_show = function () {
+  if (check == 2) {
+   console.log(check)
+   setcheck(0)
+  }
+
+  if (check == 0) {
+   return false
+  }
+  else if (check == 1) {
+
+   return true
+  }
+
+
+
+ }
+
+
  const setshow = function () {
 
   setcheck(pre => pre + 1);
@@ -50,7 +70,8 @@ const Qna_Com = function ({ navigation, vale, touch }) {
 
     borderRadius: 10,
     borderColor: '#FFFFFF',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flexWrap: 'wrap'
    }
 
   }
@@ -59,13 +80,14 @@ const Qna_Com = function ({ navigation, vale, touch }) {
    return {
     backgroundColor: 'white',
     width: 330,
-    height: 130,
+    height: 190,
     margin: 10,
     marginLeft: 20,
 
     borderRadius: 10,
     borderColor: '#FFFFFF',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flexWrap: 'wrap'
    }
 
   }
@@ -83,26 +105,43 @@ const Qna_Com = function ({ navigation, vale, touch }) {
    <View style={innerStyle()}
 
    >
+    <AntDesign style={{ margin: 15 }} name="questioncircleo" size={24} color="black" />
     <Text style={{
-     fontFamily: 'Nam-Bold'
+     fontFamily: 'Nam-Bold',
+     marginTop: 15
     }}>
-     안녕
+     {item.title}
     </Text>
     {
-     onshow() &&
+     onshow() && <View style={{
+      width: 30,
+      height: 30,
+      //backgroundColor: 'pink',
+      position: 'absolute',
+      top: 15,
+      right: 15
+     }}>
+      <AntDesign style={{
 
-     <Octicons style={{
-      marginLeft: 260,
-      marginTop: 15,
+       marginLeft: 5
+      }} name="caretdown" size={25} color="black" />
+     </View>
 
 
-     }} name="north-star" size={30} color="#404040" />
 
     }
+    <View style={{
+
+
+    }}>
+     {hey_show() && <Qna_inner item={item.content}></Qna_inner>}
+    </View>
+
+
    </View>
 
 
-  </TouchableOpacity>
+  </TouchableOpacity >
 
  )
 }

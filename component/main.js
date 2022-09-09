@@ -31,7 +31,6 @@ const main = function ({ navigation }) {
   // const { logicalWidth, logicalHeight } = Dimensions.get('window')
   var state_state = useSelector((state) => state.good.good);
 
-  var array_lst = ['콘칩', '콘사', '콘소메', '콘사사', '칩시', '시구', '시구시'];
   const token = useSelector((state) => state.token.token)
   const nickname = useSelector((state) => state.owner.owner);
 
@@ -292,17 +291,22 @@ const main = function ({ navigation }) {
           })}
 
         </ScrollView>
+
+
         <View style={{
           backgroundColor: 'white'
         }}>
-          <Text style={{
-            fontFamily: "Nam-Bold"
-            , fontSize: 12,
-            marginTop: 10,
-            marginLeft: 20
+          <TouchableOpacity onPress={() => {
+            navigation.navigate('Gisa');
+          }}>
+            <Text style={{
+              fontFamily: "Nam-Bold"
+              , fontSize: 12,
+              marginTop: 10,
+              marginLeft: 20
 
-          }}> {`${nickname} 님을 위한 추천 기사`} </Text>
-
+            }}> {`${nickname} 님을 위한 추천 기사`} </Text>
+          </TouchableOpacity>
           <View style={{
             margin: 8,
             marginLeft: 15,
@@ -314,14 +318,16 @@ const main = function ({ navigation }) {
             <ScrollView>
               {main_kisa.map((el, index) => {
 
-                return (
-                  <Kisa key={index} show={el}></Kisa>
-                )
+                return <Kisa key={index} show={el}></Kisa>
+
+
               })}
 
             </ScrollView>
 
           </View>
+
+
 
           <View style={{
             width: '100%',
@@ -330,6 +336,7 @@ const main = function ({ navigation }) {
           }}>
 
           </View>
+
         </View>
 
       </View>
