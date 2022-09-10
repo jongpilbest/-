@@ -19,7 +19,10 @@ import Kisa from "./Kisa";
 const main = function ({ navigation }) {
   var item = navigation.getParam('item');
   var main_kisa = navigation.getParam('main_kisa');
-  console.log(`기사 내용${main_kisa}`)
+  var good_main_kisa = [];
+  console.log(main_kisa)
+
+
   //const item_show = navigation.getParam('data');
   const dispatch = useDispatch();
 
@@ -297,7 +300,7 @@ const main = function ({ navigation }) {
           backgroundColor: 'white'
         }}>
           <TouchableOpacity onPress={() => {
-            navigation.navigate('Gisa');
+            navigation.navigate('Gisa', { item: main_kisa });
           }}>
             <Text style={{
               fontFamily: "Nam-Bold"
@@ -316,12 +319,14 @@ const main = function ({ navigation }) {
             borderRadius: 20,
           }}>
             <ScrollView>
-              {main_kisa.map((el, index) => {
 
-                return <Kisa key={index} show={el}></Kisa>
+              {
+                main_kisa.map((el, index) => {
+
+                  return <Kisa key={index} show={el}></Kisa>
 
 
-              })}
+                })}
 
             </ScrollView>
 

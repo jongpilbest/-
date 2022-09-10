@@ -1,30 +1,30 @@
 
 import { useSelector, useDispatch } from 'react-redux'
 import React, { useState, useContext, useEffect } from "react"
-import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
+import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text, ScrollView } from "react-native"
 
-import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
 
-
+import Gisa_Com from './Gisa_Com';
 
 const Gisa = function ({ navigation }) {
  const token = useSelector((state) => state.token.token);
-
-
+ const item = navigation.getParam('item');
+ console.log('기사 페이지');
+ var hey = [1, 2, 3, 4, 5];
+ console.log(item)
  return (
   <View style={{
    backgroundColor: '#DDEEF2',
-   height: 2000,
+   height: 3000,
   }}>
 
    <View style={{
     backgroundColor: '#F4F4F4',
     height: 80,
-    width: '100%'
+    width: '100%',
 
 
-    //eight: '35%'
    }}>
 
     <Text style={{
@@ -41,8 +41,39 @@ const Gisa = function ({ navigation }) {
    </View>
 
 
+   <View style={{
+    width: '100%',
+    height: '80%',
+    marginTop: 10,
 
-  </View>
+
+
+
+   }}>
+    <ScrollView showsVerticalScrollIndicator={false}
+     // showsVerticalScrollIndicator={false}
+     showsHorizontalScrollIndicator={false}
+     style={{ flexGrow: 1 }}
+    // showsHorizontalScrollIndicator={false}
+    >
+     <View style={{
+      width: '100%',
+      height: 2700
+
+     }}>
+
+
+      {
+       item.map((el, index) => {
+        return <Gisa_Com good={el} key={index}></Gisa_Com>
+       })
+      }
+     </View>
+    </ScrollView>
+
+   </View>
+
+  </View >
 
  )
 

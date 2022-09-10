@@ -7,7 +7,7 @@ import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } fr
 
 
 const Kisa = function ({ show }) {
-
+ console.log(show)
  return (
   <View style={{
    width: '90%',
@@ -25,7 +25,7 @@ const Kisa = function ({ show }) {
     margin: 10
 
    }}>
-    {show}
+    {show.title}
    </Text>
 
   </View>
