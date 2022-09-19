@@ -365,7 +365,7 @@ const ingredient = function ({ navigation }) {
         if (response) {
           console.log('?');
           console.log('성공')
-
+          navigation.navigate('Edit')
           //console.log(response.data);
           //setUser(response);
         } else {
@@ -497,11 +497,11 @@ const ingredient = function ({ navigation }) {
       </View>
       < TouchableOpacity onPress={() => {
 
-
         goserver();
       }
 
       }>
+
         <View style={{
           backgroundColor: '#ffffff'
           , width: '45%',

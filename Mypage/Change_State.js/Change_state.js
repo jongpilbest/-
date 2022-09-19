@@ -40,6 +40,7 @@ const Change_State = function ({ navigation }) {
     // const data_change = navigation.getParam('data');
     const mos = useSelector((state) => state.change.allergy)
     const original = useSelector((state) => state.change.original_list);
+
     const check = function () {
 
         if (checkhey == true) {

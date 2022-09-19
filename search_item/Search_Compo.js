@@ -16,7 +16,7 @@ import first from "../signup/first";
 const Search_Compo = function ({ navigation, vale, touch }) {
  //console.log(`vale ${vale}`)
  var [num, setnum] = useState(0);
- console.log('이름도 안나오네 ㅋㅋㅋ ㅜ ㅎ')
+
  console.log(vale.name)
  var fist = '';
  var sec = '';

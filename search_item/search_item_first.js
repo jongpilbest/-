@@ -12,6 +12,7 @@ import axios from "axios"
 import { Ionicons } from '@expo/vector-icons';
 //import { useSelector, useDispatch } from 'react-redux'
 import Search_Compo from './Search_Compo';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 var ingredient_kr = [{
@@ -373,7 +374,7 @@ const search_item_first = function ({ navigation }) {
       <View
         style={{
           backgroundColor: 'white',
-          height: '90%'
+          height: 10000
         }
 
 
@@ -408,26 +409,37 @@ const search_item_first = function ({ navigation }) {
 
         </TouchableOpacity>
         <View style={{
-          flexDirection: 'row',
+          width: '100%',
+          height: 5200,
 
-          height: 300,
-          // justifyContent: 'space-between',
-          backgroundColor: 'white',
-          // justifyContent: 'flex-start',
-          flexWrap: 'wrap',
-          marginTop: 15
         }}>
 
 
+          <ScrollView>
+            <View style={{
+              flexDirection: 'row',
 
-          {item.map((el, index) => {
+              height: 5600,
+              // justifyContent: 'space-between',
+              backgroundColor: 'white',
+              // justifyContent: 'flex-start',
+              flexWrap: 'wrap',
+              marginTop: 15
+            }}>
 
-            return (
 
-              <Search_Compo key={index} touch={(vv) => gopage(vv)} vale={el}></Search_Compo>
 
-            )
-          })}
+              {item.map((el, index) => {
+
+                return (
+
+                  <Search_Compo key={index} touch={(vv) => gopage(vv)} vale={el}></Search_Compo>
+
+                )
+              })}
+
+            </View>
+          </ScrollView>
         </View>
       </View >
 

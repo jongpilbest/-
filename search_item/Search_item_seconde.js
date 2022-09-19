@@ -19,6 +19,8 @@ import * as Speech from 'expo-speech';
 //import Tts from 'react-native-tts';
 const Search_item_seconde = ({ navigation }) => {
   //Tts.setDefaultLanguage('ko-KR');
+  var [num, setnum] = useState(0);
+  var [num2, setnum2] = useState(0);
   const token = useSelector((state) => state.token.token)
   var [data, setdata] = useState('');
   var [ingr, setingr] = useState([]);
@@ -133,8 +135,7 @@ const Search_item_seconde = ({ navigation }) => {
   }
 
   const [modalVisible, setModalVisible] = useState(false);
-  var [num, setnum] = useState(0);
-  var [num2, setnum2] = useState(0);
+
   console.log(name)
   const onpress = () => {
 
@@ -155,35 +156,6 @@ const Search_item_seconde = ({ navigation }) => {
     //console.log(id, name, token)
     if (num == 2) {
 
-      axios.put(`http://13.209.73.153:5000/likeproduct/${id}`,
-
-
-        {
-          headers: {
-            'X-AUTH-TOKEN': token,
-            "Content-Type": `multipart/form-data`,
-
-          }
-        }
-      ).then((response) => {
-        if (response) {
-          console.log('선호 상품 등록');
-          // console.log(response.data)
-          // setcheck(response.data);
-
-          //setUser(response);
-        } else {
-          alert("failed to ");
-        }
-      }).catch((err) => {
-        console.log(err.message);
-        console.log(err)
-
-        console.log('에러 메세지/선호 식품');
-      });
-
-      // check_one(1, vale.name);   context 사용해서 여기에서 바꾸는 걸로 한다.
-      // 이때 check 를 바꿔야 하니 매개별수를 같이 넣어서 .. = 이름+ 매개변수 
 
 
 
@@ -192,8 +164,6 @@ const Search_item_seconde = ({ navigation }) => {
       return (
 
         '#D2D2D2'
-
-
 
 
 
@@ -214,18 +184,7 @@ const Search_item_seconde = ({ navigation }) => {
 
 
 
-    else if (num == 0) {
-      //check_corrct(vale.name, 0);
-      return (
 
-
-        '#D2D2D2'
-
-
-
-
-      )
-    }
   }
   const goto_2 = function () {
 
@@ -233,41 +192,6 @@ const Search_item_seconde = ({ navigation }) => {
     if (num2 == 2) {
       console.log(id);
       console.log('비선호 체크하기 ')
-      console.log(' 아이디 체크 ');
-      axios.put(`http://13.209.73.153:5000/dislikeproduct/${id}`,
-        {},
-
-        {
-          headers: {
-            'X-AUTH-TOKEN': token
-
-
-          }
-        }
-      ).then((response) => {
-        if (response) {
-          console.log('선호 상품 등록');
-          // console.log(response.data)
-          // setcheck(response.data);
-          console.log('?');
-          console.log(response.data)
-          //setUser(response);
-        } else {
-          alert("failed to ");
-        }
-      }).catch((err) => {
-        console.log(err.message);
-        console.log(err)
-
-        console.log('에러 메세지/비선호 식품');
-      });
-
-
-
-      // check_one(1, vale.name);   context 사용해서 여기에서 바꾸는 걸로 한다.
-      // 이때 check 를 바꿔야 하니 매개별수를 같이 넣어서 .. = 이름+ 매개변수 
-
-
 
 
       setnum2(0);
@@ -280,41 +204,11 @@ const Search_item_seconde = ({ navigation }) => {
 
 
       )
+
+
     }
 
     else if (num2 == 1) {
-
-
-      console.log(id);
-      console.log('비선호 체크하기 ')
-      console.log(' 아이디 체크 ');
-      axios.put(`http://13.209.73.153:5000/dislikeproduct/${id}`, {},
-
-
-        {
-          headers: {
-            'X-AUTH-TOKEN': token
-
-
-          }
-        }
-      ).then((response) => {
-        if (response) {
-          console.log('비선호 상품 등록');
-          // console.log(response.data)
-          // setcheck(response.data);
-          console.log('?');
-          console.log(response.data)
-          //setUser(response);
-        } else {
-          alert("failed to ");
-        }
-      }).catch((err) => {
-        console.log(err.message);
-        console.log(err)
-
-        console.log('에러 메세지/비선호 식품');
-      });
 
 
 
@@ -333,51 +227,7 @@ const Search_item_seconde = ({ navigation }) => {
 
 
 
-    else if (num2 == 0) {
-      console.log(id);
-      console.log('비선호 체크하기 ')
-      console.log(' 아이디 체크 ');
-      axios.put(`http://13.209.73.153:5000/dislikeproduct/${id}`, {
 
-      },
-
-
-        {
-          headers: {
-            'X-AUTH-TOKEN': token
-
-
-          }
-        }
-      ).then((response) => {
-        if (response) {
-          console.log('선호 상품 등록');
-          // console.log(response.data)
-          // setcheck(response.data);
-          console.log('?');
-          console.log(response.data)
-          //setUser(response);
-        } else {
-          alert("failed to ");
-        }
-      }).catch((err) => {
-        console.log(err.message);
-        console.log(err)
-
-        console.log('에러 메세지/비선호 식품');
-      });
-
-      //check_corrct(vale.name, 0);
-      return (
-
-
-        '#D2D2D2'
-
-
-
-
-      )
-    }
   }
 
   //const item_show = navigation.getParam('el');
@@ -650,6 +500,37 @@ const Search_item_seconde = ({ navigation }) => {
               <TouchableOpacity onPress={() => {
 
 
+                axios.put(`http://13.209.73.153:5000/dislikeproduct/${id}`,
+                  {},
+
+                  {
+                    headers: {
+                      'X-AUTH-TOKEN': token
+
+
+                    }
+                  }
+                ).then((response) => {
+                  if (response) {
+                    console.log('비선호 상품 등록');
+                    // console.log(response.data)
+                    // setcheck(response.data);
+                    console.log('?');
+                    console.log(response.data)
+                    //setUser(response);
+                  } else {
+                    alert("failed to ");
+                  }
+                }).catch((err) => {
+                  console.log(err.message);
+                  console.log(err)
+
+                  console.log('에러 메세지/비선호 식품');
+                });
+
+
+
+
 
                 onpress_2();
 
@@ -678,8 +559,36 @@ const Search_item_seconde = ({ navigation }) => {
 
 
 
-                onpress();
 
+                axios.put(`http://13.209.73.153:5000/likeproduct/${id}`,
+                  {},
+
+                  {
+                    headers: {
+                      'X-AUTH-TOKEN': token
+
+
+                    }
+                  }
+                ).then((response) => {
+                  if (response) {
+                    console.log('선호 상품 등록');
+                    // console.log(response.data)
+                    // setcheck(response.data);
+                    console.log('?');
+                    console.log(response.data)
+                    //setUser(response);
+                  } else {
+                    alert("failed to ");
+                  }
+                }).catch((err) => {
+                  console.log(err.message);
+                  console.log(err)
+
+                  console.log('에러 메세지/비선호 식품');
+                });
+
+                onpress();
 
               }}>
 

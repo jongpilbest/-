@@ -32,7 +32,7 @@ const Gisa_Com = function ({ navigation, good }) {
     console.log('기사 조회 페이지 ');
     setinner(response.data);
     //setUser(response);
-    var good = inner.content.split('.')
+    var good = response.data.content.split('.')
     spli_contex(good)
    } else {
     alert("failed to ");
@@ -113,8 +113,8 @@ const Gisa_Com = function ({ navigation, good }) {
           }}>
            <ScrollView>
             {
-             contex_V.map(el => {
-              return <Text style={{
+             contex_V.map((el, index) => {
+              return <Text key={index} style={{
                fontSize: 13,
                margin: 5,
 

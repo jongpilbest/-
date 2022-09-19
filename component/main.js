@@ -161,7 +161,7 @@ const main = function ({ navigation }) {
       <View style={{
         backgroundColor: '#EAEAEA',
         width: '90%',
-        height: 38,
+        height: 42,
         margin: 15,
         borderRadius: 20,
         flexDirection: 'row'
@@ -174,10 +174,10 @@ const main = function ({ navigation }) {
         <TextInput style={{
           fontFamily: "Nam-Bold"
           , fontSize: 12,
-          margin: 12
+          width: '100%',
+          height: 40,
 
         }}
-
 
           value={id}
           placeholder="찾고 싶은 상품을 검색해주세요"
@@ -229,43 +229,48 @@ const main = function ({ navigation }) {
 
 
       </View>
-      <View
-        style={{
-          width: '90%',
-          height: 65,
-          margin: 3,
-          marginLeft: 15,
-          backgroundColor: '#DDEEF2',
-          borderRadius: 30,
-          flexDirection: 'row'
-        }}>
-        <View style={{
-          backgroundColor: 'white',
-          width: 45,
-          height: 45,
-          margin: 10,
-          marginLeft: 20,
-          borderRadius: '50%'
-        }}>
-          <Ionicons
-            style={{
-              margin: 10
-            }}
-            name="information" size={24} color="black" />
+      <TouchableOpacity onPress={() => {
+        navigation.navigate('sung')
+      }}>
+        <View
+          style={{
+            width: '90%',
+            height: 65,
+            margin: 3,
+            marginLeft: 15,
+            backgroundColor: '#DDEEF2',
+            borderRadius: 30,
+            flexDirection: 'row'
+          }}>
+          <View style={{
+            backgroundColor: 'white',
+            width: 45,
+            height: 45,
+            margin: 10,
+            marginLeft: 20,
+            borderRadius: '50%'
+          }}>
+            <Ionicons
+              style={{
+                margin: 10
+              }}
+              name="information" size={24} color="black" />
 
+
+          </View>
+
+          <Text style={{
+            fontFamily: "Nam-Bold"
+            , fontSize: 12,
+            marginTop: 25,
+            marginLeft: 20
+
+          }}>
+            성분 정보
+          </Text>
 
         </View>
-        <Text style={{
-          fontFamily: "Nam-Bold"
-          , fontSize: 12,
-          marginTop: 25,
-          marginLeft: 20
-
-        }}>
-          성분 정보
-        </Text>
-
-      </View>
+      </TouchableOpacity>
       <View>
 
         <Text style={{

@@ -109,7 +109,7 @@ const Edit = function ({ navigation }) {
                         // tokevn(id, password)
                         console.log('?')
 
-                        axios.post("http://13.209.73.153:5000/auth/login", {
+                        axios.post("http://14.37.76.88:5000/auth/login", {
 
                             "userId": id,
                             "password": password
@@ -125,10 +125,19 @@ const Edit = function ({ navigation }) {
 
                                 dispatch(tokenAction.settoken(total_response))
                                 //AsyncStorage.setItem('Token', total_response)
-                                dispatch(ownerAction.setowner(response.data.nickname))
 
 
-                                navigation.navigate('main', { item: response.data.recommend, main_kisa: response.data.article })
+                                if (response.data.status == "관리자") {
+                                    navigation.navigate('Manager');
+                                }
+                                else {
+
+                                    dispatch(ownerAction.setowner(response.data.nickname))
+
+
+                                    navigation.navigate('main', { item: response.data.recommend, main_kisa: response.data.article })
+                                }
+
 
 
                             }
@@ -186,13 +195,7 @@ const Edit = function ({ navigation }) {
                     </TouchableOpacity>
 
                 </View>
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('Empty')
-                }}>
-                    <Text style={style.bottmm}>
-                        어쩌피 지울건데
-                    </Text>
-                </TouchableOpacity>
+
 
 
 

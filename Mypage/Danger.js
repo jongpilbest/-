@@ -27,7 +27,7 @@ const Danger = function ({ navigation }) {
 
    var fir = navigation.getParam('gey_fo');
 
-
+   console.log(fir)
 
    var sec = navigation.getParam('gey');
    for (var misu = 0; misu < fir.length; misu++) {
@@ -249,11 +249,12 @@ const Danger = function ({ navigation }) {
 
                   {fir.map((el, index) => {
 
-                     if (index == 7) {
+                     if (index == 8) {
+
                         return;
 
                      }
-                     else if (index < 7) {
+                     else if (index < 8) {
                         return <Danger_com key_r={index} key={index} heck={fir} jhey={el} ></Danger_com>
                      }
 

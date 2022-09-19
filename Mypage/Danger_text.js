@@ -124,12 +124,12 @@ const Danger_Text = function ({ text }) {
    return (
       <View style={{
 
-         width: 45,
+         width: 60,
          marginLefta: 8
       }} >
          <Text style={{
 
-            fontSize: 11,
+            fontSize: 10,
             fontFamily: "Nam-Bold",
             marginTop: 10
 

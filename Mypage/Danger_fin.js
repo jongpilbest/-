@@ -15,65 +15,67 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Danger_line from './Danger_line';
 
 
-const Danger_fin = function ({ navigation,  jhey }) {
- const token = useSelector((state) => state.token.token)
+const Danger_fin = function ({ navigation, jhey }) {
+   const token = useSelector((state) => state.token.token)
 
 
- const good = function (al) {
-  var hey = 100 - al;
+   const good = function (al) {
+      var hey = 100 - al;
 
-  return {
-   positon: 'absolute',
-   top: hey,
-   backgroundColor: 'white',
-   width: 24,
-   height: 24,
-   borderRadius: 30,
-   margin: 15,
-   flexDirection: 'row'
-  }
+      return {
+         positon: 'absolute',
+         top: hey,
+         backgroundColor: 'white',
+         width: 30,
+         height: 30,
+         borderRadius: 30,
+         margin: 16,
+         marginLeft: 10,
+         flexDirection: 'row'
+      }
 
- }
-
-
- return (
-  <View style={{
-   width: 50,
-   height: 220,
-   borderRadius: 30,
-   flexDirection: 'row'
+   }
 
 
-  }}>
-
-
-   <View onLayout={event => {
-    const layout = event.nativeEvent.layout;
-    console.log(jhey)
-    console.log(' 찾아라')
-    console.log('height:', layout.height);
-    console.log('width:', layout.width);
-    console.log('x:', layout.x);
-    console.log('y:', layout.y);
-   }} style={good(jhey)}>
-
-    <Text style={{
-
-     fontSize: 13,
-
-     fontFamily: "Nam-Bold"
-     , margin: 5,
-    }}>
-     {jhey}
-    </Text>
-
-   </View>
-
-  </View>
+   return (
+      <View style={{
+         width: 60,
+         height: 220,
+         borderRadius: 30,
+         flexDirection: 'row'
 
 
 
- )
+      }}>
+
+
+         <View onLayout={event => {
+            const layout = event.nativeEvent.layout;
+            console.log(jhey)
+            console.log(' 찾아라')
+            console.log('height:', layout.height);
+            console.log('width:', layout.width);
+            console.log('x:', layout.x);
+            console.log('y:', layout.y);
+         }} style={good(jhey)}>
+
+            <Text style={{
+
+               fontSize: 9,
+               textAlign: 'center',
+               fontFamily: "Nam-Bold"
+               , margin: 8,
+            }}>
+               {jhey}
+            </Text>
+
+         </View>
+
+      </View>
+
+
+
+   )
 
 
 }

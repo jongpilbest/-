@@ -29,10 +29,10 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
          positon: 'absolute',
          top: hey,
          backgroundColor: 'white',
-         width: 25,
-         height: 25,
+         width: 30,
+         height: 30,
          borderRadius: 30,
-         margin: 15,
+         margin: 16,
          marginLeft: 16,
          flexDirection: 'row'
       }
@@ -42,7 +42,7 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
 
    return (
       <View style={{
-         width: 50,
+         width: 60,
          height: 220,
          borderRadius: 30,
          flexDirection: 'row'
@@ -55,10 +55,10 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
 
             <Text style={{
 
-               fontSize: 10,
-
+               fontSize: 9,
+               textAlign: 'center',
                fontFamily: "Nam-Bold"
-               , margin: 5,
+               , margin: 8,
             }}>
                {jhey}
             </Text>

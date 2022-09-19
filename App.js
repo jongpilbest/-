@@ -10,6 +10,8 @@ import Change_State from "./Mypage/Change_State.js/Change_state";
 import good_list from "./Mypage/good_list";
 import AppLoading from "expo-app-loading";
 import Enroll_page from "./Enroll_page/Enroll";
+
+import Manager from './Mypage/MANAGER/Manager';
 import Edit from "./component/Edit";
 import point from "./Mypage/point/point";
 //import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
@@ -38,13 +40,25 @@ import Mypage_main from './Mypage/Mypage_main';
 import Change_ingre from './Mypage/Change_State.js/Change_ingre';
 import Search_item_seconde from "./search_item/Search_item_seconde";
 //import Mypage_main from "./Mypage/Mypage_main";
+import sung from './component/Component_inner.js/sung';
+import Manager_Enroll from './Mypage/MANAGER/Manager_Enroll';
+import Real_Enroll from './Mypage/MANAGER/Real_Enroll';
+import Write_Enroll from './Mypage/MANAGER/Write_Enroll';
 const navigator =
   createSwitchNavigator({
     //Mypage_main: Mypage_main,
     //Danger: Danger,
-
-    ///Qna: Qna,
     Edit: Edit,
+    ///Qna: Qna,
+    Manager: createStackNavigator({
+      Manager: Manager,
+      Manager_Enroll: Manager_Enroll,
+      Real_Enroll: Real_Enroll,
+      Write_Enroll: Write_Enroll
+
+    }),
+
+
 
 
 
@@ -88,7 +102,8 @@ const navigator =
         Barcode_main: Barcode_main,
         search_item_first: search_item_first,
         Search_item_seconde: Search_item_seconde,
-        Gisa: Gisa
+        Gisa: Gisa,
+        sung: sung
 
       },
         {
