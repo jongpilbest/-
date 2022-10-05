@@ -62,6 +62,7 @@ const point = function ({ navigation }) {
      marginTop: 40,
      marginLeft: 70,
      position: 'absolute',
+     textAlign: 'center',
 
 
      fontFamily: "Nam-Bold"
@@ -81,7 +82,7 @@ const point = function ({ navigation }) {
      height: 150,
      margin: 10,
      flexDirection: 'row',
-     borderRadius: 20
+
 
 
     }}>
@@ -115,7 +116,7 @@ const point = function ({ navigation }) {
 
          //       borderRadius: '50%',
         }}
-        source={{ uri: ' https://mblogthumb-phinf.pstatic.net/20161008_248/sasa9508_1475929220263OMzsO_JPEG/2.jpg?type=w2' }}
+        source={{ uri: "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FAFzsZ%2FbtqI088tZW3%2FHCqq10x0OG9SoMdG2Bo3YK%2Fimg.jpg" }}
        />
 
        <View style={{

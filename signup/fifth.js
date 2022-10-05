@@ -25,7 +25,7 @@ const fifth = function ({ navigation }) {
     // const [chna, mos_original] = fian();
     //console.log(misu);
     //  console.log('에러십활')
-
+    const [go, setgo] = useState(0);
     const mos = useSelector((state) => state.auth.allergy)
     // console.log(mos)
 
@@ -254,7 +254,7 @@ const fifth = function ({ navigation }) {
                         }
                         {
                             chekc == -1 && mos.map((el, index) => {
-                                return < Componn key={index} gogo={(el) => misugo(el)} vale={el}></Componn>
+                                return < Componn go_he={go} key={index} gogo={(el) => misugo(el)} vale={el}></Componn>
                             })
 
                         }
@@ -270,7 +270,7 @@ const fifth = function ({ navigation }) {
             </View>
             < TouchableOpacity onPress={() => {
 
-
+                setgo(1);
                 navigation.navigate('ingredient');
 
             }

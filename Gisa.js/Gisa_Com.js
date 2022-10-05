@@ -19,7 +19,7 @@ const Gisa_Com = function ({ navigation, good }) {
  console.log(contex_V)
  useEffect(() => {
 
-  axios.get(`http://13.209.73.153:5000/article/${good.id}`,
+  axios.get(`http://172.30.1.31:5000/article/${good.id}`,
 
    {
     headers: {
@@ -97,7 +97,7 @@ const Gisa_Com = function ({ navigation, good }) {
            }} name="closecircleo" size={35} color="white" />
           </Pressable>
           <Text style={{
-           fontSize: 13,
+           fontSize: 16,
            textAlign: 'center',
            fontFamily: "Nam-Bold",
            color: 'white',
@@ -115,7 +115,7 @@ const Gisa_Com = function ({ navigation, good }) {
             {
              contex_V.map((el, index) => {
               return <Text key={index} style={{
-               fontSize: 13,
+               fontSize: 15,
                margin: 5,
 
                fontFamily: 'Nam-Bold'
@@ -145,7 +145,7 @@ const Gisa_Com = function ({ navigation, good }) {
 
 
      <Text style={{
-      fontSize: 14,
+      fontSize: 12,
       textAlign: 'center',
       fontFamily: "Nam-Bold",
       marginTop: 20
@@ -164,19 +164,22 @@ const Gisa_Com = function ({ navigation, good }) {
        fontFamily: 'Nam-Bold',
        margin: 10,
        marginLeft: 40,
+       color: '#FF4444'
 
       }}>
        #{inner.keyword1}
       </Text >
       <Text style={{
        fontFamily: 'Nam-Bold',
-       marginTop: 10
+       marginTop: 10,
+       color: '#FF4444'
       }}>
        #{inner.keyword2}
       </Text>
       <Text style={{
        fontFamily: 'Nam-Bold', marginTop: 10,
        marginLeft: 10,
+       color: '#FF4444'
       }}>
        #{inner.keyword3}
       </Text>

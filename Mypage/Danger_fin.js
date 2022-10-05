@@ -18,7 +18,7 @@ import Danger_line from './Danger_line';
 const Danger_fin = function ({ navigation, jhey }) {
    const token = useSelector((state) => state.token.token)
 
-
+   console.log('name', jhey)
    const good = function (al) {
       var hey = 100 - al;
 

@@ -32,9 +32,7 @@ const Manager = function ({ navigation }) {
     //eight: '35%'
    }}>
     <TouchableOpacity onPress={() => {
-
-
-     navigation.pop();
+     navigation.navigate('Edit')
     }}>
      <Ionicons style={{
 
@@ -89,7 +87,8 @@ const Manager = function ({ navigation }) {
       <View style={{
        width: '100%',
        height: 55,
-
+       alignSelf: 'center'
+       
 
        //margin: 20
       }}>

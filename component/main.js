@@ -16,11 +16,13 @@ import Recomd from "./Recomd";
 import Allery_item from "../search_item/Allery_item";
 //import { useSelector, useDispatch } from 'react-redux'
 import Kisa from "./Kisa";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 const main = function ({ navigation }) {
   var item = navigation.getParam('item');
   var main_kisa = navigation.getParam('main_kisa');
   var good_main_kisa = [];
   console.log(main_kisa)
+  console.log(item)
 
 
   //const item_show = navigation.getParam('data');
@@ -102,6 +104,13 @@ const main = function ({ navigation }) {
     }
 
 
+
+  }
+
+  const go_S = function (ey) {
+    console.log('엥');
+    console.log(ey)
+    navigation.navigate('Search_item_seconde', { name: ey.name, ssec: ey.ssec, mapv: ey.mapv, id: ey.id })
 
   }
 
@@ -195,7 +204,7 @@ const main = function ({ navigation }) {
             ///product/search/{keyword}
             console.log(id, token);
 
-            axios.get(`http://13.209.73.153:5000/product/search/${id}`,
+            axios.get(`http://172.30.1.31:5000/product/search/${id}`,
 
               {
                 headers: {
@@ -293,7 +302,7 @@ const main = function ({ navigation }) {
 
             return (
 
-              <Recomd key={index} show={el}></Recomd>
+              <Recomd keep={(gg) => go_S(gg)} key={index} show={el}></Recomd>
 
             )
           })}
@@ -304,17 +313,15 @@ const main = function ({ navigation }) {
         <View style={{
           backgroundColor: 'white'
         }}>
-          <TouchableOpacity onPress={() => {
-            navigation.navigate('Gisa', { item: main_kisa });
-          }}>
-            <Text style={{
-              fontFamily: "Nam-Bold"
-              , fontSize: 12,
-              marginTop: 10,
-              marginLeft: 20
 
-            }}> {`${nickname} 님을 위한 추천 기사`} </Text>
-          </TouchableOpacity>
+          <Text style={{
+            fontFamily: "Nam-Bold"
+            , fontSize: 12,
+            marginTop: 10,
+            marginLeft: 20
+
+          }}> {`${nickname} 님을 위한 추천 기사`} </Text>
+
           <View style={{
             margin: 8,
             marginLeft: 15,
@@ -324,15 +331,17 @@ const main = function ({ navigation }) {
             borderRadius: 20,
           }}>
             <ScrollView>
+              <TouchableOpacity onPress={() => {
+                navigation.navigate('Gisa', { item: main_kisa });
+              }}>
+                {
+                  main_kisa.map((el, index) => {
 
-              {
-                main_kisa.map((el, index) => {
-
-                  return <Kisa key={index} show={el}></Kisa>
+                    return <Kisa key={index} show={el}></Kisa>
 
 
-                })}
-
+                  })}
+              </TouchableOpacity>
             </ScrollView>
 
           </View>

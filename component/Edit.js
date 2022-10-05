@@ -10,12 +10,40 @@ import { useSelector, useDispatch } from 'react-redux'
 import { tokenAction } from "../redux/token";
 import { ownerAction } from "../redux/owner_name";
 //import { tokenAction } from "../redux/token";
-
+import * as Notifications from 'expo-notifications';
+import { faObjectGroup } from "@fortawesome/free-solid-svg-icons";
 //const dispatch = useDispatch();
 const Edit = function ({ navigation }) {
     var good = 0;
     var total_response = 0;
+    function sendPushNotification() {
+        console.log('엥..')
 
+        fetch("https://exp.host/--/api/v2/push/send", {
+
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                to: 'ExponentPushToken[ZkctWDHsMuYDNcBgVqKEGL]',
+                title: 'TEST -Sent',
+                body: 'This is a test'
+            })
+        })
+    }
+
+
+    async function schedulePushNotification() {
+        await Notifications.scheduleNotificationAsync({
+            content: {
+                title: "등록이 완료 됐습니다",
+                body: '지금확인해 보세요',
+                data: { data: 'goes here' },
+            },
+            trigger: { seconds: 1 },
+        });
+    }
 
     const dispatch = useDispatch();
     // const is_id = useSelector((state) => state.auth.id)
@@ -63,6 +91,7 @@ const Edit = function ({ navigation }) {
                         borderColor: 'transparent',
                         borderWidth: 3,
                         marginTop: '17%',
+                        padding: 15,
                         justifyContent: 'center',
                         alignSelf: 'center',
                         backgroundColor: 'white',
@@ -89,6 +118,7 @@ const Edit = function ({ navigation }) {
                         alignSelf: 'center',
                         backgroundColor: 'white',
                         marginTop: 30,
+                        padding: 15,
                         // padding: 20,
                         fontSize: 10, fontFamily: "Nam-Bold"
 
@@ -106,14 +136,11 @@ const Edit = function ({ navigation }) {
                 }}>
                     <TouchableOpacity onPress={() => {
 
-                        // tokevn(id, password)
-                        console.log('?')
-
-                        axios.post("http://14.37.76.88:5000/auth/login", {
+                        console.log('?', id, password)
+                        axios.post("http://172.30.1.31:5000/auth/login", {
 
                             "userId": id,
                             "password": password
-
 
                         }).then((response) => {
                             if (response) {
@@ -121,7 +148,6 @@ const Edit = function ({ navigation }) {
                                 total_response = response.data.token
                                 console.log(response.data)
                                 good = 1;
-
 
                                 dispatch(tokenAction.settoken(total_response))
                                 //AsyncStorage.setItem('Token', total_response)
@@ -194,7 +220,10 @@ const Edit = function ({ navigation }) {
                         </Text>
                     </TouchableOpacity>
 
+
                 </View>
+
+
 
 
 

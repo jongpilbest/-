@@ -19,7 +19,7 @@ const REal_Com = function ({ data }) {
  { "barcode": "바코드" },
  { "enable": 0 },
  { "userId": "유저아이디" },
- { userNickname: '유저닉네임' }
+ { "userNickname": '유저닉네임' }
  ]
  useEffect(() => {
   Change_name.map((el) => {

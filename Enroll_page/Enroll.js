@@ -63,7 +63,7 @@ const Enroll_page = function ({ navigation }) {
      left: '5%',
      marginTop: '5%',
      fontFamily: "Nam-Bold"
-    }}>추가하기</Text>
+    }}>상품 등록하기</Text>
    </View>
    <View style={{
     height: '40%',

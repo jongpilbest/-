@@ -101,7 +101,7 @@ var allergy_kr = [
   {
     name: 'soybean',
     check: 0,
-    kr: '콩',
+    kr: '대두',
     image: ['https://cdn-icons-png.flaticon.com/512/6931/6931713.png', 'https://cdn-icons.flaticon.com/png/512/1680/premium/1680537.png?token=exp=1661068499~hmac=96e2e6a2c3078e041bee1164098dff48']
 
   }
@@ -235,7 +235,7 @@ const search_item_first = function ({ navigation }) {
 
   const gopage = async function (elv) {
 
-    await axios.post(`http://13.209.73.153:5000/product/custom`, {
+    await axios.post(`http://172.30.1.31:5000/product/custom`, {
       "name": elv
 
     },
@@ -279,8 +279,7 @@ const search_item_first = function ({ navigation }) {
         var key_f = (Object.keys(response.data.ingredient));
         var key_ff = (Object.values(response.data.ingredient));
         var id_check = response.data.Id
-        console.log(`ididididididididid-first`);
-        console.log(id_check)
+        // console.log(`ididididididididid-first`);   console.log(id_check)
         var em = [];
         var em_kr = [];
         ingredient_kr.forEach(ev => {

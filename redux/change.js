@@ -1,6 +1,9 @@
+import { prefix } from "@fortawesome/free-solid-svg-icons";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialstate = {
+
+ ranking: 0,
  id: '',
  password: '',
  nickname: '',
@@ -36,7 +39,7 @@ const initialstate = {
   {
    name: 'soybean',
 
-   kr: '콩'
+   kr: '대두'
 
   }
   , {
@@ -234,6 +237,10 @@ const changeslice = createSlice({
   setingredient_1: (state, action) => {
 
    state.array_list_2.push(action.payload)
+  },
+  setranking: (state, action) => {
+   state.ranking = action.payload;
+   
   },
 
  }

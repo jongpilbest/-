@@ -30,7 +30,7 @@ const initialstate = {
   {
    name: 'soybean',
 
-   kr: '콩'
+   kr: '대두'
 
   }
   , {
@@ -176,6 +176,16 @@ const authslice = createSlice({
    state.array_list.splice(state.array_list.indexOf(action.payload), 1);
    // console.log(state.array_list)
 
+
+  },
+  setallergy_zero: (state, action) => {
+
+   state.array_list = [];
+
+  },
+  setingre_zero: (state, action) => {
+
+   state.array_list_2 = [];
 
   },
   setallergy_1: (state, action) => {

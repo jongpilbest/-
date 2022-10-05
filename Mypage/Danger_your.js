@@ -45,7 +45,7 @@ const Danger_your = function ({ text, hey }) {
   {
    name: 'soybean',
 
-   kr: '콩'
+   kr: '대두'
 
   }
   , {

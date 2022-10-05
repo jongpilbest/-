@@ -188,7 +188,7 @@ const Search_ITEM = function ({ onfinsh }) {
     console.log(state_state.token);
 
 
-    axios.post("http://172.30.1.13:5000/product/search", {
+    axios.post("http://172.30.1.31:5000/product/search", {
 
       "keyword": com
 

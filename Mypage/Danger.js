@@ -28,6 +28,8 @@ const Danger = function ({ navigation }) {
    var fir = navigation.getParam('gey_fo');
 
    console.log(fir)
+   var fi_leng = fir.length;
+
 
    var sec = navigation.getParam('gey');
    for (var misu = 0; misu < fir.length; misu++) {
@@ -78,7 +80,7 @@ const Danger = function ({ navigation }) {
       {
          name: 'soybean',
          check: 0,
-         kr: '콩'
+         kr: '대두'
 
       }
       , {
@@ -249,12 +251,12 @@ const Danger = function ({ navigation }) {
 
                   {fir.map((el, index) => {
 
-                     if (index == 8) {
+                     if (index == fi_leng - 1) {
 
                         return;
 
                      }
-                     else if (index < 8) {
+                     else if (index < fi_leng) {
                         return <Danger_com key_r={index} key={index} heck={fir} jhey={el} ></Danger_com>
                      }
 

@@ -76,7 +76,7 @@ const good_list = function ({ navigation }) {
 
 
 
-  await axios.post(`http://13.209.73.153:5000/product/custom`, {
+  await axios.post(`http://172.30.1.31:5000/product/custom`, {
    "name": elv
 
   },
@@ -147,7 +147,7 @@ const good_list = function ({ navigation }) {
      fontSize: 20,
      alignSelf: "flex-start",
      //color: '#7C7C7C',
-     marginTop: 30,
+     marginTop: 40,
      marginLeft: 70,
      position: 'absolute',
 

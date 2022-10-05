@@ -24,6 +24,8 @@ const Manager_Enroll = function ({ navigation }) {
   const token = useSelector((state) => state.token.token)
   console.log(token)
   const [enroll, setenroll] = useState([]);
+  // dispatch(changeAction.setchange_list());
+
   const hey = [
     {
       "name": "과자자",
@@ -72,7 +74,7 @@ const Manager_Enroll = function ({ navigation }) {
 
   useEffect(() => {
 
-    axios.get("http://14.37.76.88:5000/adminFun/requestProductList",
+    axios.get("http://172.30.1.31:5000/adminFun/requestProductList",
 
       {
         headers: {
@@ -117,7 +119,7 @@ const Manager_Enroll = function ({ navigation }) {
         <TouchableOpacity onPress={() => {
 
 
-          navigation.pop();
+          navigation.navigate('Edit');
         }}>
           <Ionicons style={{
 
@@ -170,8 +172,8 @@ const Manager_Enroll = function ({ navigation }) {
 
                 }
                 var hey_2 = {
-                  tableHead: ["상품이미지URI", "상품상세이미지URI",],
-                  tableData: [[el.product_image, el.info_image]],
+                  tableHead: ["상품이미지URI"],
+                  tableData: [[el.product_image]],
 
                 }
 

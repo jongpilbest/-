@@ -480,7 +480,7 @@ const Change_State = function ({ navigation }) {
                 console.log(ob.allergy)
 
 
-                axios.patch(`http://13.209.73.153:5000/mypage/updateUser`, {
+                axios.patch(`http://172.30.1.31:5000/mypage/updateUser`, {
                     "allergy": ob.allergy
                 },
 

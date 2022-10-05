@@ -12,6 +12,9 @@ import Ms from "./Ms";
 //import { TapGestureHandler } from "react-native-gesture-handler";
 import axios from "axios"
 import fian from "./fian";
+
+
+import { authAction } from "../redux/auth";
 var chekc = -1;
 var chek = 0;
 var text_input = 0;
@@ -24,7 +27,7 @@ const ingredient = function ({ navigation }) {
   const [MS_good, misu] = Ms();
   const [chna, obj_cha] = fian();
   console.log(misu);
-
+  const dispatch = useDispatch();
   var arry_list = useSelector((state) => state.auth.array_list)
   var arry_list_2 = useSelector((state) => state.auth.array_list_2)
   var id = useSelector((state) => state.auth.id)
@@ -191,7 +194,7 @@ const ingredient = function ({ navigation }) {
         {
           name: 'soybean',
           check: 0,
-          kr: '콩'
+          kr: '대두'
 
         }
         , {
@@ -321,7 +324,7 @@ const ingredient = function ({ navigation }) {
       console.log('미수야')
       console.log(ob)
       /*
-   axios.post("http://182.215.108.120:5000/auth/join", {
+   axios.post("http://172.30.1.31:5000/auth/join", {
      "id": misu.id,
      "nickname": misu.nickname,
      "password": misu.password,
@@ -346,27 +349,26 @@ const ingredient = function ({ navigation }) {
      });
   
   */
-
-    console.log('닉네임체크 ')
-    console.log(nickname);
+    console.log(id, password)
 
 
 
-    axios.post("http://13.209.73.153:5000/auth/join", {
+    axios.post("http://172.30.1.31:5000/auth/join", {
       "userId": id,
       "password": password,
       "nickname": nickname,
       "ingredient": ob_grien.ingredient,
       "allergy": ob.allergy,
-
-
     })
       .then((response) => {
         if (response) {
           console.log('?');
           console.log('성공')
+          dispatch(authAction.setallergy_zero())
+          dispatch(authAction.setingre_zero())
           navigation.navigate('Edit')
           //console.log(response.data);
+
           //setUser(response);
         } else {
           alert("failed to ");

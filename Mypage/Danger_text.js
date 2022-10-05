@@ -44,7 +44,7 @@ const Danger_Text = function ({ text }) {
       {
          name: 'soybean',
 
-         kr: '콩'
+         kr: '대두'
 
       }
       , {
@@ -81,7 +81,7 @@ const Danger_Text = function ({ text }) {
          kr: '토마토'
 
       }, {
-         name: 'walnut',
+         name: 'peanut',
 
          kr: '땅콩'
       }, {

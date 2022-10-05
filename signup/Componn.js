@@ -13,9 +13,12 @@ var hey = -1;
 
 
 
-const Componn = function ({ vale, gogo }) {
+const Componn = function ({ vale, gogo, go_he }) {
     console.log(`vale ${vale}`)
     var [num, setnum] = useState(0);
+    console.log('현재 num 의 수는?');
+    console.log(num)
+
 
     const is_id = useSelector((state) => state.auth.array_list)
     const dispatch = useDispatch();

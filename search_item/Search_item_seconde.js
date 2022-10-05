@@ -15,6 +15,8 @@ import Ms from "../signup/Ms";
 import { AntDesign } from '@expo/vector-icons';
 const CONTENT = {};
 import * as Speech from 'expo-speech';
+import { parse } from "react-native-svg";
+
 //const googleTTS = require('google-tts-api');
 //import Tts from 'react-native-tts';
 const Search_item_seconde = ({ navigation }) => {
@@ -40,7 +42,7 @@ const Search_item_seconde = ({ navigation }) => {
 
 
   useEffect(() => {
-    axios.get(`http://13.209.73.153:5000/product/detail/${id}`,
+    axios.get(`http://172.30.1.31:5000/product/detail/${id}`,
       {
         headers: {
           'X-AUTH-TOKEN': token
@@ -54,6 +56,17 @@ const Search_item_seconde = ({ navigation }) => {
         // setcheck(response.data);
         console.log(data);
         console.log('id 체크')
+        console.log('칼로리칼로리')
+        var hhey_fo = data.calorie.split('');
+        var go = '';
+        for (var i = 0; i < hhey_fo.length; i++) {
+
+          if (hhey_fo[i] == 'k');
+          var dv = hhey_fo.splice(i, hhey_fo.length - 1);
+          console.log(dv)
+        }
+        console.log('고고고')
+        console.log(go)
         setdata(data);
         setingr(data.rawMaterial.split(','));
         setimage(data.image);
@@ -80,7 +93,7 @@ const Search_item_seconde = ({ navigation }) => {
 
 
 
-  data_goood = {
+  var data_goood = {
     tableHead: ['영양성분', '열량'],
     tableData: [
       ['칼로리', data.calorie],
@@ -102,6 +115,20 @@ const Search_item_seconde = ({ navigation }) => {
   ${data.sugar} 포하지방  ${data.saturated_fat} 트랜스지방
   ${data.trans_fat}`
 
+  var hey = data.calorie;
+  /*
+  var hey_go = hey.split('');
+  for (var i = 0; i < hey_go.length; i++) {
+    if (typeof (hey_go[i]) != 'number') {
+      hey_go.splice(i, hey_go.length - 1);
+
+    }
+  }
+  */
+
+
+  var speak_1 = `칼로리 ${data.calorie} 칼로리 `
+  var speak_2 = ` 용량 ${data.capacity} 그램`
 
   console.log('원재료 ')
   console.log(ingr.length)
@@ -129,23 +156,28 @@ const Search_item_seconde = ({ navigation }) => {
 
 
   }
-  ingre = {
+  var ingre = {
 
     tableData: in_ar
   }
 
   const [modalVisible, setModalVisible] = useState(false);
-
+  const [modalVisible2, setModalVisible2] = useState(false);
+  const [modalVisible3, setModalVisible3] = useState(false);
   console.log(name)
   const onpress = () => {
-
+    if (num == 0) {
+      setModalVisible2(true)
+    }
     setnum((pre) => pre + 1)
 
 
   }
 
   const onpress_2 = () => {
-
+    if (num2 == 0) {
+      setModalVisible3(true)
+    }
     setnum2((pre) => pre + 1)
 
   }
@@ -229,7 +261,38 @@ const Search_item_seconde = ({ navigation }) => {
 
 
   }
+  var [size, setsize] = useState(8);
 
+  const font_size = function () {
+    console.log(size)
+    console.log('사이즈')
+    setsize((pre) => pre + 1)
+
+
+
+  }
+  const font_size_minus = function () {
+
+    setsize((pre) => {
+      pre - 1;
+
+    })
+
+
+
+  }
+  const total_siz = function () {
+    console.log(size)
+
+    return {
+
+
+      margin: 6, fontFamily: "Nam-Bold",
+      fontSize: size,
+
+
+    }
+  }
   //const item_show = navigation.getParam('el');
   //var image = (item_show.src)
 
@@ -284,7 +347,9 @@ const Search_item_seconde = ({ navigation }) => {
                 borderRadius: 20,
                 margin: 10
               }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                  font_size();
+                }}>
                   <AntDesign name="plus" style={{
                     margin: 8
                   }} size={24} color="black" />
@@ -298,7 +363,7 @@ const Search_item_seconde = ({ navigation }) => {
                 borderRadius: 20,
                 margin: 10
               }}>
-                <TouchableOpacity>
+                <TouchableOpacity >
                   <AntDesign name="minus" style={{
                     margin: 8
                   }} size={24} color="black" />
@@ -323,7 +388,11 @@ const Search_item_seconde = ({ navigation }) => {
                 </Text>
                 <TouchableOpacity onPress={() => {
 
-                  Speech.speak(speak, {
+                  Speech.speak(speak_1, {
+                    rate: 0.8
+                  });
+
+                  Speech.speak(speak_2, {
                     rate: 0.8
                   });
 
@@ -343,7 +412,7 @@ const Search_item_seconde = ({ navigation }) => {
                 <View style={styles.container}>
                   <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
                     <Row data={data_goood.tableHead} style={styles.head} textStyle={styles.text} />
-                    <Rows data={data_goood.tableData} textStyle={styles.text} />
+                    <Rows data={data_goood.tableData} textStyle={total_siz()} />
                   </Table>
                 </View>
 
@@ -353,10 +422,12 @@ const Search_item_seconde = ({ navigation }) => {
                   원재료
                 </Text>
                 <View style={styles.container_2}>
-                  <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+                  <ScrollView>
+                    <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
 
-                    <Rows data={ingre.tableData} textStyle={styles.text} />
-                  </Table>
+                      <Rows data={ingre.tableData} textStyle={total_siz()} />
+                    </Table>
+                  </ScrollView>
                 </View>
               </View>
             </ScrollView>
@@ -365,6 +436,212 @@ const Search_item_seconde = ({ navigation }) => {
         </View>
 
       </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible3}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible3(!modalVisible3);
+        }}>
+        <View style={styles.centeredView2}>
+          <View style={styles.modalView2}>
+            <Text style={{
+              color: 'white',
+              fontSize: 19,
+              textAlign: 'center',
+              fontFamily: "Nam-Bold"
+
+            }}>
+              비선호상품이 등록됐습니다
+            </Text>
+            <View style={{
+              flexDirection: 'row',
+              marginTop: 20,
+
+            }}>
+              <TouchableOpacity onPress={() => {
+                //delete_all()
+
+                setModalVisible3(!modalVisible3)
+
+                //navigation.navigate('Edit')
+              }}>
+                <View style={{
+                  width: 100,
+                  backgroundColor: '#DDEEF2',
+                  height: 30,
+                  borderRadius: 20,
+                  marginLeft: 60
+                }}>
+                  <Text style={{
+                    fontSize: 20,
+                    color: '#444040', fontWeight: 'bold',
+                    textAlign: 'center',
+                    flexDirection: 'row',
+                    fontFamily: "Nam-Bold",
+
+                    margin: 3
+                  }}>
+                    확인
+                  </Text>
+
+                </View>
+
+              </TouchableOpacity>
+
+            </View>
+
+          </View>
+
+        </View>
+      </Modal >
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible2}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible2);
+        }}>
+        <View style={styles.centeredView2}>
+          <View style={styles.modalView2}>
+            <Text style={{
+              color: 'white',
+              fontSize: 20,
+              textAlign: 'center',
+              fontFamily: "Nam-Bold"
+
+            }}>
+              선호상품이 등록됐습니다
+            </Text>
+            <View style={{
+              flexDirection: 'row',
+              marginTop: 20,
+
+            }}>
+              <TouchableOpacity onPress={() => {
+                //delete_all()
+
+                setModalVisible2(!modalVisible2)
+
+                //navigation.navigate('Edit')
+              }}>
+                <View style={{
+                  width: 100,
+                  backgroundColor: '#DDEEF2',
+                  height: 30,
+                  borderRadius: 20,
+                  marginLeft: 60
+                }}>
+                  <Text style={{
+                    fontSize: 20,
+                    color: '#444040', fontWeight: 'bold',
+                    textAlign: 'center',
+                    flexDirection: 'row',
+                    fontFamily: "Nam-Bold",
+
+                    margin: 3
+                  }}>
+                    확인
+                  </Text>
+
+                </View>
+
+              </TouchableOpacity>
+
+            </View>
+
+          </View>
+
+        </View>
+      </Modal >
+
+
+
+      <Modal
+        propagateSwipe={true}
+        //scrollTo={true}
+        //animationType="slide"
+        //scrollHorizontal={true}
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible3(!modalVisible);
+        }}
+      >
+
+
+        <Modal
+          propagateSwipe={true}
+          //scrollTo={true}
+          //animationType="slide"
+          //scrollHorizontal={true}
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible2(!modalVisible);
+          }}
+        >
+
+
+          <View style={styles.centeredView}>
+
+            <View style={styles.modalView}>
+              <View style={{
+                flexDirection: 'row'
+              }}>
+
+
+                <Text style={styles.modalText}>비선호 상품이 등록됐습니다</Text>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setModalVisible2(!modalVisible)}
+                >
+                  <Text style={styles.textStyle}>확인</Text>
+                </Pressable>
+              </View>
+
+
+
+
+            </View>
+
+
+
+          </View>
+
+        </Modal>
+        <View style={styles.centeredView}>
+
+          <View style={styles.modalView}>
+            <View style={{
+              flexDirection: 'row'
+            }}>
+
+
+              <Text style={styles.modalText}>비선호 상품이 등록됐습니다</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible3(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>확인</Text>
+              </Pressable>
+            </View>
+
+
+
+
+          </View>
+
+
+
+        </View>
+
+      </Modal>
+
       <View style={{
 
 
@@ -500,7 +777,7 @@ const Search_item_seconde = ({ navigation }) => {
               <TouchableOpacity onPress={() => {
 
 
-                axios.put(`http://13.209.73.153:5000/dislikeproduct/${id}`,
+                axios.put(`http://172.30.1.31:5000/dislikeproduct/${id}`,
                   {},
 
                   {
@@ -534,7 +811,6 @@ const Search_item_seconde = ({ navigation }) => {
 
                 onpress_2();
 
-
               }}>
                 <AntDesign name="dislike2" size={30} color={
                   goto_2()
@@ -558,9 +834,9 @@ const Search_item_seconde = ({ navigation }) => {
               <TouchableOpacity onPress={() => {
 
 
+                // setModalVisible2(true)
 
-
-                axios.put(`http://13.209.73.153:5000/likeproduct/${id}`,
+                axios.put(`http://172.30.1.31:5000/likeproduct/${id}`,
                   {},
 
                   {
@@ -577,6 +853,7 @@ const Search_item_seconde = ({ navigation }) => {
                     // setcheck(response.data);
                     console.log('?');
                     console.log(response.data)
+
                     //setUser(response);
                   } else {
                     alert("failed to ");
@@ -589,6 +866,7 @@ const Search_item_seconde = ({ navigation }) => {
                 });
 
                 onpress();
+
 
               }}>
 
@@ -690,10 +968,8 @@ const styles = StyleSheet.create({
   },
 
   head: { height: 40, backgroundColor: '#f1f8ff' },
-  text: {
-    margin: 6, fontFamily: "Nam-Bold",
-    fontSize: 9,
-  },
+
+
   centeredView: {
     flex: 1,
     justifyContent: "center",
@@ -736,7 +1012,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 40,
     fontFamily: "Nam-Bold"
-
   },
   modalText: {
     marginBottom: 15,
@@ -751,9 +1026,76 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontFamily: "Nam-Bold",
     fontSize: 20,
-    color: '#FFFFFF'
+    marginTop: 20,
+    color: '#FFFFFF',
+
 
   }
+
+
+
+
+  ,
+  centeredView2: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView2: {
+    width: '90%',
+    height: '20%',
+    margin: 20,
+    backgroundColor: "#545252",
+    opacity: 0.98,
+
+    //b//orderRadius: 20,
+    padding: 35,
+    //alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    position: 'relative'
+  },
+  button2: {
+    //orderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen2: {
+    backgroundColor: "#545252",
+  },
+  buttonClose2: {
+    backgroundColor: "#545252",
+  },
+  textStyle2: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20
+
+  },
+  modalText2: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontSize: 30,
+    color: 'white',
+    fontFamily: "Nam-Bold"
+
+
+  },
+  modalTextv2: {
+    marginBottom: 15,
+
+    fontSize: 30,
+    color: '#71A6E3'
+
+  }
+
 
 })
 export default Search_item_seconde;

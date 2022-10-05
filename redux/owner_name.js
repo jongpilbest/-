@@ -15,6 +15,7 @@ const ownerslice = createSlice({
   setowner: (state, action) => {
    state.owner = action.payload
   },
+  
 
  }
 

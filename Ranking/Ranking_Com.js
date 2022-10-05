@@ -12,7 +12,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 var check = 1;
 
-const Ranking_Com = function ({ item, t }) {
+const Ranking_Com = function ({ fo, item, t }) {
 
 
 
@@ -32,13 +32,37 @@ const Ranking_Com = function ({ item, t }) {
    borderRadius: 10,
    borderColor: '#FFFFFF',
    flexDirection: 'row',
-   flexWrap: 'wrap'
+
   }}
 
   >
-   <Text>
-    {t}
-   </Text>
+
+   <View style={{
+    width: '30%',
+
+   }}>
+    <Text style={{
+     fontFamily: 'Nam-Regular',
+     fontSize: 23,
+     margin: 10
+    }}>
+     {`${t.ranking}위`}
+    </Text>
+   </View>
+   <View style={{
+    width: '80%'
+   }}>
+    <Text style={{
+     fontFamily: 'Nam-Regular',
+     fontSize: 20,
+     marginTop: 20,
+
+     textAlign: 'center'
+    }}>
+     {`${t.nickname}님`}
+    </Text>
+   </View>
+
   </View>
 
 

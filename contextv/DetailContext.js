@@ -206,7 +206,7 @@ const signtoken = (dispatch) => {
 
 
         try {
-            axios.post("http://172.30.1.13:5000/auth/login", {
+            axios.post("http://172.30.1.31:5000/auth/login", {
 
                 "userId": id,
                 "password": password
@@ -328,7 +328,7 @@ const tokevn = (dispatch) => {
 
     return (id, password) => {
 
-        axios.post("http://14.39.156.197:5000/auth/login", {
+        axios.post("http://172.30.1.31:5000/auth/login", {
 
             "userId": id,
             "password": password

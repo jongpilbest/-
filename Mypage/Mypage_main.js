@@ -84,9 +84,6 @@ const Mypage_main = function ({ navigation }) {
               marginTop: 20
             }}>
               <TouchableOpacity onPress={() => {
-                //delete_all()
-
-
 
                 navigation.navigate('Edit')
               }}>
@@ -202,7 +199,7 @@ const Mypage_main = function ({ navigation }) {
 
                     //       borderRadius: '50%',
                   }}
-                  source={{ uri: imageUrl }}
+                  source={{ uri: "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FAFzsZ%2FbtqI088tZW3%2FHCqq10x0OG9SoMdG2Bo3YK%2Fimg.jpg" }}
                 />
                 <View style={{
                   position: 'absolute',
@@ -212,16 +209,7 @@ const Mypage_main = function ({ navigation }) {
                   top: 70,
                   margin: 0,
                 }}>
-                  <Pressable onPress={uploadImage}>
-                    <View style={{
-                      backgroundColor: "#DDEEF2",
-                      height: 30,
-                      marginLeft: 20,
-                      borderRadius: '50%'
-                    }}>
 
-                    </View>
-                  </Pressable>
                 </View>
                 <View style={{
                   width: 200,
@@ -264,7 +252,7 @@ const Mypage_main = function ({ navigation }) {
           <TouchableOpacity onPress={() => {
             console.log('선호 상품?', token);
 
-            axios.get("http://13.209.73.153:5000/likeproduct/list",
+            axios.get("http://172.30.1.31:5000/likeproduct/list",
               {
                 headers: {
                   'X-AUTH-TOKEN': token,
@@ -322,7 +310,7 @@ const Mypage_main = function ({ navigation }) {
         }}><TouchableOpacity onPress={() => {
           console.log('비선호 상품?', token);
 
-          axios.get("http://13.209.73.153:5000/dislikeproduct/list",
+          axios.get("http://172.30.1.31:5000/dislikeproduct/list",
             {
               headers: {
                 'X-AUTH-TOKEN': token,
@@ -382,7 +370,7 @@ const Mypage_main = function ({ navigation }) {
 
 
             dispatch(changeAction.setchange_list());
-            axios.get(`http://13.209.73.153:5000/mypage/checkUserInfo`,
+            axios.get(`http://172.30.1.31:5000/mypage/checkUserInfo`,
               {
                 headers: {
                   'X-AUTH-TOKEN': token
@@ -454,7 +442,7 @@ const Mypage_main = function ({ navigation }) {
 
 
 
-            axios.get("http://13.209.73.153:5000/mypage/faq",
+            axios.get("http://172.30.1.31:5000/mypage/faq",
               {
                 headers: {
                   'X-AUTH-TOKEN': token
@@ -493,7 +481,7 @@ const Mypage_main = function ({ navigation }) {
 
         </View>
         <TouchableOpacity onPress={() => {
-          axios.get("http://13.209.73.153:5000/mypage/danger",
+          axios.get("http://172.30.1.31:5000/mypage/danger",
             {
               headers: {
                 'X-AUTH-TOKEN': token
@@ -529,7 +517,6 @@ const Mypage_main = function ({ navigation }) {
 
         }
         }
-
         >
           <View style={{
             backgroundColor: 'white',
@@ -554,7 +541,7 @@ const Mypage_main = function ({ navigation }) {
 
 
 
-          axios.get("http://13.209.73.153:5000/mypage/pointdetail",
+          axios.get("http://172.30.1.31:5000/mypage/pointdetail",
             {
               headers: {
                 'X-AUTH-TOKEN': token
@@ -605,7 +592,7 @@ const Mypage_main = function ({ navigation }) {
           alignContent: 'center',
           alignSelf: 'center',
           margin: 10,
-          //  borderRadius: 10,
+          borderRadius: 20,
           justifyContent: 'center',
 
 

@@ -5,15 +5,17 @@ import * as ImagePicker from 'expo-image-picker';
 import { Pressable } from 'react-native';
 import Modal from "react-native-modal";
 import RNPickerSelect from 'react-native-picker-select';
-
+import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux'
 //import { Context } from "../contextv/DetailContext";
 //import { hydrate } from "react-dom";
 //import Barcode from "../component/barCode";
 var check = 1;
 var hangul = '아라'
 const Enroll_new = ({ navigation, misu, hey }) => {
-
+ const token = useSelector((state) => state.token.token)
  const [name, setname] = useState('');
+ const [work, setwork] = useState('');
  const [modalVisible, setModalVisible] = useState(false);
  const [heyvalue, setvalue] = useState('')
  const [imageUrl, setImageUrl] = useState('h');
@@ -21,6 +23,7 @@ const Enroll_new = ({ navigation, misu, hey }) => {
  const [status, requestPermission] = ImagePicker.useMediaLibraryPermissions();
  console.log('here')
  const [id, setid] = useState('')
+
  const uploadImage = async () => {
   // 권한 확인 코드: 권한 없으면 물어보고, 승인하지 않으면 함수 종료
   if (!status?.granted) {
@@ -41,10 +44,12 @@ const Enroll_new = ({ navigation, misu, hey }) => {
   }
   // 이미지 업로드 결과 및 이미지 경로 업데이트
   console.log('이미지 화깅ㄴ')
-  console.log(result);
+  console.log(result.uri);
 
   setImageUrl(result.uri);
- };
+
+
+ }
  const checkmisu = function () {
 
   if (!hey) {
@@ -62,7 +67,7 @@ const Enroll_new = ({ navigation, misu, hey }) => {
   }
   else if (!name || !imageUrl || !heyvalue || !hey) {
    console.log('비어잇는듯')
-   check = '비어있는 항목이 존재합니다.'
+   check = ''
    return check
 
   }
@@ -83,13 +88,90 @@ const Enroll_new = ({ navigation, misu, hey }) => {
    marginLeft: 10
 
   }}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    <View style={{
 
     width: '100%',
     height: 200,
     // backgroundColor: 'pink'
    }}>
+    <Modal
+     animationType="slide"
+     transparent={true}
+     visible={modalVisible}
+     onRequestClose={() => {
+      Alert.alert("Modal has been closed.");
+      setModalVisible(!modalVisible);
+     }}>
+     <View style={styles.centeredView2}>
+      <View style={styles.modalView2}>
+       <Text style={{
+        color: 'white',
+        fontSize: 18,
+        textAlign: 'center',
+        fontFamily: "Nam-Bold"
 
+       }}>
+        상품등록이 요청되었습니다
+       </Text>
+       <View style={{
+        flexDirection: 'row',
+        marginTop: 20,
+
+       }}>
+        <TouchableOpacity onPress={() => {
+         //delete_all()
+
+         setModalVisible(!modalVisible)
+
+         //navigation.navigate('Edit')
+        }}>
+         <View style={{
+          width: 100,
+          backgroundColor: '#DDEEF2',
+          height: 30,
+          borderRadius: 20,
+          marginLeft: 60
+         }}>
+          <Text style={{
+           fontSize: 20,
+           color: '#444040', fontWeight: 'bold',
+           textAlign: 'center',
+           flexDirection: 'row',
+           fontFamily: "Nam-Bold",
+
+           margin: 3
+          }}>
+           확인
+          </Text>
+
+         </View>
+
+        </TouchableOpacity>
+
+       </View>
+
+      </View>
+
+     </View>
+    </Modal >
     <TouchableOpacity onPress={uploadImage}>
 
      <View style={{
@@ -196,7 +278,7 @@ const Enroll_new = ({ navigation, misu, hey }) => {
         <View>
          <Text style={{
           color: '#B9B9B9',
-          marginTop: 10,
+
 
           //padding: 20,
           fontSize: 10,
@@ -223,32 +305,31 @@ const Enroll_new = ({ navigation, misu, hey }) => {
        marginTop: 15,
        margin: 5,
       }}> 회사</Text>
-      <View style={{
-       width: 110,
-
-       height: 35,
-
-       margin: 10,
-       backgroundColor: 'white',
-       borderRadius: 10
 
 
-      }}>
-       <RNPickerSelect
-        onValueChange={(value) => {
+      <TextInput
+       style={{
+        width: '30%',
+        height: 35,
+        borderRadius: 10,
+        borderColor: 'transparent',
+        borderWidth: 3,
 
-         setvalue(value);
-         console.log(value)
-        }}
-        items={[
-         { label: 'Football', value: 'football' },
-         { label: 'Baseball', value: 'baseball' },
-         { label: 'Hockey', value: 'hockey' },
-        ]}
-       />
+        justifyContent: 'center',
+        alignSelf: 'center',
+        backgroundColor: 'white',
+        margin: 10,
+        //padding: 20,
+        fontSize: 8,
+        fontFamily: "Nam-Bold"
+       }}
+       value={work}
+       placeholder="회사명을 입력해주세요"
+       placeholderTextColor={'#B9B9B9'}
+       autoCorrect={false}
+       onChangeText={(ele) => setwork(ele)}>
 
-
-      </View>
+      </TextInput>
 
      </View>
 
@@ -282,6 +363,34 @@ const Enroll_new = ({ navigation, misu, hey }) => {
 
     <TouchableOpacity onPress={() => {
 
+
+     axios.post("http://172.30.1.31:5000/product/requestProduct", {
+
+      "name": name,
+      "brand": work,
+      "product_image": imageUrl,
+      "barcode": hey
+
+     },
+      {
+       headers: {
+        'X-AUTH-TOKEN': token
+
+       }
+      }
+     ).then((response) => {
+      if (response) {
+       console.log('?등록완료')
+       // console.log(total_response)
+       setModalVisible(true)
+      }
+     }).catch((err) => {
+      console.log(err.message);
+
+     });
+
+     console.log(hey, name, work, imageUrl)
+
     }}>
      <View style={{
       borderRadius: 20,
@@ -299,7 +408,7 @@ const Enroll_new = ({ navigation, misu, hey }) => {
        fontWeight: 'bold',
        fontFamily: "Nam-Bold",
        marginTop: 10,
-      }}>추가하기</Text>
+      }}>등록하기</Text>
 
      </View>
     </TouchableOpacity>
@@ -319,4 +428,143 @@ const Enroll_new = ({ navigation, misu, hey }) => {
  )
 }
 
+const styles = StyleSheet.create({
+ container: {
+  width: '100%', height: 330
+  , padding: 16, paddingTop: 30, backgroundColor: '#fff'
+ },
+ container_2: {
+  width: '100%', height: 250
+  , padding: 16, paddingTop: 30, backgroundColor: '#fff'
+ },
+
+ head: { height: 40, backgroundColor: '#f1f8ff' },
+
+
+ centeredView: {
+  flex: 1,
+  justifyContent: "center",
+  alignItems: "center",
+  marginTop: 22
+ },
+ modalView: {
+  width: '90%',
+  height: '90%',
+  margin: 20,
+  backgroundColor: "#545252",
+  opacity: 0.96,
+
+  borderRadius: 20,
+  padding: 35,
+  //alignItems: "center",
+  shadowColor: "#000",
+  shadowOffset: {
+   width: 0,
+   height: 2
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 4,
+  elevation: 5
+ },
+ button: {
+  borderRadius: 20,
+  padding: 10,
+  elevation: 2
+ },
+ buttonOpen: {
+  backgroundColor: "#545252",
+ },
+ buttonClose: {
+  backgroundColor: "#545252",
+ },
+ textStyle: {
+  color: "white",
+  fontWeight: "bold",
+  fontSize: 20,
+  marginLeft: 40,
+  fontFamily: "Nam-Bold"
+ },
+ modalText: {
+  marginBottom: 15,
+  textAlign: "center",
+  fontFamily: "Nam-Bold",
+  fontSize: 30,
+  color: '#ffffff',
+  marginLeft: 50
+
+ },
+ modalTextv: {
+  marginBottom: 20,
+  fontFamily: "Nam-Bold",
+  fontSize: 20,
+  color: '#FFFFFF'
+
+ }
+
+
+
+
+ ,
+ centeredView2: {
+  flex: 1,
+  justifyContent: "center",
+  alignItems: "center",
+  marginTop: 22
+ },
+ modalView2: {
+  width: '90%',
+  height: '20%',
+  margin: 20,
+  backgroundColor: "#545252",
+  opacity: 0.98,
+
+  //b//orderRadius: 20,
+  padding: 35,
+  //alignItems: "center",
+  shadowColor: "#000",
+  shadowOffset: {
+   width: 0,
+   height: 2
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 4,
+  elevation: 5,
+  position: 'relative'
+ },
+ button2: {
+  //orderRadius: 20,
+  padding: 10,
+  elevation: 2
+ },
+ buttonOpen2: {
+  backgroundColor: "#545252",
+ },
+ buttonClose2: {
+  backgroundColor: "#545252",
+ },
+ textStyle2: {
+  color: "white",
+  fontWeight: "bold",
+  fontSize: 20
+
+ },
+ modalText2: {
+  marginBottom: 15,
+  textAlign: "center",
+  fontSize: 30,
+  color: 'white',
+  fontFamily: "Nam-Bold"
+
+
+ },
+ modalTextv2: {
+  marginBottom: 15,
+
+  fontSize: 30,
+  color: '#71A6E3'
+
+ }
+
+
+})
 export default Enroll_new
