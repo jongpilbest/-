@@ -43,12 +43,14 @@ const Componcopy = function ({ vale, gogo }) {
                 {
 
                     backgroundColor: '#ffffff',
+                    borderColor: '#545252',
+                    borderwidth: '1',
                     width: 89,
                     height: 100,
                     marginTop: 10,
                     marginLeft: 20,
                     padding: 0,
-                    borderRadius: 10,
+                    borderRadius: 5,
                     flexDirection: "row",
 
                 }
@@ -78,11 +80,12 @@ const Componcopy = function ({ vale, gogo }) {
 
             return (
                 {
-                    backgroundColor: '#ffffff',
+                    borderWidth: 1,
+                    borderColor: '#545252',
                     width: 89,
                     height: 100,
                     marginTop: 10,
-                    marginLeft: 20,
+                    marginLeft: 18,
                     padding: 0,
                     borderRadius: 20,
 
@@ -117,7 +120,8 @@ const Componcopy = function ({ vale, gogo }) {
             return (
                 {
 
-                    backgroundColor: '#FF4444',
+
+                    backgroundColor: '#FFE978',
                     width: 89,
                     height: 100,
                     marginTop: 10,
@@ -141,12 +145,11 @@ const Componcopy = function ({ vale, gogo }) {
 
 
                 {
-
-                    backgroundColor: '#FF4444',
+                    backgroundColor: '#FFE978',
                     width: 89,
                     height: 100,
                     marginTop: 10,
-                    marginLeft: 20,
+                    marginLeft: 18,
                     padding: 0,
                     borderRadius: 20,
                     flexDirection: "row",
@@ -164,11 +167,14 @@ const Componcopy = function ({ vale, gogo }) {
 
                 {
 
-                    backgroundColor: '#ffffff',
+
+                    borderWidth: 1,
+                    borderColor: '#545252',
+                    backgroundColor: 'white',
                     width: 89,
                     height: 100,
                     marginTop: 10,
-                    marginLeft: 20,
+                    marginLeft: 18,
                     padding: 0,
                     borderRadius: 20,
                     flexDirection: "row",
@@ -205,12 +211,12 @@ const Componcopy = function ({ vale, gogo }) {
                 }}>
 
                     <Text style={{
-                        fontSize: 14,
+                        fontSize: 12,
                         color: '#545252',
                         fontWeight: 'bold',
-                        marginLeft: 4,
+
                         marginTop: 0,
-                        fontFamily: 'Nam-Bold',
+                        fontFamily: 'Sc',
 
 
 

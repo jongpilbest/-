@@ -15,12 +15,12 @@ const Gisa = function ({ navigation }) {
  console.log(item)
  return (
   <View style={{
-   backgroundColor: '#DDEEF2',
+   backgroundColor: '#F2F2F2',
    height: 3000,
   }}>
 
    <View style={{
-    backgroundColor: '#F4F4F4',
+    backgroundColor: '#F2F2F2',
     height: 80,
     width: '100%',
 
@@ -29,14 +29,14 @@ const Gisa = function ({ navigation }) {
 
     <Text style={{
      fontSize: 20,
-     alignSelf: "flex-start",
+    
      //color: '#7C7C7C',
      marginTop: 30,
      marginLeft: 20,
      position: 'absolute',
 
 
-     fontFamily: "Nam-Bold"
+     fontFamily: "Sc"
     }}>트랜드기사</Text>
    </View>
 
@@ -100,7 +100,7 @@ const style = StyleSheet.create({
 
   borderWidth: 3,
   margin: 10,
-  borderRadius: 10,
+  borderRadius: 5,
   marginLeft: '3%',
   marginLeft: 15,
   marginTop: '5%',

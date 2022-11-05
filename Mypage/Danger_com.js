@@ -1,4 +1,3 @@
-
 import { useSelector, useDispatch } from 'react-redux'
 import React, { useState, useContext, useEffect } from "react"
 import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
@@ -28,9 +27,9 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
       return {
          positon: 'absolute',
          top: hey,
-         backgroundColor: 'white',
-         width: 30,
-         height: 30,
+         backgroundColor: '#545252',
+         width: 38,
+         height: 38,
          borderRadius: 30,
          margin: 16,
          marginLeft: 16,
@@ -43,7 +42,7 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
    return (
       <View style={{
          width: 60,
-         height: 220,
+         height: 250,
          borderRadius: 30,
          flexDirection: 'row'
 
@@ -55,12 +54,15 @@ const Danger_com = function ({ navigation, key_r, heck, jhey }) {
 
             <Text style={{
 
-               fontSize: 9,
+               fontSize: 12,
                textAlign: 'center',
-               fontFamily: "Nam-Bold"
+               fontFamily: "Sc"
                , margin: 8,
+               justifyContent: 'center',
+               alignSelf: 'center',
+               color: 'white'
             }}>
-               {jhey}
+               {jhey}%
             </Text>
 
          </View>

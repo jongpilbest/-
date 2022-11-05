@@ -22,12 +22,26 @@ import { Ionicons } from '@expo/vector-icons';
 const fifth = function ({ navigation }) {
     const dispatch = useDispatch();
     const [MS_good, misu] = Ms();
+    const [num, setnum] = useState(false);
+    const compon_length = useSelector((state) => state.auth.array_list);
+    useEffect(() => {
+        console.log('하나 이상 ?', compon_length.length)
+        if (compon_length.length > 0) {
+            setnum(false);
+        }
+        if (compon_length.length == 0) {
+            setnum(true);
+        }
+
+    }, [compon_length])
+
     // const [chna, mos_original] = fian();
     //console.log(misu);
     //  console.log('에러십활')
     const [go, setgo] = useState(0);
     const mos = useSelector((state) => state.auth.allergy)
     // console.log(mos)
+
 
     const misugo = function (el) {
         dispatch(authAction.setallergy_1(el))
@@ -157,7 +171,7 @@ const fifth = function ({ navigation }) {
     return (
 
         <View style={{
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#F2F2F2',
             height: '100%'
         }}>
 
@@ -170,12 +184,12 @@ const fifth = function ({ navigation }) {
 
                     marginLeft: 15,
                     marginTop: 20,
-                }} name="arrow-back-circle" size={50} color="black" />
+                }} name="arrow-back-circle" size={50} color="#545252" />
 
             </TouchableOpacity>
 
             <View style={{
-                marginTop: '3%',
+                marginTop: '1%',
                 marginLeft: '3%'
             }}>
                 <Text style={{
@@ -186,7 +200,7 @@ const fifth = function ({ navigation }) {
                         color: '#545252',
 
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+                        fontFamily: 'Sc',
                     }}>
                         알레르기
                     </Text>
@@ -195,7 +209,7 @@ const fifth = function ({ navigation }) {
                         color: '#545252',
 
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+                        fontFamily: 'Sc',
                     }}>
                         성분을 알려주세요
                     </Text>
@@ -207,7 +221,7 @@ const fifth = function ({ navigation }) {
                     marginTop: 10,
 
                     fontWeight: 'bold',
-                    fontFamily: 'Nam-Bold',
+                    fontFamily: 'Sc',
                 }}>
                     마이페이지에서 변경 가능합니다.
 
@@ -220,6 +234,16 @@ const fifth = function ({ navigation }) {
             }} >
 
             </SeachBar>
+            {
+                num && <Text style={{
+                    fontFamily: 'Sc',
+                    marginLeft: 170,
+                    color: '#545252'
+
+                }}>
+                    최소 하나 이상 선택해주세요
+                </Text>
+            }
 
             {
                 text_input == 1 && <Text style={{
@@ -229,12 +253,14 @@ const fifth = function ({ navigation }) {
 
                     fontWeight: 'bold'
                 }}>
-                    검색되는 상품이 없습니다
+                    검색되는 알레르기 성분이 없습니다
 
                 </Text>
             }
             <View style={{
-                height: '60%'
+                height: '52%',
+                width: '100%',
+                marginLeft: 10
             }}>
 
 
@@ -277,11 +303,11 @@ const fifth = function ({ navigation }) {
 
             }>
                 <View style={{
-                    backgroundColor: '#ffffff'
-                    , width: '45%',
-                    height: '22%',
-                    borderRadius: 10,
-                    marginTop: 19,
+                    backgroundColor: '#545252',
+                    width: '85%',
+                    height: 40,
+                    borderRadius: 5,
+                    marginTop: 30,
                     alignSelf: 'center',
                     alignContent: 'center'
 
@@ -294,10 +320,10 @@ const fifth = function ({ navigation }) {
                         alignItems: 'center',
                         alignContent: 'center',
                         textAlign: 'center',
-                        color: '#545252',
-                        marginTop: 10,
+                        color: 'white',
+                        marginTop: 12,
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+                        fontFamily: 'Sc',
                     }}>
                         다음
                     </Text>
@@ -337,10 +363,9 @@ const styles = StyleSheet.create({
     frined: {
 
         flexDirection: 'row',
-
         height: 700,
         // justifyContent: 'space-between',
-        backgroundColor: '#DDEEF2',
+        backgroundColor: '#F2F2F2',
         // justifyContent: 'flex-start',
         flexWrap: 'wrap'
     }

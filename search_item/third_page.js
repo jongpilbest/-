@@ -21,7 +21,7 @@ import { useRef } from "react";
 
 //const googleTTS = require('google-tts-api');
 //import Tts from 'react-native-tts';
-const Search_item_seconde = ({ navigation }) => {
+const third_page = ({ navigation }) => {
   let TimeoutId;
   //Tts.setDefaultLanguage('ko-KR');
   var [num, setnum] = useState(0);
@@ -1211,7 +1211,7 @@ const Search_item_seconde = ({ navigation }) => {
 
   )
 }
-Search_item_seconde.navigationOptions = () => {
+third_page.navigationOptions = () => {
   return {
     header: () => false,
   };
@@ -1358,4 +1358,4 @@ const styles = StyleSheet.create({
 
 
 })
-export default Search_item_seconde;
+export default third_page;

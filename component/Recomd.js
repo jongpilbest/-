@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import React, { useState, useContext, useEffect, useRef } from "react"
-import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
+import { View, Image, TextInput, TouchableOpacity, Button, Dimensions, StyleSheet, Text } from "react-native"
 import { useSelector, useDispatch } from 'react-redux'
 
 
@@ -92,8 +92,8 @@ var allergy_kr = [
   {
     name: 'soybean',
     check: 0,
-    kr: '콩',
-    image: ['https://cdn-icons-png.flaticon.com/512/6931/6931713.png', 'https://cdn-icons.flaticon.com/png/512/1680/premium/1680537.png?token=exp=1661068499~hmac=96e2e6a2c3078e041bee1164098dff48']
+    kr: '대두',
+    image: ['https://cdn-icons-png.flaticon.com/512/5601/5601387.png', 'https://cdn-icons-png.flaticon.com/512/5601/5601534.png']
 
   }
   , {
@@ -108,14 +108,14 @@ var allergy_kr = [
     name: 'crab',
     check: 0,
     kr: '게',
-    image: ['https://cdn-icons-png.flaticon.com/512/7260/7260090.png', 'https://cdn-icons.flaticon.com/png/512/2931/premium/2931496.png?token=exp=1661068588~hmac=4fc2b9e1dcbd833a8915c074208dff2e']
+    image: ['https://cdn-icons-png.flaticon.com/512/7260/7260090.png', 'https://cdn-icons-png.flaticon.com/512/2931/2931496.png']
 
 
   }, {
     name: 'shrimp',
     check: 0,
     kr: '새우',
-    image: ['https://cdn-icons.flaticon.com/png/512/2320/premium/2320381.png?token=exp=1661068625~hmac=2e1371c34fee900886540751b8baf096', 'https://cdn-icons.flaticon.com/png/512/1680/premium/1680526.png?token=exp=1661097958~hmac=b0f1634182264bf07a0dcbfb925680a2']
+    image: ['https://cdn-icons-png.flaticon.com/512/2619/2619506.png', 'https://cdn-icons-png.flaticon.com/512/2619/2619560.png']
 
   }, {
     name: 'pork',
@@ -127,13 +127,13 @@ var allergy_kr = [
     name: 'peach',
     check: 0,
     kr: '복숭아',
-    image: ['https://cdn-icons.flaticon.com/png/512/2521/premium/2521253.png?token=exp=1661068749~hmac=536d98045dd415aba4d69faf0ff80eff', 'https://cdn-icons.flaticon.com/png/512/2521/premium/2521249.png?token=exp=1661068749~hmac=cdc00c584914c9a5279da1cba13f6bd5']
+    image: ['https://cdn-icons-png.flaticon.com/512/2952/2952434.png', 'https://cdn-icons-png.flaticon.com/512/2952/2952859.png']
 
   }, {
     name: 'tomato',
     check: 0,
     kr: '토마토',
-    image: ['https://cdn-icons-png.flaticon.com/512/135/135471.png']
+    image: ['https://cdn-icons-png.flaticon.com/512/1413/1413626.png', 'https://cdn-icons-png.flaticon.com/512/1412/1412511.png']
 
   }, {
     name: 'peanut',
@@ -144,8 +144,7 @@ var allergy_kr = [
     name: 'chicken',
     check: 0,
     kr: '닭',
-    image: ['https://cdn-icons.flaticon.com/png/512/1886/premium/1886687.png?token=exp=1661068906~hmac=f6790b68baca8c6b1c622626395a64db',
-      'https://cdn-icons.flaticon.com/png/512/1886/premium/1886713.png?token=exp=1661068909~hmac=a675f05fed47a03e2a8dfe5c07a139b6']
+    image: ['https://cdn-icons-png.flaticon.com/512/1895/1895685.png', 'https://cdn-icons-png.flaticon.com/512/1895/1895698.png']
 
   }, {
     name: 'beef',
@@ -158,8 +157,7 @@ var allergy_kr = [
     name: 'squid',
     check: 0,
     kr: '오징어',
-    image: ['https://cdn-icons.flaticon.com/png/512/4753/premium/4753690.png?token=exp=1661069022~hmac=d0b802b97be01e11cd3a52267f2980cc',
-      'https://cdn-icons.flaticon.com/png/512/4754/premium/4754018.png?token=exp=1661069025~hmac=ce267dd44942fb9bd15ee8437c8511a5']
+    image: ['https://cdn-icons-png.flaticon.com/512/8824/8824287.png', 'https://cdn-icons-png.flaticon.com/512/616/616661.png']
 
   }, {
     name: 'shellfish',
@@ -178,8 +176,28 @@ var allergy_kr = [
       'https://cdn-icons-png.flaticon.com/512/1951/1951379.png']
 
 
-  }]
+  },
 
+  {
+
+
+
+
+
+
+    name: 'walnut',
+    check: 0,
+    kr: '호두',
+    image: ['https://cdn-icons-png.flaticon.com/512/1951/1951378.png',
+      'https://cdn-icons-png.flaticon.com/512/1951/1951379.png']
+
+
+
+  }
+
+
+
+]
 
 
 
@@ -190,11 +208,11 @@ const Recomd = function ({ show, keep }) {
   var second = '';
 
   if (firs.length >= 2) {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
       first += `${firs[i]} `;
 
     }
-    for (var g = 2; g <= firs.length - 1; g++) {
+    for (var g = 1; g <= firs.length - 1; g++) {
       second += `${firs[g]} `;
     }
 
@@ -209,7 +227,7 @@ const Recomd = function ({ show, keep }) {
   // var fins = fisr.toString()
 
   const go_page = function (elv) {
-    axios.post(`http://172.30.1.31:5000/product/custom`, {
+    axios.post(`http://15.165.76.99:5000/product/custom`, {
       "name": elv
 
     },
@@ -283,6 +301,18 @@ const Recomd = function ({ show, keep }) {
         // setcheck(response.data);
         //navigation.navigate('search_item_first', { data: response.data })
         //setUser(response);
+        mapv.sort((a, b) => {
+
+          if (a.check > b.check) {
+            return -1;
+          }
+          if (a.check < b.check) {
+            return 1;
+          }
+
+          // names must be equal
+          return 0;
+        });
         fo = {
           name: elv, ssec: ssec, mapv: mapv, id: id_check
         }
@@ -306,24 +336,27 @@ const Recomd = function ({ show, keep }) {
       go_page(show.name)
     }}>
       <View style={{
-        width: 100,
-        height: 140,
-        borderRadius: 50,
+        width: '90%',
+
+        height: Dimensions.get("window").height / 4.3,
+        borderRadius: 5,
         margin: 6,
         marginLeft: 10,
-        borderColor: '#DDEEF2',
-        borderWidth: 3,
+        borderColor: '#FFE978',
+        borderWidth: 1,
         backgroundColor: 'white',
+        display: 'flex'
       }}>
 
         <View style={{
-          width: 80,
-          height: 80,
-          margin: 2
+          width: 90,
+          height: 90,
+          margin: 5,
+          display: 'flex'
         }}>
           <Image
             style={{
-              height: '100%',
+              height: '90%',
               width: '100%',
               margin: 5,
               padding: 0,
@@ -334,25 +367,40 @@ const Recomd = function ({ show, keep }) {
             source={{ uri: show.image ? show.image : null }}
 
           />
-          <Text style={
-            {
-              fontSize: 8,
-              fontFamily: 'Nam-Bold',
-              textAlign: 'center'
-            }
-          }>
+          <View style={{
+            width: '95%',
+            height: 30,
 
-            {first} </Text>
-          <Text style={
-            {
-              fontSize: 8,
-              fontFamily: 'Nam-Bold',
-              textAlign: 'center'
 
-            }
-          }>
+            alignItems: 'center',
 
-            {second} </Text>
+            marginLeft: 10,
+            marginTop: '10%',
+            justifyContent: 'space-between'
+
+          }}>
+
+
+            <Text style={
+              {
+                fontSize: 11,
+                fontFamily: 'Sc',
+                textAlign: 'center'
+              }
+            }>
+
+              {first} </Text>
+            <Text style={
+              {
+                fontSize: 11,
+                fontFamily: 'Sc',
+                textAlign: 'center'
+
+              }
+            }>
+
+              {second} </Text>
+          </View>
         </View>
 
 

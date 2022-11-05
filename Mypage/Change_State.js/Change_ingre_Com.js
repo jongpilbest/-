@@ -22,7 +22,7 @@ const Change_ingre_Com = function ({ vale, gogo }) {
  const dispatch = useDispatch();
  const good_list = useSelector((state) => state.change.array_list_2);
  const original_list = useSelector((state) => state.change.ingre_original);
- //const check_change_arr = useSelector((state) => state.change.change_list)
+ const check_change_arr = useSelector((state) => state.change.change_list)
  // console.log('ARRAU& 리스트')
 
  const tr = original_list.includes(vale.name);
@@ -143,7 +143,7 @@ const Change_ingre_Com = function ({ vale, gogo }) {
    //console.log(vale.kr)
    //setfirst((pre) => pre + 1)
    console.log(good_list)
-   
+
 
 
    return (
@@ -238,7 +238,8 @@ const Change_ingre_Com = function ({ vale, gogo }) {
       fontWeight: 'bold',
       marginLeft: 4,
       marginTop: 0,
-      fontFamily: 'Nam-Bold',
+
+      fontFamily: 'Sc',
 
 
 

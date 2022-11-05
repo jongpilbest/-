@@ -2,7 +2,7 @@
 
 
 import React, { useState, useContext, useEffect, useRef } from "react"
-import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
+import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Dimensions, Text } from "react-native"
 
 
 var hey = -1;
@@ -37,15 +37,14 @@ const Search_Compo = function ({ navigation, vale, touch }) {
 
    <View style={{
     backgroundColor: 'white',
-    width: 140,
+    width: Dimensions.get("window").width / 2.6,
     height: 170,
-    marginTop: 15,
-    marginLeft: 20,
-    marginRight: 15,
+    margin: 15,
+
     padding: 0,
-    borderRadius: 100,
-    borderColor: '#DDEEF2',
-    borderWidth: 3,
+    borderRadius: 5,
+    borderColor: '#FFE978',
+    borderWidth: 2,
 
 
 
@@ -70,17 +69,17 @@ const Search_Compo = function ({ navigation, vale, touch }) {
     />
 
     <Text style={{
-     fontFamily: "Nam-Bold",
-     fontSize: 10,
+     fontFamily: "Sc",
+     fontSize: 12,
      textAlign: 'center',
      marginTop: 5,
-     marginLeft: 10,
+
 
     }}>
      {fist}
     </Text>
     <Text style={{
-     fontFamily: "Nam-Bold",
+     fontFamily: "Sc",
      fontSize: 10,
      textAlign: 'center',
 
@@ -92,7 +91,7 @@ const Search_Compo = function ({ navigation, vale, touch }) {
    </View>
 
 
-  </TouchableOpacity>
+  </TouchableOpacity >
 
  )
 }

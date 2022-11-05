@@ -1,7 +1,6 @@
-
 import { useSelector, useDispatch } from 'react-redux'
 import React, { useState, useContext, useEffect } from "react"
-import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
+import { View, Dimensions, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "react-native"
 
 import Danger_line from './Danger_line';
 import { Ionicons } from '@expo/vector-icons';
@@ -117,7 +116,7 @@ const Danger = function ({ navigation }) {
          kr: '토마토'
 
       }, {
-         name: 'walnut',
+         name: 'peanut',
          check: 0,
          kr: '땅콩'
       }, {
@@ -148,6 +147,13 @@ const Danger = function ({ navigation }) {
          kr: '달걀'
 
 
+      },
+      {
+         name: 'walnut',
+         check: 0,
+         kr: '대두'
+
+
       }]
    var kr = ['콩', '닭', '달걀', '우유', '밀가루', '쇠고기', '토마토', '돼지고기'];
 
@@ -169,7 +175,7 @@ const Danger = function ({ navigation }) {
    return (
 
       <View style={{
-         backgroundColor: '#ffffff'
+         backgroundColor: '#F2F2F2'
       }}>
 
 
@@ -190,7 +196,7 @@ const Danger = function ({ navigation }) {
 
                   marginLeft: 15,
                   marginTop: 20,
-               }} name="arrow-back-circle" size={50} color="black" />
+               }} name="arrow-back-circle" size={50} color="#" />
 
             </TouchableOpacity>
 
@@ -204,7 +210,8 @@ const Danger = function ({ navigation }) {
                position: 'absolute',
 
 
-               fontFamily: "Nam-Bold"
+
+               fontFamily: "Sc"
             }}>위험 성분 분석</Text>
             <Text style={{
                alignSelf: "center",
@@ -224,7 +231,7 @@ const Danger = function ({ navigation }) {
             <View style={{
 
                width: '100%',
-               height: 190,
+               height: Dimensions.get("window").height / 3,
                marginLeft: 10,
                marginTop: 20,
                backgroundColor: "#EAEAEA",
@@ -237,7 +244,7 @@ const Danger = function ({ navigation }) {
 
                <View style={{
 
-                  width: '100%',
+                  width: '90%',
                   height: 100,
                   marginLeft: 0,
                   //backgroundColor: 'pink',
@@ -282,7 +289,7 @@ const Danger = function ({ navigation }) {
                   width: '100%',
                   height: 90,
 
-                  marginTop: 30,
+                  marginTop: 35,
                   marginRight: 10,
                   marginLeft: 10
 
@@ -291,12 +298,12 @@ const Danger = function ({ navigation }) {
 
                   <View style={{
 
-                     width: '100%',
-                     height: 40,
+                     width: '90%',
+                     height: 48,
                      backgroundColor: 'white',
                      borderRadius: 10,
                      flexDirection: 'row',
-                     marginTop: 10,
+                     marginTop: 25,
                   }}>
                      {sec.map((el, index) => {
 

@@ -22,7 +22,7 @@ const Ingre_item = function ({ show }) {
   }}>
 
    <Text style={{
-    fontFamily: 'Nam-Regular',
+    fontFamily: 'Sc',
     fontSize: 13,
     textAlign: 'center',
     margin: 20,

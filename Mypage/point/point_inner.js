@@ -15,9 +15,9 @@ const Point_inner = function ({ data }) {
 
    width: 150,
    height: 150,
-   backgroundColor: '#EAEAEA',
+   backgroundColor: '#FFE978',
    margin: 10,
-   borderRadius: 20,
+   borderRadius: 5
 
 
   }} >
@@ -31,7 +31,7 @@ const Point_inner = function ({ data }) {
 
       return <Text key={index} style={{
        fontSize: 15,
-       fontFamily: "Nam-Bold",
+       fontFamily: "Sc",
        color: '#727272'
       }}>
        {
@@ -53,7 +53,7 @@ const Point_inner = function ({ data }) {
      marginLeft: 10,
      marginTop: 20,
      fontSize: 12,
-     fontFamily: "Nam-Bold",
+     fontFamily: "Sc",
      color: '#727272'
 
     }}>
@@ -63,7 +63,7 @@ const Point_inner = function ({ data }) {
      marginLeft: 15,
 
      fontSize: 30,
-     fontFamily: "Nam-Bold",
+     fontFamily: "Sc",
      color: '#727272'
 
     }}>

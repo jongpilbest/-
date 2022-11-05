@@ -21,11 +21,12 @@ const Qna_inner = function ({ item }) {
 
    width: 300,
    height: 160,
-   marginLeft: 15
+
   }}>
 
    <Text style={{
-    fontFamily: 'Nam-Bold',
+
+    fontFamily: 'Sc',
     margin: 10
    }}>
     {item}

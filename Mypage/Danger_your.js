@@ -84,7 +84,7 @@ const Danger_your = function ({ text, hey }) {
   }, {
    name: 'walnut',
 
-   kr: '땅콩'
+   kr: '호두'
   }, {
    name: 'chicken',
 
@@ -109,8 +109,15 @@ const Danger_your = function ({ text, hey }) {
   },
   {
    name: 'egg',
-   check: 0,
+
    kr: '달걀'
+
+
+  },
+  {
+   name: 'peanut',
+
+   kr: '땅콩'
 
 
   }]
@@ -125,25 +132,25 @@ const Danger_your = function ({ text, hey }) {
 
    width: '95%',
    height: 130,
-   backgroundColor: '#DDEEF2',
+   backgroundColor: 'white',
    marginTop: 20,
-   borderRadius: 50,
+   borderRadius: 5,
    marginLeft: 10,
 
   }} >
    <View style={{
     width: 80,
     height: 80,
-    borderRadius: '50%',
-    backgroundColor: 'white',
+    borderRadius: 50,
+    backgroundColor: '#FFE978',
     marginTop: 15,
-    marginLeft: 15,
+    marginLeft: 10,
     flexDirection: 'column'
 
 
    }}>
     <AntDesign name="warning" size={40} style={{
-     margin: 20
+     margin: 19
     }} color="black" />
 
    </View>
@@ -157,9 +164,10 @@ const Danger_your = function ({ text, hey }) {
    }}>
     <Text style={{
 
-     fontSize: 13,
-     fontFamily: 'Nam-Bold',
-     marginLeft: 15
+     fontSize: 14,
+
+     fontFamily: 'Sc',
+     marginLeft: 6
     }}>
      {chek}
     </Text>
@@ -171,15 +179,29 @@ const Danger_your = function ({ text, hey }) {
 
     position: 'absolute',
     top: 20,
-    left: 100
+    left: 100,
+    display: 'flex',
+    flexDirection: 'row'
    }}>
     <Text style={{
 
-     fontFamily: 'Nam-Bold',
+
+     fontFamily: 'Sc',
      fontSize: 15,
      marginTop: 30
     }}>
-     {`${nickname}님은${your} 성분을 주의하세요`}
+     {`${nickname}님은`}
+    </Text>
+    <Text style={{
+
+
+     fontFamily: 'Sc',
+     fontSize: 15,
+     marginTop: 30,
+     color: 'red'
+    }}>
+     {`${your} 성분을 주의하세요`}
+
     </Text>
 
    </View>

@@ -15,54 +15,54 @@ const Empty = function ({ navigation }) {
 
 
 
- return (
-  <View style={{
-   backgroundColor: '#DDEEF2',
-   height: '100%'
-  }}>
+   return (
+      <View style={{
+         backgroundColor: '#FFE978',
+         height: '100%'
+      }}>
 
-   <Text>
-    하단바 바꾸는거 
- </Text>
-
-
+         <Text>
+            하단바 바꾸는거
+         </Text>
 
 
-  </View >
 
- )
+
+      </View >
+
+   )
 
 
 }
 Empty.navigationOptions = () => {
- return {
-  header: () => false,
- };
+   return {
+      header: () => false,
+   };
 };
 
 const style = StyleSheet.create({
- text: {
-  width: 200,
-  height: 40,
-  borderColor: "black"
- },
+   text: {
+      width: 200,
+      height: 40,
+      borderColor: "black"
+   },
 
- border: {
-  width: '85%',
-  height: 50,
-  backgroundColor: 'white',
-  borderColor: 'white',
+   border: {
+      width: '85%',
+      height: 50,
+      backgroundColor: 'white',
+      borderColor: 'white',
 
-  borderWidth: 3,
-  margin: 10,
-  borderRadius: 10,
-  marginLeft: '3%',
-  marginLeft: 15,
-  marginTop: '5%',
+      borderWidth: 3,
+      margin: 10,
+      borderRadius: 5,
+      marginLeft: '3%',
+      marginLeft: 15,
+      marginTop: '5%',
 
 
 
- }
+   }
 
 })
 

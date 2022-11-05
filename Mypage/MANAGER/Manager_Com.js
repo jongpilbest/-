@@ -13,7 +13,7 @@ const Manager_Com = function ({ inner }) {
 
    width: 250,
    height: 100,
-   backgroundColor: '#DDEEF2',
+   backgroundColor: '#FFE978',
    margin: 10,
    borderRadius: 20,
    // alignContent: 'center',
@@ -39,7 +39,7 @@ const Manager_Com = function ({ inner }) {
 
      <Text style={{
       fontSize: 20,
-      fontFamily: "Nam-Bold",
+      fontFamily: "Sc",
       color: 'black',
       textAlign: 'center',
       marginTop: 30

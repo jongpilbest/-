@@ -63,14 +63,14 @@ const Write_Enroll = function ({ navigation }) {
 
     <Text style={{
      fontSize: 20,
-     alignSelf: "flex-start",
+    
      //color: '#7C7C7C',
      marginTop: 40,
      marginLeft: 70,
      position: 'absolute',
 
 
-     fontFamily: "Nam-Bold"
+     fontFamily: "Sc"
     }}>상품등록</Text>
    </View>
    <ScrollView>
@@ -84,7 +84,8 @@ const Write_Enroll = function ({ navigation }) {
 
     <View>
      <Text style={{
-      fontFamily: 'Nam-Bold',
+
+      fontFamily: 'Sc',
       fontSize: 18,
       textAlign: 'center',
       margin: 10,
@@ -107,7 +108,8 @@ const Write_Enroll = function ({ navigation }) {
 
     <View>
      <Text style={{
-      fontFamily: 'Nam-Bold',
+
+      fontFamily: 'Sc',
       fontSize: 18,
       margin: 10,
       textAlign: 'center'
@@ -134,7 +136,7 @@ const Write_Enroll = function ({ navigation }) {
       <View style={{
        width: 150,
        height: 50,
-       borderRadius: 10,
+       borderRadius: 5,
        display: 'flex',
        marginLeft: 200,
        backgroundColor: '#FF4444',
@@ -142,7 +144,8 @@ const Write_Enroll = function ({ navigation }) {
       }}>
        <Text style={
         {
-         fontFamily: 'Nam-Bold',
+
+         fontFamily: 'Sc',
          fontSize: 20,
          color: 'white',
          textAlign: 'center',
@@ -184,7 +187,7 @@ const styles = StyleSheet.create({
   borderRadius: 20,
   height: 350,
   // justifyContent: 'space-between',
-  backgroundColor: '#DDEEF2',
+  backgroundColor: '#FFE978',
   // justifyContent: 'flex-start',
   flexWrap: 'wrap'
  },
@@ -195,7 +198,7 @@ const styles = StyleSheet.create({
   borderRadius: 20,
   height: 700,
   // justifyContent: 'space-between',
-  backgroundColor: '#DDEEF2',
+  backgroundColor: '#FFE978',
   // justifyContent: 'flex-start',
   flexWrap: 'wrap'
  }

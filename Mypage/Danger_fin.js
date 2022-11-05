@@ -25,12 +25,12 @@ const Danger_fin = function ({ navigation, jhey }) {
       return {
          positon: 'absolute',
          top: hey,
-         backgroundColor: 'white',
-         width: 30,
-         height: 30,
+         backgroundColor: '#545252',
+         width: 38,
+         height: 38,
          borderRadius: 30,
          margin: 16,
-         marginLeft: 10,
+         marginLeft: 16,
          flexDirection: 'row'
       }
 
@@ -61,12 +61,16 @@ const Danger_fin = function ({ navigation, jhey }) {
 
             <Text style={{
 
-               fontSize: 9,
+
+               fontSize: 12,
                textAlign: 'center',
-               fontFamily: "Nam-Bold"
+               fontFamily: "Sc"
                , margin: 8,
+               justifyContent: 'center',
+               alignSelf: 'center',
+               color: 'white'
             }}>
-               {jhey}
+               {jhey + '%'}
             </Text>
 
          </View>

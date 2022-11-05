@@ -45,11 +45,11 @@ const style = StyleSheet.create({
         width: '85%',
         height: 40,
         backgroundColor: 'white',
-        borderColor: 'white',
 
-        borderWidth: 3,
+
+
         margin: 10,
-        borderRadius: 10,
+        borderRadius: 5,
 
         marginLeft: 25,
         marginTop: '5%',

@@ -189,7 +189,7 @@ const Change_State = function ({ navigation }) {
     return (
 
         <View style={{
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#F2F2F2',
             height: '100%'
         }}>
             <View style={{
@@ -200,7 +200,7 @@ const Change_State = function ({ navigation }) {
             }}>
                 <View style={{
                     width: '18%',
-                    backgroundColor: '#DDEEF2',
+                    backgroundColor: '#F2F2F2',
 
                 }}>
                     <TouchableOpacity onPress={() => {
@@ -218,10 +218,11 @@ const Change_State = function ({ navigation }) {
                 </View>
                 <View style={{
                     width: '43%',
-                    backgroundColor: '#DDEEF2',
+                    backgroundColor: '#F2F2F2',
                 }}>
                     <Text style={{
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                         fontSize: 15,
                         marginTop: 30,
                         marginLeft: 15
@@ -237,7 +238,8 @@ const Change_State = function ({ navigation }) {
                         navigation.navigate('Change_ingre')
                     }}>
                         <Text style={{
-                            fontFamily: 'Nam-Bold',
+
+                            fontFamily: 'Sc',
                             fontSize: 15,
                             marginTop: 30,
                             marginLeft: 15
@@ -263,7 +265,8 @@ const Change_State = function ({ navigation }) {
                         color: '#545252',
 
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                     }}>
                         알레르기
                     </Text>
@@ -272,7 +275,8 @@ const Change_State = function ({ navigation }) {
                         color: '#545252',
 
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                     }}>
                         성분 수정
                     </Text>
@@ -294,7 +298,8 @@ const Change_State = function ({ navigation }) {
                         marginLeft: 140,
                         flexDirection: 'column',
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                     }}>
                         아전과 바뀐 상태가 존재하지 않습니다
                     </Text>
@@ -317,7 +322,7 @@ const Change_State = function ({ navigation }) {
                 </Text>
             }
             <View style={{
-                height: '60%'
+                height: '58%'
             }}>
 
 
@@ -427,8 +432,16 @@ const Change_State = function ({ navigation }) {
                         }, {
                             name: 'walnut',
                             check: 0,
+                            kr: '호두'
+                        },
+
+                        {
+                            name: 'peanut',
+                            check: 0,
                             kr: '땅콩'
-                        }, {
+                        },
+
+                        {
                             name: 'chicken',
                             check: 0,
                             kr: '닭'
@@ -480,7 +493,7 @@ const Change_State = function ({ navigation }) {
                 console.log(ob.allergy)
 
 
-                axios.patch(`http://172.30.1.31:5000/mypage/updateUser`, {
+                axios.patch(`http://15.165.76.99:5000/mypage/updateUser`, {
                     "allergy": ob.allergy
                 },
 
@@ -495,7 +508,9 @@ const Change_State = function ({ navigation }) {
                         console.log('성공했습니다')
                         console.log(response.data);
                         if (response.data == true) {
-                            dispatch(changeAction.setarray_list());//dispatch(changeAction.setarray_list());
+                            dispatch(changeAction.setarray_list());
+                            navigation.navigate('Mypage_main');
+                            //dispatch(changeAction.setarray_list());
                         }
                         else if (response.data == false) {
                             dispatch(changeAction.setchange_list());
@@ -519,10 +534,10 @@ const Change_State = function ({ navigation }) {
 
             }>
                 <View style={{
-                    backgroundColor: '#ffffff'
-                    , width: '45%',
+                    backgroundColor: '#FFE978'
+                    , width: '85%',
                     height: '25%',
-                    borderRadius: 10,
+                    borderRadius: 5,
                     marginTop: 5,
                     alignSelf: 'center',
                     alignContent: 'center'
@@ -539,7 +554,8 @@ const Change_State = function ({ navigation }) {
                         color: '#545252',
                         marginTop: 10,
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                     }}>
                         수정 완료
                     </Text>
@@ -582,7 +598,7 @@ const styles = StyleSheet.create({
 
         height: 700,
         // justifyContent: 'space-between',
-        backgroundColor: '#DDEEF2',
+        backgroundColor: '#F2F2F2',
         // justifyContent: 'flex-start',
         flexWrap: 'wrap'
     }

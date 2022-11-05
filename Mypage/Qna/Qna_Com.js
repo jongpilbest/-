@@ -63,12 +63,12 @@ const Qna_Com = function ({ item }) {
   if (check == 0) {
    return {
     backgroundColor: 'white',
-    width: 330,
+    width: '90%',
     height: 60,
     margin: 10,
     marginLeft: 20,
 
-    borderRadius: 10,
+    borderRadius: 5,
     borderColor: '#FFFFFF',
     flexDirection: 'row',
     flexWrap: 'wrap'
@@ -79,12 +79,12 @@ const Qna_Com = function ({ item }) {
   else if (check == 1) {
    return {
     backgroundColor: 'white',
-    width: 330,
+    width: '90%',
     height: 190,
     margin: 10,
     marginLeft: 20,
 
-    borderRadius: 10,
+    borderRadius: 5,
     borderColor: '#FFFFFF',
     flexDirection: 'row',
     flexWrap: 'wrap'
@@ -105,10 +105,12 @@ const Qna_Com = function ({ item }) {
    <View style={innerStyle()}
 
    >
-    <AntDesign style={{ margin: 15 }} name="questioncircleo" size={24} color="black" />
+
     <Text style={{
-     fontFamily: 'Nam-Bold',
-     marginTop: 15
+     fontFamily: 'Sc',
+     fontSize: 16,
+     marginTop: 15,
+     marginLeft: 15
     }}>
      {item.title}
     </Text>

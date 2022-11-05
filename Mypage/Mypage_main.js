@@ -74,7 +74,7 @@ const Mypage_main = function ({ navigation }) {
               color: 'white',
               fontSize: 20,
               textAlign: 'center',
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
 
             }}>
               로그아웃 하시겠습니까?
@@ -98,7 +98,7 @@ const Mypage_main = function ({ navigation }) {
                     color: '#444040', fontWeight: 'bold',
                     textAlign: 'center',
                     flexDirection: 'row',
-                    fontFamily: "Nam-Bold",
+                    fontFamily: "Sc",
 
                     margin: 3
                   }}>
@@ -120,7 +120,7 @@ const Mypage_main = function ({ navigation }) {
                 }}>
                   <Text style={{
                     fontSize: 20,
-                    fontFamily: "Nam-Bold",
+                    fontFamily: "Sc",
 
                     color: '#444040',
                     fontWeight: 'bold',
@@ -141,32 +141,40 @@ const Mypage_main = function ({ navigation }) {
 
       <View style={{
         backgroundColor: '#F4F4F4',
-        flex: 0.5,
+        flex: 0.8,
         //eight: '35%'
       }}>
         <Text style={{
-          fontSize: 20,
+          fontFamily: "Aullia"
+          , fontSize: 45,
+          marginLeft: 20,
+          marginTop: 25,
+          color: 'black'
+        }}>
+          Anof
+        </Text>
+        <Text style={{
+          fontSize: 16,
           alignSelf: "center",
-          //color: '#7C7C7C',
+          color: '#545252',
           position: 'absolute',
-          top: '35%',
-          left: '5%',
-          marginTop: '5%',
-          fontFamily: "Nam-Bold"
+          top: 90,
+          left: 30,
+          fontFamily: "Sc"
         }}>마이페이지</Text>
       </View>
       <View style={{
         flex: 1,
         height: '30%',
-        backgroundColor: 'white'
+        backgroundColor: '#F4F4F4'
       }}>
         <View>
           <View style={{
-            backgroundColor: '#EAEAEA',
+            backgroundColor: 'white',
             height: '85%',
             margin: 10,
             flexDirection: 'row',
-            borderRadius: 20
+            borderRadius: 5
 
 
           }}>
@@ -184,7 +192,7 @@ const Mypage_main = function ({ navigation }) {
                 width: '25%',
                 margin: 20,
                 marginLeft: 20,
-                borderRadius: 30,
+                borderRadius: 5,
                 position: 'relative',
                 flexDirection: 'row'
 
@@ -219,7 +227,7 @@ const Mypage_main = function ({ navigation }) {
 
                   <Text style={{
                     fontSize: 20,
-                    fontFamily: "Nam-Bold",
+                    fontFamily: "Sc",
                     margin: 20
                   }}>
                     {nickname}
@@ -238,7 +246,7 @@ const Mypage_main = function ({ navigation }) {
       </View>
 
       <View style={{
-        backgroundColor: '#DDEEF2',
+        backgroundColor: '#F2F2F2',
         flex: 2.5
       }}>
         <View style={{
@@ -247,12 +255,12 @@ const Mypage_main = function ({ navigation }) {
           width: '95%',
           margin: 5,
           marginLeft: 10,
-          borderRadius: 20
+          borderRadius: 5
         }}>
           <TouchableOpacity onPress={() => {
             console.log('선호 상품?', token);
 
-            axios.get("http://172.30.1.31:5000/likeproduct/list",
+            axios.get("http://15.165.76.99:5000/likeproduct/list",
               {
                 headers: {
                   'X-AUTH-TOKEN': token,
@@ -290,7 +298,7 @@ const Mypage_main = function ({ navigation }) {
             <Text style={{
               margin: 13,
               fontSize: 13,
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
             }}>
               선호상품 확인
 
@@ -306,11 +314,11 @@ const Mypage_main = function ({ navigation }) {
           width: '95%',
           margin: 5,
           marginLeft: 10,
-          borderRadius: 20
+          borderRadius: 5
         }}><TouchableOpacity onPress={() => {
           console.log('비선호 상품?', token);
 
-          axios.get("http://172.30.1.31:5000/dislikeproduct/list",
+          axios.get("http://15.165.76.99:5000/dislikeproduct/list",
             {
               headers: {
                 'X-AUTH-TOKEN': token,
@@ -345,7 +353,7 @@ const Mypage_main = function ({ navigation }) {
             <Text style={{
               margin: 13,
               fontSize: 13,
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
             }}>
               비선호상품 확인
             </Text>
@@ -361,7 +369,7 @@ const Mypage_main = function ({ navigation }) {
           width: '95%',
           marginLeft: 10,
           margin: 5,
-          borderRadius: 20
+          borderRadius: 5
         }}>
           <TouchableOpacity onPress={() => {
 
@@ -370,7 +378,7 @@ const Mypage_main = function ({ navigation }) {
 
 
             dispatch(changeAction.setchange_list());
-            axios.get(`http://172.30.1.31:5000/mypage/checkUserInfo`,
+            axios.get(`http://15.165.76.99:5000/mypage/checkUserInfo`,
               {
                 headers: {
                   'X-AUTH-TOKEN': token
@@ -423,7 +431,7 @@ const Mypage_main = function ({ navigation }) {
               margin: 13,
               fontSize: 13,
 
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
             }}>
               상태 수정
             </Text>
@@ -436,13 +444,13 @@ const Mypage_main = function ({ navigation }) {
           width: '95%',
           marginLeft: 10,
           margin: 5,
-          borderRadius: 20
+          borderRadius: 5
         }}>
           <TouchableOpacity onPress={() => {
 
 
 
-            axios.get("http://172.30.1.31:5000/mypage/faq",
+            axios.get("http://15.165.76.99:5000/mypage/faq",
               {
                 headers: {
                   'X-AUTH-TOKEN': token
@@ -473,7 +481,7 @@ const Mypage_main = function ({ navigation }) {
               margin: 13,
               fontSize: 13,
 
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
             }}>
               FAQ
             </Text>
@@ -481,7 +489,7 @@ const Mypage_main = function ({ navigation }) {
 
         </View>
         <TouchableOpacity onPress={() => {
-          axios.get("http://172.30.1.31:5000/mypage/danger",
+          axios.get("http://15.165.76.99:5000/mypage/danger",
             {
               headers: {
                 'X-AUTH-TOKEN': token
@@ -524,13 +532,13 @@ const Mypage_main = function ({ navigation }) {
             width: '95%',
             marginLeft: 10,
             margin: 5,
-            borderRadius: 20
+            borderRadius: 5
           }}>
             <Text style={{
               margin: 13,
               fontSize: 13,
 
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
             }}>
               위험성분 분석
             </Text>
@@ -541,7 +549,7 @@ const Mypage_main = function ({ navigation }) {
 
 
 
-          axios.get("http://172.30.1.31:5000/mypage/pointdetail",
+          axios.get("http://15.165.76.99:5000/mypage/pointdetail",
             {
               headers: {
                 'X-AUTH-TOKEN': token
@@ -572,13 +580,13 @@ const Mypage_main = function ({ navigation }) {
             width: '95%',
             marginLeft: 10,
             margin: 5,
-            borderRadius: 20
+            borderRadius: 5
           }}>
             <Text style={{
               margin: 13,
               fontSize: 13,
 
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
             }}>
               누적 포인트내역
             </Text>
@@ -586,13 +594,13 @@ const Mypage_main = function ({ navigation }) {
           </View>
         </TouchableOpacity>
         <View style={{
-          backgroundColor: '#D2D2D2',
+          backgroundColor: '#FFE978',
           width: '30%',
           height: '11%',
           alignContent: 'center',
           alignSelf: 'center',
           margin: 10,
-          borderRadius: 20,
+          borderRadius: 5,
           justifyContent: 'center',
 
 
@@ -607,7 +615,7 @@ const Mypage_main = function ({ navigation }) {
               fontSize: 15,
               flexDirection: 'row',
               // alignItems: 'center'
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
               ,
               textAlign: 'center',
               justifyContent: 'center',
@@ -680,7 +688,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 30,
     color: 'white',
-    fontFamily: "Nam-Bold"
+    fontFamily: "Sc"
 
 
   },

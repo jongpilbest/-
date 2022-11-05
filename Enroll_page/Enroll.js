@@ -44,30 +44,42 @@ const Enroll_page = function ({ navigation }) {
  return (
 
   <View style={{
-   backgroundColor: 'white',
+   backgroundColor: '#F2F2F2',
    height: '100%'
   }}>
 
    <View style={{
-    backgroundColor: '#F4F4F4',
+    backgroundColor: '#F2F2F2',
     width: '100%',
-    height: 100
+    height: '10%',
+    marginTop: '5%',
+
     //eight: '35%'
    }}>
     <Text style={{
-     fontSize: 20,
+     fontFamily: "Aullia"
+     , fontSize: 45,
+     marginLeft: 20,
+     marginTop: 9,
+     color: 'black'
+    }}>
+     Anof
+    </Text>
+    <Text style={{
+     fontSize: 16,
      alignSelf: "center",
-     //color: '#7C7C7C',
+     color: '#545252',
      position: 'absolute',
-     top: '35%',
-     left: '5%',
-     marginTop: '5%',
-     fontFamily: "Nam-Bold"
+     top: 80,
+     left: 30,
+     fontFamily: "Sc"
     }}>상품 등록하기</Text>
+
    </View>
    <View style={{
     height: '40%',
-    width: '100%'
+    width: '100%',
+
    }}>
 
     <Enroll_new misu={() => goto_barcode()} hey={item_show}></Enroll_new>

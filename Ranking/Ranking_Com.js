@@ -24,12 +24,12 @@ const Ranking_Com = function ({ fo, item, t }) {
 
   <View style={{
    backgroundColor: 'white',
-   width: 330,
+   width: '90%',
    height: 60,
    margin: 10,
    marginLeft: 20,
 
-   borderRadius: 10,
+   borderRadius: 5,
    borderColor: '#FFFFFF',
    flexDirection: 'row',
 
@@ -42,9 +42,9 @@ const Ranking_Com = function ({ fo, item, t }) {
 
    }}>
     <Text style={{
-     fontFamily: 'Nam-Regular',
+     fontFamily: 'Sc',
      fontSize: 23,
-     margin: 10
+     margin: 16
     }}>
      {`${t.ranking}위`}
     </Text>
@@ -53,7 +53,7 @@ const Ranking_Com = function ({ fo, item, t }) {
     width: '80%'
    }}>
     <Text style={{
-     fontFamily: 'Nam-Regular',
+     fontFamily: 'Sc',
      fontSize: 20,
      marginTop: 20,
 

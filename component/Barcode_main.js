@@ -195,6 +195,15 @@ const Barcode_main = ({ navigation }) => {
         'https://cdn-icons-png.flaticon.com/512/1951/1951379.png']
 
 
+    },
+    {
+      name: 'walnut',
+      check: 0,
+      kr: '호두',
+      image: ['https://cdn-icons-png.flaticon.com/512/1951/1951378.png',
+        'https://cdn-icons-png.flaticon.com/512/1951/1951379.png']
+
+
     }]
   // var state_state = (Context._currentValue.state.Barcode);
   //var state_ = (Context._currentValue.state.Barcode);
@@ -225,7 +234,7 @@ const Barcode_main = ({ navigation }) => {
     console.log('?', data)
 
     //바코드 백에서 정보 제공
-    await axios.post(`http://172.30.1.31:5000/product/custom`, {
+    await axios.post(`http://15.165.76.99:5000/product/custom`, {
       "barcode": data
       //현재 바코드가 데이터 베이스에 존재하는가 
 

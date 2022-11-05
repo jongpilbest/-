@@ -22,11 +22,12 @@ const first = function ({ navigation }) {
     const is_id = useSelector((state) => state.auth.id)
 
 
+
     // var userId = Math.floor(Math.random() * 10);
     // const { add_component, add_id, die } = useContext(Context)
 
     // const dispatch = useDispatch();
-    // const set_id = useSelector((state) => state.id);
+    const set_id = useSelector((state) => state.id);
     //const push = () =>
     // const z = 1;
 
@@ -38,10 +39,11 @@ const first = function ({ navigation }) {
         else {
             return {
                 fontSize: 15,
-                color: '#FF4444',
+                color: '#545252',
                 fontWeight: 'bold',
-                marginLeft: '50%',
-                fontFamily: 'Nam-Bold',
+                marginLeft: 20,
+
+                fontFamily: 'Sc',
             }
         }
     }
@@ -58,7 +60,7 @@ const first = function ({ navigation }) {
 
 
         console.log('//')
-        axios.get(`http://172.30.1.31:5000/auth/checkUserId/${id}`).then((response) => {
+        axios.get(`http://15.165.76.99:5000/auth/checkUserId/${id}`).then((response) => {
             if (response) {
                 console.log('?? first');
                 console.log(response.data)
@@ -98,7 +100,7 @@ const first = function ({ navigation }) {
 
     return (
         <View style={{
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#F2F2F2',
             height: '100%'
         }}>
 
@@ -111,7 +113,7 @@ const first = function ({ navigation }) {
 
                     marginLeft: 15,
                     marginTop: 20,
-                }} name="arrow-back-circle" size={50} color="black" />
+                }} name="arrow-back-circle" size={50} color="#545252" />
 
             </TouchableOpacity>
             <View style={{
@@ -126,7 +128,7 @@ const first = function ({ navigation }) {
                     color: '#545252',
                     marginLeft: 15,
                     fontWeight: 'bold',
-                    fontFamily: 'Nam-Bold',
+                    fontFamily: 'Sc',
 
 
                 }}>
@@ -152,24 +154,20 @@ const first = function ({ navigation }) {
             < TouchableOpacity onPress={() => {
 
 
-                if (id.length >= 0) {
+                if (id.length > 0) {
                     if (checkhey == false) {
 
                         // die();
-
+                        console.log('아이디좀')
+                        console.log(id)
 
                         dispatch(authAction.setid(id))
+                        console.log(set_id)
 
-                        // add_id(id);
-                        navigation.navigate('nickname')
+                        navigation.navigate('Nickname')
 
 
                     }
-
-
-
-
-
 
 
                 }
@@ -177,12 +175,13 @@ const first = function ({ navigation }) {
 
             }}>
                 <View style={{
-                    backgroundColor: '#FFFFFF'
-                    , width: '37%',
-                    height: 40,
-                    borderRadius: 10,
+                    backgroundColor: '#545252',
+
+                    width: '37%',
+                    height: 45,
+                    borderRadius: 5,
                     marginTop: '30%',
-                    marginLeft: '55%'
+                    marginLeft: '50%'
                     //marginTop: '40%'
 
 
@@ -192,17 +191,17 @@ const first = function ({ navigation }) {
                         alignItems: 'center',
                         alignContent: 'center',
                         textAlign: 'center',
-                        color: '#545252',
+                        color: 'white',
                         marginTop: '10%',
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+                        fontFamily: 'Sc',
                     }}>
                         다음
                     </Text>
                 </View>
 
 
-            </TouchableOpacity>
+            </TouchableOpacity >
 
         </View >
 
@@ -227,11 +226,11 @@ const style = StyleSheet.create({
         width: '85%',
         height: 50,
         backgroundColor: 'white',
-        borderColor: 'white',
+        borderColor: '#545252',
 
-        borderWidth: 3,
+        borderWidth: 1,
         margin: 10,
-        borderRadius: 10,
+        borderRadius: 5,
         marginLeft: '3%',
         marginLeft: 15,
         marginTop: '5%',

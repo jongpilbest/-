@@ -19,7 +19,7 @@ const Gisa_Com = function ({ navigation, good }) {
  console.log(contex_V)
  useEffect(() => {
 
-  axios.get(`http://172.30.1.31:5000/article/${good.id}`,
+  axios.get(`http://15.165.76.99:5000/article/${good.id}`,
 
    {
     headers: {
@@ -50,7 +50,7 @@ const Gisa_Com = function ({ navigation, good }) {
 
 
   <View style={{
-   backgroundColor: '#F4F4F4',
+   backgroundColor: '#FFE978',
    height: 100,
    width: '90%',
    margin: 10,
@@ -99,7 +99,7 @@ const Gisa_Com = function ({ navigation, good }) {
           <Text style={{
            fontSize: 16,
            textAlign: 'center',
-           fontFamily: "Nam-Bold",
+           fontFamily: "Sc",
            color: 'white',
            marginTop: 20
           }}>{inner.title}</Text>
@@ -108,8 +108,8 @@ const Gisa_Com = function ({ navigation, good }) {
            width: '100%',
            height: 350,
            marginTop: 30,
-           backgroundColor: 'white',
-           borderRadius: 10,
+           backgroundColor: '#FFE978',
+           borderRadius: 5,
           }}>
            <ScrollView>
             {
@@ -118,7 +118,7 @@ const Gisa_Com = function ({ navigation, good }) {
                fontSize: 15,
                margin: 5,
 
-               fontFamily: 'Nam-Bold'
+               fontFamily: 'Sc'
               }}>
                {el}
               </Text>
@@ -147,7 +147,7 @@ const Gisa_Com = function ({ navigation, good }) {
      <Text style={{
       fontSize: 12,
       textAlign: 'center',
-      fontFamily: "Nam-Bold",
+      fontFamily: "Sc",
       marginTop: 20
      }}>{inner.title}</Text>
 
@@ -161,7 +161,8 @@ const Gisa_Com = function ({ navigation, good }) {
       flexDirection: 'row'
      }}>
       <Text style={{
-       fontFamily: 'Nam-Bold',
+
+       fontFamily: 'Sc',
        margin: 10,
        marginLeft: 40,
        color: '#FF4444'
@@ -170,14 +171,16 @@ const Gisa_Com = function ({ navigation, good }) {
        #{inner.keyword1}
       </Text >
       <Text style={{
-       fontFamily: 'Nam-Bold',
+
+       fontFamily: 'Sc',
        marginTop: 10,
        color: '#FF4444'
       }}>
        #{inner.keyword2}
       </Text>
       <Text style={{
-       fontFamily: 'Nam-Bold', marginTop: 10,
+
+       fontFamily: 'Sc', marginTop: 10,
        marginLeft: 10,
        color: '#FF4444'
       }}>

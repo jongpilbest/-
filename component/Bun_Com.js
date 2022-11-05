@@ -5,7 +5,7 @@ import { View, Pressable, TextInput, TouchableOpacity, Button, StyleSheet, Text 
 import Modal from "react-native-modal";
 import { AntDesign } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
-const Sung_com = function ({ data }) {
+const Bun_Com = function ({ data }) {
 
  const [modalVisible, setModalVisible] = useState(false);
  const hey = data.bad.split('.');
@@ -52,7 +52,7 @@ const Sung_com = function ({ data }) {
       <ScrollView>
        <View style={{
         flexDirection: 'row',
-        display: 'flex-start',
+        
         width: '60%',
         height: '10%',
 
@@ -247,4 +247,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Sung_com;
+export default Bun_Com;

@@ -16,38 +16,38 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Danger_iter = function ({ text }) {
- const token = useSelector((state) => state.token.token)
+   const token = useSelector((state) => state.token.token)
 
- const nickname = useSelector((state) => state.owner.owner);
- var chek= `${text}%`
+   const nickname = useSelector((state) => state.owner.owner);
+   var chek = `${text}%`
 
- return (
-  <View style={{
+   return (
+      <View style={{
 
-   width: 40,
-   marginLeft: 40,
-   backgroundColor: 'white'
-  }} >
-   <Text style={{
+         width: 40,
+         marginLeft: 40,
+         backgroundColor: 'white'
+      }} >
+         <Text style={{
 
-    fontSize: 10,
-    fontFamily: "Nam-Bold",
-    marginTop: 10
+            fontSize: 10,
+            fontFamily: "Sc",
+            marginTop: 10
 
-   }}>
-    {
-     chek
-    }
+         }}>
+            {
+               chek
+            }
 
-   </Text>
-
-
-  </View>
+         </Text>
 
 
+      </View>
 
 
- )
+
+
+   )
 
 
 }

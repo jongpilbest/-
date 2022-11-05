@@ -136,7 +136,7 @@ const Item_inner = ({ navigation }) => {
       </View>
       <View style={{
        flexDirection: 'row',
-       display: 'flex-start',
+   
        width: '60%',
        height: '10%',
 

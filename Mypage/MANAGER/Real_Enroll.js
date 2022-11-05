@@ -6,6 +6,8 @@ import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "rea
 //import { authAction } from "../redux/auth";
 //import { cos } from 'react-native-reanimated';
 //import { counterActions } from "../store"
+
+
 import Componn from '../../signup/Componn'
 import Modal from "react-native-modal";
 import axios from "axios"
@@ -90,7 +92,7 @@ const Real_Enroll = function ({ navigation }) {
       kr: '토마토'
 
     }, {
-      name: 'walnut',
+      name: 'peanut',
       check: 0,
       kr: '땅콩'
     }, {
@@ -119,6 +121,13 @@ const Real_Enroll = function ({ navigation }) {
       name: 'egg',
       check: 0,
       kr: '달걀'
+
+
+    },
+    {
+      name: 'walnut',
+      check: 0,
+      kr: '호두'
 
 
     }]
@@ -228,11 +237,13 @@ const Real_Enroll = function ({ navigation }) {
     console.log(fi_conff);
     setModalVisible(true)
 
-    axios.post("http://172.30.1.31:5000/adminFun/newProduct", fi_conff).then((response) => {
+    axios.post("http://15.165.76.99:5000/adminFun/newProduct", fi_conff).then((response) => {
       if (response) {
         console.log('?? first');
         total_response = response.data
         console.log(response.data)
+        dispatch(authAction.setallergy_zero())
+        dispatch(authAction.setingre_zero())
 
         setModalVisible(true)
 
@@ -255,7 +266,7 @@ const Real_Enroll = function ({ navigation }) {
     <View style={{
       width: '100%',
       height: '100%',
-      backgroundColor: 'white'
+      backgroundColor: '#F2F2F2'
       // flexDirection: 'row'
     }}>
       <Modal
@@ -272,7 +283,7 @@ const Real_Enroll = function ({ navigation }) {
               color: 'white',
               fontSize: 18,
               textAlign: 'center',
-              fontFamily: "Nam-Bold"
+              fontFamily: "Sc"
 
             }}>
               상품이 등록 되었습니다
@@ -291,7 +302,7 @@ const Real_Enroll = function ({ navigation }) {
               }}>
                 <View style={{
                   width: 100,
-                  backgroundColor: '#DDEEF2',
+                  backgroundColor: '#FFE978',
                   height: 30,
                   borderRadius: 20,
                   marginLeft: 60
@@ -347,7 +358,7 @@ const Real_Enroll = function ({ navigation }) {
           position: 'absolute',
 
 
-          fontFamily: "Nam-Bold"
+          fontFamily: "Sc"
         }}>상품등록</Text>
       </View>
 
@@ -358,7 +369,7 @@ const Real_Enroll = function ({ navigation }) {
         <View style={{
           width: '100%',
           height: 2200,
-          backgroundColor: 'white'
+          backgroundColor: '#F2F2F2'
         }}>
 
           {zero == 1 &&
@@ -374,7 +385,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 50,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -387,7 +398,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 10
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -415,7 +427,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -440,7 +452,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 50,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -453,7 +465,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 10
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -481,7 +494,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -508,7 +521,8 @@ const Real_Enroll = function ({ navigation }) {
 
           <View>
             <Text style={{
-              fontFamily: 'Nam-Bold',
+
+              fontFamily: 'Sc',
               fontSize: 18,
               textAlign: 'center',
               margin: 10,
@@ -533,7 +547,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -546,7 +560,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -575,7 +590,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -600,7 +615,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -613,7 +628,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -642,7 +658,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -669,7 +685,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -682,7 +698,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -711,7 +728,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -739,7 +756,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -752,7 +769,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -781,7 +799,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -806,7 +824,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -819,7 +837,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -848,7 +867,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -874,7 +893,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -887,7 +906,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -916,7 +936,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -937,7 +957,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -950,7 +970,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -979,7 +1000,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -999,7 +1020,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -1012,7 +1033,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -1040,7 +1062,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -1060,7 +1082,7 @@ const Real_Enroll = function ({ navigation }) {
 
             width: 300,
             height: 60,
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#FFE978',
             margin: 10,
             borderRadius: 20,
             // alignContent: 'center',
@@ -1073,7 +1095,8 @@ const Real_Enroll = function ({ navigation }) {
               marginTop: 20
             }}>
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 17,
                 textAlign: 'center'
               }}>
@@ -1102,7 +1125,7 @@ const Real_Enroll = function ({ navigation }) {
                   backgroundColor: 'white',
 
                   // padding: 20,
-                  fontSize: 15, fontFamily: "Nam-Bold"
+                  fontSize: 15, fontFamily: "Sc"
 
                 }}
                 placeholder="입력해주세요"
@@ -1150,7 +1173,8 @@ const Real_Enroll = function ({ navigation }) {
 
             >
               <Text style={{
-                fontFamily: 'Nam-Bold',
+
+                fontFamily: 'Sc',
                 fontSize: 20,
                 textAlign: 'center',
 
@@ -1198,7 +1222,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     height: 350,
     // justifyContent: 'space-between',
-    backgroundColor: '#DDEEF2',
+    backgroundColor: '#FFE978',
     // justifyContent: 'flex-start',
     flexWrap: 'wrap'
   },
@@ -1209,7 +1233,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     height: 700,
     // justifyContent: 'space-between',
-    backgroundColor: '#DDEEF2',
+    backgroundColor: '#FFE978',
     // justifyContent: 'flex-start',
     flexWrap: 'wrap'
   },
@@ -1266,12 +1290,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     marginLeft: 40,
-    fontFamily: "Nam-Bold"
+    fontFamily: "Sc"
   },
   modalText: {
     marginBottom: 15,
     textAlign: "center",
-    fontFamily: "Nam-Bold",
+    fontFamily: "Sc",
     fontSize: 30,
     color: '#ffffff',
     marginLeft: 50
@@ -1279,7 +1303,7 @@ const styles = StyleSheet.create({
   },
   modalTextv: {
     marginBottom: 20,
-    fontFamily: "Nam-Bold",
+    fontFamily: "Sc",
     fontSize: 20,
     color: '#FFFFFF'
 
@@ -1337,7 +1361,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 30,
     color: 'white',
-    fontFamily: "Nam-Bold"
+    fontFamily: "Sc"
 
 
   },

@@ -6,7 +6,7 @@ import { View, TextInput, TouchableOpacity, Button, StyleSheet, Text } from "rea
 //import { Context2 } from '../contextv/DetailContext'
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
-//import { authAction } from "../redux/auth";
+import { authAction } from "../redux/auth";
 import { tokenAction } from "../redux/token";
 import { ownerAction } from "../redux/owner_name";
 //import { tokenAction } from "../redux/token";
@@ -56,18 +56,18 @@ const Edit = function ({ navigation }) {
     const [password, setpassword] = useState('');
     return (
         <View style={{
-            position: 'relative', backgroundColor: '#DDEEF2',
+            position: 'relative', backgroundColor: 'white',
             height: '100 %'
         }} >
             <View style={{
 
                 width: '100%',
-                height: '20%',
-                backgroundColor: 'white'
+                height: '28%',
+                backgroundColor: '#F2F2F2'
             }}>
                 <Text style={{
-                    fontFamily: "Nam-Bold"
-                    , fontSize: 50,
+                    fontFamily: "Sc"
+                    , fontSize: 66,
                     marginTop: 25,
                     marginLeft: 20
 
@@ -76,8 +76,12 @@ const Edit = function ({ navigation }) {
                     position: 'absolute',
                     top: '35%',
                     marginTop: '5%',
+                    color: 'black',
+                    fontFamily: 'Aullia',
+                    fontWeight: '900',
+
                 }}>
-                    로그인
+                    Anof
                 </Text>
             </View>
             <View>
@@ -87,21 +91,22 @@ const Edit = function ({ navigation }) {
                     style={{
                         width: '86%',
                         height: '13%',
-                        borderRadius: 20,
+                        borderRadius: 5,
                         borderColor: 'transparent',
-                        borderWidth: 3,
+
                         marginTop: '17%',
                         padding: 15,
                         justifyContent: 'center',
                         alignSelf: 'center',
-                        backgroundColor: 'white',
+                        borderWidth: 1,
+                        backgroundColor: '#F2F2F2',
                         //padding: 20,
                         fontSize: 10,
-                        fontFamily: "Nam-Bold"
+                        fontFamily: "Sc"
                     }}
                     value={id}
                     placeholder="아이디를 입력해주세요"
-                    placeholderTextColor={'#B9B9B9'}
+                    placeholderTextColor={'#545252'}
                     autoCorrect={false}
                     onChangeText={(ele) => setid(ele)}>
 
@@ -110,34 +115,47 @@ const Edit = function ({ navigation }) {
                     style={{
                         width: '86%',
                         height: '13%',
-                        borderRadius: 20,
-                        borderWidth: 3,
-                        borderColor: 'transparent',
+                        borderRadius: 5,
+
+
                         margin: 10,
                         justifyContent: 'center',
                         alignSelf: 'center',
-                        backgroundColor: 'white',
+                        backgroundColor: '#F2F2F2',
                         marginTop: 30,
                         padding: 15,
                         // padding: 20,
-                        fontSize: 10, fontFamily: "Nam-Bold"
+                        fontSize: 10, fontFamily: "Sc"
 
                     }}
                     placeholder="비밀번호를 입력해 주세요 "
-                    placeholderTextColor={'#B9B9B9'}
+                    placeholderTextColor={'#545252'}
                     value={password}
                     autoCorrect={false}
                     secureTextEntry={true}
                     onChangeText={(ele) => setpassword(ele)}>
 
                 </TextInput>
+
+
                 <View style={{
-                    flexDirection: 'row'
+                    flexDirection: 'row',
+                    width: '86%',
+                    height: '10%',
+                    backgroundColor: '#FFE978',
+                    display: 'flex',
+                    marginTop: '5%',
+                    padding: 15,
+                    justifyContent: 'center',
+                    alignSelf: 'center',
                 }}>
                     <TouchableOpacity onPress={() => {
 
-                        console.log('?', id, password)
-                        axios.post("http://172.30.1.31:5000/auth/login", {
+
+
+
+
+                        axios.post("http://15.165.76.99:5000/auth/login", {
 
                             "userId": id,
                             "password": password
@@ -171,71 +189,101 @@ const Edit = function ({ navigation }) {
                             console.log(err);
                             console.log(err.message);
 
+
+
+
+
+
                         });
                         //signtoken(id, password)
 
 
 
-
-                    }
-
-                        // navigation.navigate('index')
-                    }
-
-
-
-
-
-
-
-
-
-
-
-                    >
-
-
-                        <View style={{
-                            borderRadius: 15,
-                            alignSelf: "center",
-                            backgroundColor: 'white',
-                            width: 150,
-                            height: 34,
-                            marginTop: '20%',
-                            marginLeft: '35%'
-                        }}>
-
-
-
-                            <Text style={style.bottm}>
-                                로그인
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {
-                        navigation.navigate('first')
                     }}>
-                        <Text style={style.bottmm}>
-                            회원가입
+
+
+
+                        <Text style={{
+
+                            fontFamily: 'Sc',
+                            fontSize: 15,
+                            justifyContent: 'center',
+                            alignSelf: 'center',
+
+
+
+                            fontFamily: "Sc"
+
+                        }}>
+                            로그인
                         </Text>
+
                     </TouchableOpacity>
+
+
+
+
+
+
+
+
+
+
 
 
                 </View>
+                <View style={{
+                    flexDirection: 'row',
+                    width: '86%',
+                    height: '13%',
 
 
+                    marginTop: '5%',
+                    padding: 15,
+                    justifyContent: 'center',
+                    alignSelf: 'center',
+                }}>
+
+                    <View style={{
+                        width: '40%',
+                        height: '100%',
+
+                    }}>
+
+                        <View>
+                            <TouchableOpacity onPress={() => {
+                                navigation.navigate('first');
+                                dispatch(authAction.setallergy_zero())
+                                dispatch(authAction.setingre_zero())
+                            }}>
+                                <Text style={{
+
+                                    fontFamily: 'Sc',
+                                    fontSize: 15,
+                                    alignSelf: "center",
+                                    justifyContent: 'center',
+
+                                    color: '#545252',
+                                    marginTop: '3%'
+
+                                }}>
+                                    회원가입
+                                </Text>
+
+                            </TouchableOpacity>
+                        </View>
 
 
+                    </View>
 
-
-            </View>
-
+                </View>
+            </View >
         </View >
 
 
     )
 }
-//Edit.navigationsetOptions({ tabBarStyle: { display: 'none' } })
+//Edit.navigationsetOptions({tabBarStyle: {display: 'none' } })
 Edit.navigationOptions = () => {
     return {
         header: () => false,
@@ -251,7 +299,7 @@ const style = StyleSheet.create({
         margin: 10,
         justifyContent: 'center',
         alignSelf: 'center',
-        backgroundColor: '#D2E6FF'
+        backgroundColor: 'white'
 
     },
     login: {
@@ -264,23 +312,29 @@ const style = StyleSheet.create({
         // fontFamily: 'Mate-Regular'
 
 
-    }, bottm: {
+    }, bottmm: {
         //alignSelf: "center",
         //justifyContent: 'center',
-        top: '13%',
-        fontFamily: "Nam-Bold",
+
+        fontFamily: "Aullia",
         textAlign: 'center',
-        alignContent: 'center',
+
         fontSize: 15,
         color: '#545252',
         // fontFamily: 'Roboto',
 
-        marginTop: '4%'
-    }, bottmm: {
         marginTop: '10%',
-        fontFamily: 'Nam-Bold',
-        fontSize: 13,
+        marginLeft: '25%'
+    }, tt: {
+
+        fontFamily: 'Sc',
+        fontSize: 15,
         alignSelf: "center",
+        justifyContent: 'center',
+        marginTop: '50%',
+
+        color: '#545252',
+        marginTop: '7%'
     }
 
 })

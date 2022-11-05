@@ -7,7 +7,7 @@ import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } fr
 
 
 const Allery_item = function ({ show }) {
- console.log(show)
+
  const whwh = function () {
   if (show.check == 1) {
    return ({ uri: show.image ? show.image[1] : null })
@@ -75,7 +75,7 @@ const Allery_item = function ({ show }) {
    />
 
    <Text style={{
-    fontFamily: 'Nam-Regular',
+    fontFamily: 'Sc',
     fontSize: 13,
     textAlign: 'center',
     margin: 5,

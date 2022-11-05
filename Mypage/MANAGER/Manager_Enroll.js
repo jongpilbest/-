@@ -74,7 +74,7 @@ const Manager_Enroll = function ({ navigation }) {
 
   useEffect(() => {
 
-    axios.get("http://172.30.1.31:5000/adminFun/requestProductList",
+    axios.get("http://15.165.76.99:5000/adminFun/requestProductList",
 
       {
         headers: {
@@ -105,7 +105,7 @@ const Manager_Enroll = function ({ navigation }) {
       width: '100%',
       height: '100%',
       // flexDirection: 'row'
-      backgroundColor: 'white'
+      backgroundColor: '#F2F2F2'
     }}>
 
       <View style={{
@@ -131,14 +131,14 @@ const Manager_Enroll = function ({ navigation }) {
 
         <Text style={{
           fontSize: 20,
-          alignSelf: "flex-start",
+         
           //color: '#7C7C7C',
           marginTop: 40,
           marginLeft: 70,
           position: 'absolute',
 
 
-          fontFamily: "Nam-Bold"
+          fontFamily: "Sc"
         }}>상품요청 조회 </Text>
       </View>
 
@@ -186,12 +186,12 @@ const Manager_Enroll = function ({ navigation }) {
                     <View style={{
                       width: '100%',
                       height: 230,
-                      backgroundColor: '#DDEEF2',
+                      backgroundColor: '#F2F2F2',
                       marginTop: 30
                     }}>
 
 
-                      <Table Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+                      <Table Table borderStyle={{ borderWidth: 2, borderColor: 'white' }}>
                         <Row data={hey.tableHead} style={styles.head} textStyle={styles.text} />
                         <Rows data={hey.tableData} textStyle={styles.text} />
                       </Table>
@@ -201,7 +201,7 @@ const Manager_Enroll = function ({ navigation }) {
                       }}>
 
                       </View>
-                      <Table Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+                      <Table Table borderStyle={{ borderWidth: 2, borderColor: 'white' }}>
                         <Row data={hey_2.tableHead} style={styles.head2} textStyle={styles.text} />
                         <Rows data={hey_2.tableData} style={styles.head2} textStyle={styles.text} />
                       </Table>
@@ -216,15 +216,16 @@ const Manager_Enroll = function ({ navigation }) {
                           <View style={{
                             width: 100,
                             height: 40,
-                            borderRadius: 10,
-                            backgroundColor: '#FF4444',
+                            borderRadius: 5,
+                            backgroundColor: '#545252',
                             alignContent: 'flex-end',
                             alignSelf: 'flex-end',
                             marginTop: 20,
                             marginRight: 10,
                           }}>
                             <Text style={{
-                              fontFamily: 'Nam-Bold',
+
+                              fontFamily: 'Sc',
                               textAlign: 'center',
                               marginTop: 10,
 
@@ -279,11 +280,11 @@ const styles = StyleSheet.create({
 
   head2: {
     width: '60%',
-    height: 30, backgroundColor: '#f1f8ff'
+    height: 30, backgroundColor: '#FFE978'
   },
-  head: { height: 40, backgroundColor: '#f1f8ff' },
+  head: { height: 40, backgroundColor: '#FFE978' },
   text: {
-    margin: 6, fontFamily: "Nam-Bold",
+    margin: 6, fontFamily: "Sc",
     fontSize: 9,
   },
   centeredView: {
@@ -327,13 +328,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     marginLeft: 40,
-    fontFamily: "Nam-Bold"
+    fontFamily: "Sc"
 
   },
   modalText: {
     marginBottom: 15,
     textAlign: "center",
-    fontFamily: "Nam-Bold",
+    fontFamily: "Sc",
     fontSize: 30,
     color: '#ffffff',
     marginLeft: 50
@@ -341,7 +342,7 @@ const styles = StyleSheet.create({
   },
   modalTextv: {
     marginBottom: 20,
-    fontFamily: "Nam-Bold",
+    fontFamily: "Sc",
     fontSize: 20,
     color: '#FFFFFF'
 

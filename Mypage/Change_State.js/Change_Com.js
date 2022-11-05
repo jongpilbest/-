@@ -237,7 +237,8 @@ const Change_Com = function ({ vale, gogo }) {
                         fontWeight: 'bold',
                         marginLeft: 4,
                         marginTop: 0,
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
 
 
 

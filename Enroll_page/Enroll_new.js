@@ -61,13 +61,14 @@ const Enroll_new = ({ navigation, misu, hey }) => {
  }
 
  const full_of = function () {
-  if (name && imageUrl && heyvalue && hey) {
 
-   console.log('다 채움요')
+  if (name && imageUrl && hey && work) {
+
+   return
   }
-  else if (!name || !imageUrl || !heyvalue || !hey) {
+  else if (!name || !imageUrl || !heyvalue || !work) {
    console.log('비어잇는듯')
-   check = ''
+   check = '비어 있는 항목이 존재합니다'
    return check
 
   }
@@ -80,28 +81,16 @@ const Enroll_new = ({ navigation, misu, hey }) => {
   <View style={{
    flexDirection: 'row',
    width: '95%',
-   height: 330,
-   backgroundColor: '#DDEEF2',
+   height: 350,
+   backgroundColor: 'white',
+
    marginTop: '15%',
    flexDirection: 'column',
-   borderRadius: 20,
+
+   borderRadius: 5,
    marginLeft: 10
 
   }}>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -126,7 +115,7 @@ const Enroll_new = ({ navigation, misu, hey }) => {
         color: 'white',
         fontSize: 18,
         textAlign: 'center',
-        fontFamily: "Nam-Bold"
+        fontFamily: "Sc"
 
        }}>
         상품등록이 요청되었습니다
@@ -145,9 +134,9 @@ const Enroll_new = ({ navigation, misu, hey }) => {
         }}>
          <View style={{
           width: 100,
-          backgroundColor: '#DDEEF2',
+          backgroundColor: '#FFE978',
           height: 30,
-          borderRadius: 20,
+          borderRadius: 5,
           marginLeft: 60
          }}>
           <Text style={{
@@ -155,7 +144,7 @@ const Enroll_new = ({ navigation, misu, hey }) => {
            color: '#444040', fontWeight: 'bold',
            textAlign: 'center',
            flexDirection: 'row',
-           fontFamily: "Nam-Bold",
+           fontFamily: "Sc",
 
            margin: 3
           }}>
@@ -176,11 +165,12 @@ const Enroll_new = ({ navigation, misu, hey }) => {
 
      <View style={{
       width: 160,
-      height: 180,
-      borderRadius: 20,
+      height: 170,
+      borderRadius: 5,
       marginLeft: 20,
-      marginTop: 10,
-      backgroundColor: 'white',
+      marginTop: 20,
+      backgroundColor: '#FFE978',
+
       alignSelf: 'center'
      }}>
 
@@ -190,7 +180,7 @@ const Enroll_new = ({ navigation, misu, hey }) => {
         width: '100%',
         margin: 0,
         padding: 0,
-        borderRadius: 20
+        borderRadius: 10
 
         //       borderRadius: '50%',
        }}
@@ -211,31 +201,41 @@ const Enroll_new = ({ navigation, misu, hey }) => {
    }>
     <View style={{
      width: '100%',
+     height: 30
+    }}>
+
+    </View>
+    <View style={{
+     width: '100%',
      height: 50,
+
      flexDirection: 'row'
     }}>
      <Text style={{
-      fontFamily: "Nam-Bold",
-      fontSize: 13,
-      margin: 15
+      fontFamily: "Sc",
+      fontSize: 14,
+      marginLeft: 15,
+      marginTop: 18,
+      marginRight: 15,
+      color: '#545252'
      }}> 상품명</Text>
 
 
      <TextInput
       style={{
        width: '75%',
-       height: 35,
-       borderRadius: 10,
-       borderColor: 'transparent',
-       borderWidth: 3,
+       height: 30,
+       borderRadius: 5,
+       backgroundColor: 'white',
 
        justifyContent: 'center',
        alignSelf: 'center',
-       backgroundColor: 'white',
+
        margin: 10,
        //padding: 20,
        fontSize: 10,
-       fontFamily: "Nam-Bold"
+
+       fontFamily: "Sc"
       }}
       value={name}
       placeholder="상품명을 입력해주세요"
@@ -257,9 +257,12 @@ const Enroll_new = ({ navigation, misu, hey }) => {
       flexDirection: 'row'
      }}>
       <Text style={{
-       fontFamily: "Nam-Bold",
-       fontSize: 13,
-       margin: 15
+       fontFamily: "Sc",
+       marginLeft: 15,
+       marginTop: 18,
+       fontSize: 14,
+       marginRight: 15,
+       color: '#545252'
       }}> 바코드</Text>
       <TouchableOpacity onPress={() => {
        misu();
@@ -267,11 +270,14 @@ const Enroll_new = ({ navigation, misu, hey }) => {
        <View style={{
         width: 100,
 
-        height: 35,
+        height: 30,
 
         margin: 10,
+
         backgroundColor: 'white',
-        borderRadius: 10
+
+
+        borderRadius: 5
 
        }}>
 
@@ -283,14 +289,15 @@ const Enroll_new = ({ navigation, misu, hey }) => {
           //padding: 20,
           fontSize: 10,
           marginLeft: 5,
-          fontFamily: "Nam-Bold",
+          marginTop: 12,
+          fontFamily: "Sc",
           // textAlign: 'center'
          }}>{checkmisu()}</Text>
 
          <Text style={{
           fontSize: 10,
           marginLeft: 5,
-          fontFamily: "Nam-Bold",
+          fontFamily: "Sc",
 
          }}>{hey}</Text>
         </View>
@@ -300,28 +307,30 @@ const Enroll_new = ({ navigation, misu, hey }) => {
 
       </TouchableOpacity>
       <Text style={{
-       fontFamily: "Nam-Bold",
-       fontSize: 13,
-       marginTop: 15,
-       margin: 5,
+       fontFamily: "Sc",
+       fontSize: 14,
+       marginLeft: 5,
+       marginTop: 18,
+       marginRight: 7,
+       color: '#545252'
       }}> 회사</Text>
 
 
       <TextInput
        style={{
         width: '30%',
-        height: 35,
-        borderRadius: 10,
-        borderColor: 'transparent',
-        borderWidth: 3,
+        height: 30,
+        borderRadius: 5,
+        backgroundColor: 'white',
+
 
         justifyContent: 'center',
         alignSelf: 'center',
-        backgroundColor: 'white',
+
         margin: 10,
         //padding: 20,
-        fontSize: 8,
-        fontFamily: "Nam-Bold"
+        fontSize: 10,
+        fontFamily: "Sc"
        }}
        value={work}
        placeholder="회사명을 입력해주세요"
@@ -352,11 +361,11 @@ const Enroll_new = ({ navigation, misu, hey }) => {
 
    }}>
     <Text style={{
-     fontSize: 13,
+     fontSize: 15,
      marginLeft: 20,
-     fontFamily: "Nam-Bold",
-     marginTop: 40,
-     color: 'red',
+     fontFamily: "Sc",
+     marginTop: 70,
+     color: '#545252',
 
      fontWeight: 'bold',
     }}>{full_of()}</Text>
@@ -364,7 +373,7 @@ const Enroll_new = ({ navigation, misu, hey }) => {
     <TouchableOpacity onPress={() => {
 
 
-     axios.post("http://172.30.1.31:5000/product/requestProduct", {
+     axios.post("http://15.165.76.99:5000/product/requestProduct", {
 
       "name": name,
       "brand": work,
@@ -382,7 +391,12 @@ const Enroll_new = ({ navigation, misu, hey }) => {
       if (response) {
        console.log('?등록완료')
        // console.log(total_response)
-       setModalVisible(true)
+       setModalVisible(true);
+       setname("");
+       setwork("");
+       setvalue("");
+       setImageUrl("h");
+
       }
      }).catch((err) => {
       console.log(err.message);
@@ -393,21 +407,23 @@ const Enroll_new = ({ navigation, misu, hey }) => {
 
     }}>
      <View style={{
-      borderRadius: 20,
-      width: '60%',
-      height: 35,
+      borderRadius: 5,
+      width: '112%',
+      height: 40,
       marginTop: 30,
-      marginLeft: 90,
-      backgroundColor: '#DDEEF2'
+
+
+      backgroundColor: '#545252'
      }}>
       <Text style={{
-       fontSize: 13,
+       fontSize: 14,
        alignSelf: "center",
 
        position: 'absolute',
+       color: 'white',
        fontWeight: 'bold',
-       fontFamily: "Nam-Bold",
-       marginTop: 10,
+       fontFamily: "Sc",
+       marginTop: 13,
       }}>등록하기</Text>
 
      </View>
@@ -482,12 +498,12 @@ const styles = StyleSheet.create({
   fontWeight: "bold",
   fontSize: 20,
   marginLeft: 40,
-  fontFamily: "Nam-Bold"
+  fontFamily: "Sc"
  },
  modalText: {
   marginBottom: 15,
   textAlign: "center",
-  fontFamily: "Nam-Bold",
+  fontFamily: "Sc",
   fontSize: 30,
   color: '#ffffff',
   marginLeft: 50
@@ -495,7 +511,7 @@ const styles = StyleSheet.create({
  },
  modalTextv: {
   marginBottom: 20,
-  fontFamily: "Nam-Bold",
+  fontFamily: "Sc",
   fontSize: 20,
   color: '#FFFFFF'
 
@@ -553,7 +569,7 @@ const styles = StyleSheet.create({
   textAlign: "center",
   fontSize: 30,
   color: 'white',
-  fontFamily: "Nam-Bold"
+  fontFamily: "Sc"
 
 
  },

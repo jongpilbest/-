@@ -11,9 +11,9 @@ import { View, Image, TextInput, TouchableOpacity, Button, StyleSheet, Text } fr
 const first_H = function ({ show }) {
  console.log(show)
  useEffect(() => {
-  
 
-  
+
+
  })
  return (
   <View style={{
@@ -25,14 +25,14 @@ const first_H = function ({ show }) {
    backgroundColor: 'white'
   }}>
    <Text style={{
-    fontFamily: "Nam-Bold"
+    fontFamily: "Sc"
     , fontSize: 10,
     marginTop: 10,
     marginLeft: 20,
     margin: 10
 
    }}>
-   ㅇ아아
+    ㅇ아아
    </Text>
 
   </View>

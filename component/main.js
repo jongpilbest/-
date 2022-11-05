@@ -16,7 +16,14 @@ import Recomd from "./Recomd";
 import Allery_item from "../search_item/Allery_item";
 //import { useSelector, useDispatch } from 'react-redux'
 import Kisa from "./Kisa";
+
+import Bun from "./Bun";
+
+
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+
+
+
 const main = function ({ navigation }) {
   var item = navigation.getParam('item');
   var main_kisa = navigation.getParam('main_kisa');
@@ -117,62 +124,42 @@ const main = function ({ navigation }) {
   const [password, setpassword] = useState('');
   return (
     <View style={{
-      backgroundColor: 'white',
+      backgroundColor: '#F2F2F2',
 
     }} >
       <View style={{
         flexDirection: 'row'
       }}>
         <View style={{
-          width: 80,
+          width: '100%',
           height: 80,
           marginTop: 20,
-          backgroundColor: '#DDEEF2',
-          borderRadius: '50%',
-          alignItems: 'center',
-          marginLeft: 150,
+          backgroundColor: '#F2F2F2',
+
+
           flexDirection: 'column'
 
         }}>
           <Text style={{
             fontFamily: "Aullia"
-            , fontSize: 33,
-            textAlign: 'center',
-            marginTop: 20
+            , fontSize: 45,
+            marginLeft: 30,
+            marginTop: 20,
+            color: 'black'
           }}>
             Anof
           </Text>
         </View>
-        <TouchableOpacity onPress={() => {
 
-          navigation.navigate('Barcode_main');
-        }}>
-          <View style={{
-            marginTop: 40,
-            borderColor: 'black',
-            borderWidth: 1,
-            marginLeft: 60,
-            borderRadius: '50%',
-            width: 50,
-            height: 50,
-            backgroundColor: 'white',
-          }}>
-            <MaterialCommunityIcons
-              style={{
-
-                margin: 13
-              }}
-
-              name="barcode-scan" size={22} color="black" />
-          </View>
-        </TouchableOpacity>
       </View>
       <View style={{
-        backgroundColor: '#EAEAEA',
+        backgroundColor: 'white',
         width: '90%',
         height: 42,
+        borderWidth: 1,
+        borderColor: '#F2F2F2',
         margin: 15,
-        borderRadius: 20,
+        borderRadius: 5,
         flexDirection: 'row'
       }}>
         <Ionicons name="search"
@@ -181,10 +168,11 @@ const main = function ({ navigation }) {
           }} size={30} color="black" />
 
         <TextInput style={{
-          fontFamily: "Nam-Bold"
+          fontFamily: "Sc"
           , fontSize: 12,
           width: '100%',
           height: 40,
+
 
         }}
 
@@ -204,7 +192,7 @@ const main = function ({ navigation }) {
             ///product/search/{keyword}
             console.log(id, token);
 
-            axios.get(`http://172.30.1.31:5000/product/search/${id}`,
+            axios.get(`http://15.165.76.99:5000/product/search/${id}`,
 
               {
                 headers: {
@@ -231,6 +219,7 @@ const main = function ({ navigation }) {
 
 
           }
+
           }
         >
 
@@ -238,54 +227,190 @@ const main = function ({ navigation }) {
 
 
       </View>
-      <TouchableOpacity onPress={() => {
-        navigation.navigate('sung')
+      <View style={{
+        width: '90%',
+        height: '15%',
+
+        marginLeft: '3%',
+        flexDirection: 'row'
       }}>
-        <View
-          style={{
-            width: '90%',
-            height: 65,
-            margin: 3,
-            marginLeft: 15,
-            backgroundColor: '#DDEEF2',
-            borderRadius: 30,
-            flexDirection: 'row'
+
+        <View style={{
+          width: '47%',
+          height: '70%',
+          backgroundColor: '#FFE978',
+          marginTop: '2%',
+          marginLeft: '3%',
+
+        }}>
+
+
+          <TouchableOpacity onPress={() => {
+            navigation.navigate('Bun')
           }}>
-          <View style={{
-            backgroundColor: 'white',
-            width: 45,
-            height: 45,
-            margin: 10,
-            marginLeft: 20,
-            borderRadius: '50%'
-          }}>
-            <Ionicons
+            <View
               style={{
-                margin: 10
-              }}
-              name="information" size={24} color="black" />
+                width: '50%',
+                height: '90%',
+                margin: 3,
+                marginLeft: '5%',
+
+                borderRadius: 5,
+                flexDirection: 'row',
+
+              }}>
+              <View style={{
+                backgroundColor: 'white',
+                width: 55,
+                height: 55,
+                padding: '2%',
+                marginLeft: '5%',
+                marginTop: '10%',
+                borderRadius: 50,
+                alignItems: 'center'
 
 
-          </View>
 
-          <Text style={{
-            fontFamily: "Nam-Bold"
-            , fontSize: 12,
-            marginTop: 25,
-            marginLeft: 20
+              }}>
+                <Ionicons
+                  style={{
+                    margin: '20%'
+                  }}
+                  name="information" size={24} color="black" />
 
-          }}>
-            성분 정보
-          </Text>
+
+              </View>
+              <View style={{
+                alignContent: 'center',
+                justifyContent: 'center',
+                margin: '15%',
+                width: '80%',
+
+              }}>
+                <Text style={{
+
+                  fontSize: 12,
+
+
+
+                }}>
+                  성분 정보
+                </Text>
+
+              </View>
+
+
+
+            </View>
+          </TouchableOpacity>
 
         </View>
-      </TouchableOpacity>
-      <View>
+
+        <View style={{
+          width: '47%',
+          height: '70%',
+          backgroundColor: '#FFE978',
+          marginTop: '2%',
+          marginLeft: '3%'
+        }}>
+
+          <TouchableOpacity onPress={() => {
+
+            navigation.navigate('Barcode_main');
+          }}>
+            <View
+              style={{
+                width: '55%',
+                height: '90%',
+                margin: 3,
+                marginLeft: '5%',
+
+                borderRadius: 5,
+                flexDirection: 'row',
+                display: 'flex'
+              }}>
+              <View style={{
+                backgroundColor: 'white',
+                width: 50,
+                height: 50,
+                padding: '2%',
+                justifyContent: 'center',
+
+                borderRadius: 50,
+                display: 'flex',
+
+                alignContent: 'center',
+                justifyContent: 'center',
+                marginTop: '15%'
+
+
+              }}>
+                <MaterialCommunityIcons
+                  style={{
+
+                    margin: '25%'
+                  }}
+
+                  name="barcode-scan" size={22} color="black" />
+              </View>
+              <View style={{
+                alignContent: 'center',
+                justifyContent: 'center'
+              }}>
+                <View style={{
+                  alignContent: 'center',
+                  justifyContent: 'center',
+                  margin: '15%',
+                  width: '80%',
+
+                }}>
+                  <Text style={{
+                    fontFamily: "Sc"
+                    , fontSize: 12,
+
+
+                  }}>
+                    바코드검색
+                  </Text>
+
+                </View>
+              </View>
+
+            </View>
+          </TouchableOpacity>
+
+        </View>
+
+        <View>
+
+
+
+
+        </View>
+
+
+      </View>
+
+
+      <View style={{
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+
+      }}>
+
+
+      </View >
+      <View style={{
+        width: '100%',
+        height: '70%',
+        backgroundColor: '#F2F2F2'
+      }}>
 
         <Text style={{
-          fontFamily: "Nam-Bold"
-          , fontSize: 12,
-          marginTop: 13,
+          fontFamily: "Sc"
+          , fontSize: 15,
+
           marginLeft: 20
 
         }}> {`${nickname} 님을 위한 추천 상품`} </Text>
@@ -311,24 +436,24 @@ const main = function ({ navigation }) {
 
 
         <View style={{
-          backgroundColor: 'white'
+          backgroundColor: '#F2F2F2',
         }}>
 
           <Text style={{
-            fontFamily: "Nam-Bold"
-            , fontSize: 12,
+            fontFamily: "Sc"
+            , fontSize: 15,
             marginTop: 10,
             marginLeft: 20
 
           }}> {`${nickname} 님을 위한 추천 기사`} </Text>
 
           <View style={{
-            margin: 8,
+            margin: 5,
             marginLeft: 15,
             width: '90%',
-            height: 140,
-            backgroundColor: '#DDEEF2',
-            borderRadius: 20,
+            height: '45%',
+            backgroundColor: '#F2F2F2',
+            borderRadius: 5,
           }}>
             <ScrollView>
               <TouchableOpacity onPress={() => {
@@ -350,8 +475,8 @@ const main = function ({ navigation }) {
 
           <View style={{
             width: '100%',
-            height: 20,
-            backgroundColor: 'white'
+            height: 10,
+            backgroundColor: '#F2F2F2'
           }}>
 
           </View>
@@ -416,5 +541,6 @@ const style = StyleSheet.create({
   }
 
 })
+
 
 export default main;

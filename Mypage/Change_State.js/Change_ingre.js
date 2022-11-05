@@ -19,10 +19,6 @@ import { Ionicons } from '@expo/vector-icons';
 const Change_ingre = function ({ navigation }) {
     const dispatch = useDispatch();
     const token = useSelector((state) => state.token.token);
-
-
-
-
     const check_array_list = useSelector((state) => state.change.array_list_2);
 
     const [MS_good, misu] = Ms();
@@ -35,6 +31,8 @@ const Change_ingre = function ({ navigation }) {
     // const data_change = navigation.getParam('data');
     const mos = useSelector((state) => state.change.ingredient)
     const original = useSelector((state) => state.change.ingre_original);
+    console.log('오리지널')
+    console.log(original)
     const check = function () {
 
         if (checkhey == true) {
@@ -183,7 +181,7 @@ const Change_ingre = function ({ navigation }) {
     return (
 
         <View style={{
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#F2F2F2',
             height: '100%'
         }}>
             <View style={{
@@ -194,7 +192,7 @@ const Change_ingre = function ({ navigation }) {
             }}>
                 <View style={{
                     width: '18%',
-                    backgroundColor: '#DDEEF2',
+                    backgroundColor: '#F2F2F2',
 
                 }}>
                     <TouchableOpacity onPress={() => {
@@ -206,16 +204,17 @@ const Change_ingre = function ({ navigation }) {
 
                             marginLeft: 15,
                             marginTop: 20,
-                        }} name="arrow-back-circle" size={50} color="black" />
+                        }} name="arrow-back-circle" size={50} color="#545252" />
 
                     </TouchableOpacity>
                 </View>
                 <View style={{
                     width: '43%',
-                    backgroundColor: '#DDEEF2',
+                    backgroundColor: '#F2F2F2',
                 }}>
                     <Text style={{
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                         fontSize: 15,
                         marginTop: 30,
                         marginLeft: 15
@@ -233,7 +232,8 @@ const Change_ingre = function ({ navigation }) {
 
 
                         <Text style={{
-                            fontFamily: 'Nam-Bold',
+
+                            fontFamily: 'Sc',
                             fontSize: 15,
                             marginTop: 30,
                             marginLeft: 15
@@ -259,7 +259,8 @@ const Change_ingre = function ({ navigation }) {
                         color: '#545252',
 
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                     }}>
                         비선호 성분수정
                     </Text>
@@ -282,7 +283,8 @@ const Change_ingre = function ({ navigation }) {
                         marginLeft: 140,
                         flexDirection: 'column',
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                     }}>
                         아전과 바뀐 상태가 존재하지 않습니다
                     </Text>
@@ -413,6 +415,7 @@ const Change_ingre = function ({ navigation }) {
                     })
 
                 })
+                console.log('마지막 418')
                 console.log(final.ingredient);
                 for (var pro in final.ingredient) {
                     var cc = final.ingredient[pro];
@@ -423,9 +426,9 @@ const Change_ingre = function ({ navigation }) {
 
                 }
 
+                console.log('마지막2 429')
 
-
-                axios.patch(`http://172.30.1.31:5000/mypage/updateUser`, {
+                axios.patch(`http://15.165.76.99:5000/mypage/updateUser`, {
                     "ingredient": ob.ingredient
                 },
 
@@ -440,7 +443,11 @@ const Change_ingre = function ({ navigation }) {
                         console.log('성공했습니다')
                         console.log(response.data);
                         if (response.data == true) {
-                            dispatch(changeAction.setingre_change_list());//dispatch(changeAction.setarray_list());
+
+
+
+                            dispatch(changeAction.setingre_change_list());
+                            navigation.navigate('Mypage_main');//dispatch(changeAction.setarray_list());
                         }
                         else if (response.data == false) {
                             dispatch(changeAction.set_ingre_change_list());
@@ -464,10 +471,10 @@ const Change_ingre = function ({ navigation }) {
 
             }>
                 <View style={{
-                    backgroundColor: '#ffffff'
-                    , width: '45%',
+                    backgroundColor: '#FFE978'
+                    , width: '85%',
                     height: '25%',
-                    borderRadius: 10,
+                    borderRadius: 5,
                     marginTop: 5,
                     alignSelf: 'center',
                     alignContent: 'center'
@@ -484,7 +491,8 @@ const Change_ingre = function ({ navigation }) {
                         color: '#545252',
                         marginTop: 10,
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+
+                        fontFamily: 'Sc',
                     }}>
                         수정 완료
                     </Text>
@@ -527,7 +535,7 @@ const styles = StyleSheet.create({
 
         height: 700,
         // justifyContent: 'space-between',
-        backgroundColor: '#DDEEF2',
+        backgroundColor: '#F2F2F2',
         // justifyContent: 'flex-start',
         flexWrap: 'wrap'
     }

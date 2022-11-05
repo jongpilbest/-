@@ -25,10 +25,10 @@ const second = function ({ navigation }) {
         else {
             return {
                 fontSize: 15,
-                color: '#FF4444',
+                color: '#545252',
                 fontWeight: 'bold',
-                marginLeft: '40%',
-                fontFamily: 'Nam-Bold',
+                marginLeft: '5%',
+                fontFamily: 'Sc',
             }
         }
     }
@@ -43,7 +43,7 @@ const second = function ({ navigation }) {
 
         if (!re.test(password)) {
 
-            return false;
+            return true;
         }
 
         if (re.test(password)) {
@@ -51,7 +51,7 @@ const second = function ({ navigation }) {
             return 1;
         }
 
-        return true;
+        return false;
 
     }
 
@@ -59,7 +59,7 @@ const second = function ({ navigation }) {
 
     return (
         <View style={{
-            backgroundColor: '#DDEEF2',
+            backgroundColor: '#F2F2F2',
             height: '100%'
         }}>
 
@@ -72,11 +72,11 @@ const second = function ({ navigation }) {
 
                     marginLeft: 15,
                     marginTop: 20,
-                }} name="arrow-back-circle" size={50} color="black" />
+                }} name="arrow-back-circle" size={50} color="#545252" />
 
             </TouchableOpacity>
             <View style={{
-                marginTop: '15%',
+                marginTop: '10%',
                 marginLeft: '3%'
 
             }}>
@@ -86,7 +86,7 @@ const second = function ({ navigation }) {
                     color: '#545252',
                     marginLeft: 15,
                     fontWeight: 'bold',
-                    fontFamily: 'Nam-Bold',
+                    fontFamily: 'Sc',
 
 
                 }}>
@@ -124,12 +124,13 @@ const second = function ({ navigation }) {
 
             }}>
                 <View style={{
-                    backgroundColor: '#FFFFFF'
+
+                    backgroundColor: '#545252'
                     , width: '37%',
-                    height: 40,
-                    borderRadius: 10,
+                    height: 45,
+                    borderRadius: 5,
                     marginTop: '30%',
-                    marginLeft: '55%'
+                    marginLeft: '50%'
                     //marginTop: '40%'
 
 
@@ -139,10 +140,10 @@ const second = function ({ navigation }) {
                         alignItems: 'center',
                         alignContent: 'center',
                         textAlign: 'center',
-                        color: '#545252',
+                        color: 'white',
                         marginTop: '10%',
                         fontWeight: 'bold',
-                        fontFamily: 'Nam-Bold',
+                        fontFamily: 'Sc',
                     }}>
                         다음
                     </Text>
@@ -173,11 +174,11 @@ const style = StyleSheet.create({
         width: '85%',
         height: 50,
         backgroundColor: 'white',
-        borderColor: 'white',
+        borderColor: '#545252',
 
-        borderWidth: 3,
+        borderWidth: 1,
         margin: 10,
-        borderRadius: 10,
+        borderRadius: 5,
         marginLeft: '3%',
         marginLeft: 15,
         marginTop: '5%',

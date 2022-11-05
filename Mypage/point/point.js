@@ -27,14 +27,14 @@ const point = function ({ navigation }) {
  var len = (item.length * 5);
  return (
   <View style={{
-   backgroundColor: '#ffffff',
+   backgroundColor: '#F2F2F2',
    width: '100%',
    height: '100%'
   }}>
 
 
    <View style={{
-    backgroundColor: '#F4F4F4',
+    backgroundColor: '#F2F2F2',
     height: 80,
     width: '100%'
 
@@ -50,8 +50,8 @@ const point = function ({ navigation }) {
      <Ionicons style={{
 
       marginLeft: 15,
-      marginTop: 20,
-     }} name="arrow-back-circle" size={50} color="black" />
+      marginTop: 25,
+     }} name="arrow-back-circle" size={50} color="#545252" />
 
     </TouchableOpacity>
 
@@ -65,23 +65,24 @@ const point = function ({ navigation }) {
      textAlign: 'center',
 
 
-     fontFamily: "Nam-Bold"
+     fontFamily: "Sc"
     }}>누적 포인트 내역</Text>
    </View>
 
    <View
     style={{
-     backgroundColor: 'white',
+     backgroundColor: '#F2F2F2',
      height: '90%'
     }
 
 
     } >
     <View style={{
-     backgroundColor: '#DDEEF2',
+     backgroundColor: '#ffffff',
      height: 150,
      margin: 10,
      flexDirection: 'row',
+     borderRadius: 5
 
 
 
@@ -95,7 +96,7 @@ const point = function ({ navigation }) {
 
 
       <View style={{
-       backgroundColor: 'white',
+       backgroundColor: '#FFE978',
        height: '70%',
        width: '25%',
        margin: 20,
@@ -127,7 +128,7 @@ const point = function ({ navigation }) {
 
         <Text style={{
          fontSize: 20,
-         fontFamily: "Nam-Bold",
+         fontFamily: "Sc",
          marginTop: 20,
          marginLeft: 50
         }}>
@@ -135,7 +136,7 @@ const point = function ({ navigation }) {
         </Text>
         <Text style={{
          fontSize: 15,
-         fontFamily: "Nam-Bold",
+         fontFamily: "Sc",
          margin: 10,
          marginLeft: 50
         }}>
@@ -166,7 +167,7 @@ const point = function ({ navigation }) {
        flexDirection: 'row',
 
        // justifyContent: 'space-between',
-       backgroundColor: 'white',
+       backgroundColor: '#F2F2F2',
        // justifyContent: 'flex-start',
        flexWrap: 'wrap',
        marginTop: 15

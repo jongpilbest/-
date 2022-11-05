@@ -78,8 +78,17 @@ const initialstate = {
   }, {
    name: 'walnut',
 
+   kr: '호두'
+  },
+
+  {
+   name: 'peanut',
    kr: '땅콩'
-  }, {
+
+
+  },
+
+  {
    name: 'chicken',
 
    kr: '닭'
@@ -240,7 +249,7 @@ const changeslice = createSlice({
   },
   setranking: (state, action) => {
    state.ranking = action.payload;
-   
+
   },
 
  }

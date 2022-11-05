@@ -188,7 +188,7 @@ const Search_ITEM = function ({ onfinsh }) {
     console.log(state_state.token);
 
 
-    axios.post("http://172.30.1.31:5000/product/search", {
+    axios.post("http://15.165.76.99:5000/product/search", {
 
       "keyword": com
 
@@ -252,7 +252,7 @@ const style = StyleSheet.create({
     //borderColor: 'black',
     borderWidth: 5,
     marginTop: 26,
-    borderRadius: 10,
+    borderRadius: 5,
     margin: 10,
     borderColor: '#D2D2D2',
     borderWidth: 3,

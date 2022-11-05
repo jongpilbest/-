@@ -14,11 +14,11 @@ const Kisa = function ({ show }) {
    marginTop: 15,
    height: 40,
    marginLeft: 15,
-   borderRadius: 20,
+   borderRadius: 5,
    backgroundColor: 'white'
   }}>
    <Text style={{
-    fontFamily: "Nam-Bold"
+    fontFamily: "Sc"
     , fontSize: 10,
     marginTop: 10,
     marginLeft: 20,

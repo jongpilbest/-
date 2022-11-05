@@ -1,4 +1,3 @@
-
 import * as Notifications from 'expo-notifications';
 import { AntDesign } from '@expo/vector-icons';
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
@@ -7,8 +6,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import Componn from "./signup/Componn";
 import { useFonts } from 'expo-font';
 import { LogBox } from "react-native";
-
-LogBox.ignoreLogs(["EventEmitter.removeListener"]);
+import third_page from './search_item/third_page';
 import Constants from 'expo-constants';
 import Change_State from "./Mypage/Change_State.js/Change_state";
 import good_list from "./Mypage/good_list";
@@ -37,7 +35,8 @@ import Qna from "./Mypage/Qna/Qna";
 import Test from './Item/Test';
 import final from "./signup/fian";
 import ingredient from "./signup/ingredient";
-import nickname from "./signup/nickname";
+import M_Gisa from './Mypage/MANAGER/M_Gisa';
+import Nickname from "./signup/Nickname";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Barcode_main from "./component/Barcode_main";
@@ -45,7 +44,7 @@ import Mypage_main from './Mypage/Mypage_main';
 import Change_ingre from './Mypage/Change_State.js/Change_ingre';
 import Search_item_seconde from "./search_item/Search_item_seconde";
 //import Mypage_main from "./Mypage/Mypage_main";
-import sung from './component/Component_inner.js/sung';
+import Bun from './component/Bun';
 import Manager_Enroll from './Mypage/MANAGER/Manager_Enroll';
 import Real_Enroll from './Mypage/MANAGER/Real_Enroll';
 import Write_Enroll from './Mypage/MANAGER/Write_Enroll';
@@ -56,14 +55,19 @@ const navigator =
     //sung: sung,
     //Qna: Qna,
     //  Test: Test,
-    // Enroll_page: Enroll_page,
+    //Enroll_page: Enroll_page,
+    //ingredient: ingredient,
+    // M_Gisa: M_Gisa,
+    // ingredient: ingredient,
+    // fifth: fifth,
     Edit: Edit,
     ///Qna: Qna,
     Manager: createStackNavigator({
       Manager: Manager,
       Manager_Enroll: Manager_Enroll,
       Real_Enroll: Real_Enroll,
-      Write_Enroll: Write_Enroll
+      Write_Enroll: Write_Enroll,
+      M_Gisa: M_Gisa
 
     }),
 
@@ -79,7 +83,7 @@ const navigator =
       Edit: Edit,
 
       first: first,
-      nickname: nickname,
+      Nickname: Nickname,
       second: second,
       fifth: fifth,
       ingredient: ingredient,
@@ -96,7 +100,7 @@ const navigator =
           unmountOnBlur: true,
           tabBarIcon: ({ tintColor }) => (
 
-            <AntDesign name="Trophy" size={25} style={{ color: tintColor }} />
+            <AntDesign name="Trophy" size={25} style={{ color: 'white' }} />
 
 
           ),
@@ -113,7 +117,7 @@ const navigator =
         search_item_first: search_item_first,
         Search_item_seconde: Search_item_seconde,
         Gisa: Gisa,
-        sung: sung
+        Bun: Bun
 
       },
         {
@@ -121,13 +125,13 @@ const navigator =
             tabBarLabel: '메인',
             tabBarIcon: ({ tintColor }) => (
 
-              <AntDesign name="home" size={25} style={{ color: tintColor }} />
+              <AntDesign name="home" size={25} style={{ color: 'white' }} />
 
 
             ),
             activeColor: '#404040',
             inactiveColor: '#404040',
-            barStyle: { backgroundColor: '#DDEEF2' },
+            barStyle: { backgroundColor: '#545252' },
           }
         })
       ,
@@ -139,13 +143,13 @@ const navigator =
           tabBarLabel: '등록',
           tabBarIcon: ({ tintColor }) => (
 
-            <AntDesign name="upload" size={25} style={{ color: tintColor }} />
+            <AntDesign name="upload" size={25} style={{ color: 'white' }} />
 
 
           ),
           activeColor: '#404040',
           inactiveColor: '#404040',
-          barStyle: { backgroundColor: '#DDEEF2' },
+          barStyle: { backgroundColor: '#545252' },
         }
       }),
 
@@ -158,7 +162,8 @@ const navigator =
         Danger: Danger,
         Change_State: Change_State,
         Change_ingre: Change_ingre,
-        Qna: Qna
+        Qna: Qna,
+        third_page: third_page
 
 
       }, {
@@ -166,14 +171,14 @@ const navigator =
           tabBarLabel: '설정',
           tabBarIcon: ({ tintColor }) => (
 
-            <AntDesign name="setting" size={25} style={{ color: tintColor }} />
+            <AntDesign name="setting" size={25} style={{ color: 'white' }} />
 
 
           ),
           unmountOnBlur: true,
           activeColor: '#404040',
           inactiveColor: '#404040',
-          barStyle: { backgroundColor: '#DDEEF2' },
+          barStyle: { backgroundColor: '#545252' },
         },
 
       }, {
@@ -189,7 +194,7 @@ const navigator =
         activeTintColor: 'black',
         inactiveTintColor: 'black',
         style: {
-          backgroundColor: '#DDEEF2',
+          backgroundColor: '#545252',
         },
       },
     },)
@@ -247,6 +252,7 @@ const registerForPushNotificationsAsync = async () => {
 
 const App = createAppContainer(navigator);
 export default () => {
+  console.disableYellowBox = true;
 
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -298,6 +304,7 @@ export default () => {
       'Nam-Regular': require('./assets/fonts/NanumMyeongjo-Bold.ttf'),
       'Nam-Bold': require('./assets/fonts/NanumMyeongjo-Bold.ttf'),
       'Nam-ExtraBold': require('./assets/fonts/NanumMyeongjo-ExtraBold.ttf'),
+      'Sc': require('./assets/fonts/Sc.ttf')
     })
 
   if (!fontsLoading) {

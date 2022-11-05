@@ -41,7 +41,7 @@ const REal_Com = function ({ data }) {
 
    width: 300,
    height: 50,
-   backgroundColor: '#DDEEF2',
+   backgroundColor: '#FFE978',
    margin: 10,
    borderRadius: 20,
    // alignContent: 'center',
@@ -54,7 +54,8 @@ const REal_Com = function ({ data }) {
     marginTop: 10
    }}>
     <Text style={{
-     fontFamily: 'Nam-Bold',
+
+     fontFamily: 'Sc',
      fontSize: 17,
      textAlign: 'center'
     }}>
@@ -70,7 +71,8 @@ const REal_Com = function ({ data }) {
    }}>
 
     <Text style={{
-     fontFamily: 'Nam-Bold',
+
+     fontFamily: 'Sc',
      textAlign: 'center',
      marginTop: 6
     }}>

@@ -24,7 +24,7 @@ const Manager = function ({ navigation }) {
    // flexDirection: 'row'
   }}>
    <View style={{
-    backgroundColor: '#F4F4F4',
+    backgroundColor: '#F2F2F2',
     height: 80,
     width: '100%'
 
@@ -51,7 +51,7 @@ const Manager = function ({ navigation }) {
      position: 'absolute',
 
 
-     fontFamily: "Nam-Bold"
+     fontFamily: "Sc"
     }}>관리자 페이지</Text>
    </View>
 
@@ -69,7 +69,7 @@ const Manager = function ({ navigation }) {
 
      width: 250,
      height: 100,
-     backgroundColor: '#DDEEF2',
+     backgroundColor: '#FFE978',
      margin: 10,
      borderRadius: 20,
      // alignContent: 'center',
@@ -88,7 +88,7 @@ const Manager = function ({ navigation }) {
        width: '100%',
        height: 55,
        alignSelf: 'center'
-       
+
 
        //margin: 20
       }}>
@@ -96,7 +96,7 @@ const Manager = function ({ navigation }) {
 
        <Text style={{
         fontSize: 20,
-        fontFamily: "Nam-Bold",
+        fontFamily: "Sc",
         color: 'black',
         textAlign: 'center',
         marginTop: 30
@@ -114,7 +114,7 @@ const Manager = function ({ navigation }) {
 
      width: 250,
      height: 100,
-     backgroundColor: '#DDEEF2',
+     backgroundColor: '#FFE978',
      margin: 10,
      borderRadius: 20,
      // alignContent: 'center',
@@ -140,7 +140,7 @@ const Manager = function ({ navigation }) {
 
        <Text style={{
         fontSize: 20,
-        fontFamily: "Nam-Bold",
+        fontFamily: "Sc",
         color: 'black',
         textAlign: 'center',
         marginTop: 30
@@ -161,7 +161,7 @@ const Manager = function ({ navigation }) {
 
      width: 250,
      height: 100,
-     backgroundColor: '#DDEEF2',
+     backgroundColor: '#FFE978',
      margin: 10,
      borderRadius: 20,
      // alignContent: 'center',
@@ -187,7 +187,7 @@ const Manager = function ({ navigation }) {
 
        <Text style={{
         fontSize: 20,
-        fontFamily: "Nam-Bold",
+        fontFamily: "Sc",
         color: 'black',
         textAlign: 'center',
         marginTop: 30
@@ -209,7 +209,7 @@ const Manager = function ({ navigation }) {
 
      width: 250,
      height: 100,
-     backgroundColor: '#DDEEF2',
+     backgroundColor: '#FFE978',
      margin: 10,
      borderRadius: 20,
      // alignContent: 'center',
@@ -235,7 +235,7 @@ const Manager = function ({ navigation }) {
 
        <Text style={{
         fontSize: 20,
-        fontFamily: "Nam-Bold",
+        fontFamily: "Sc",
         color: 'black',
         textAlign: 'center',
         marginTop: 30

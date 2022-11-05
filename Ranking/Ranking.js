@@ -14,7 +14,7 @@ import Ranking_Com from './Ranking_Com';
 const Ranking = function ({ navigation }) {
   const token = useSelector((state) => state.token.token);
   const [normal, ran, ran2] = Rank__api();
-
+  console.log(ran)
   const [time, settime] = useState(0);
   const [change, setchange] = useState(0);
 
@@ -33,32 +33,19 @@ const Ranking = function ({ navigation }) {
 
   return (
     <View style={{
-      backgroundColor: '#DDEEF2',
+      backgroundColor: '#F2F2F2',
       height: 2000,
     }}>
 
 
       <View style={{
-        backgroundColor: '#F4F4F4',
-        height: 80,
+        backgroundColor: '#F2F2F2',
+        height: 110,
         width: '100%'
 
 
         //eight: '35%'
       }}>
-
-
-        <Text style={{
-          fontSize: 20,
-          alignSelf: "flex-start",
-          //color: '#7C7C7C',
-          marginTop: 30,
-          marginLeft: 20,
-          position: 'absolute',
-
-
-          fontFamily: "Nam-Bold"
-        }}>랭킹순위</Text>
 
         <TouchableOpacity onPress={() => {
 
@@ -68,20 +55,42 @@ const Ranking = function ({ navigation }) {
           <MaterialIcons style={{
             fontSize: 30,
             position: 'absolute',
-            top: 20,
+            top: 30,
             right: 23,
             marginTop: 10
-          }} name="update" size={40} color="black" />
+          }} name="update" size={60} color="#545252" />
 
         </TouchableOpacity>
+        <Text style={{
+          fontFamily: "Aullia"
+          , fontSize: 44,
+          marginLeft: 20,
+          marginTop: 22,
+
+          color: 'black'
+        }}>
+          Anof
+        </Text>
+
+        <Text style={{
+          fontSize: 16,
+          alignSelf: "center",
+          color: '#545252',
+          position: 'absolute',
+          top: 80,
+          left: 30,
+          fontFamily: "Sc"
+        }}>랭킹순위</Text>
+
+
 
 
       </View>
       <View style={{
         width: '100%',
-        height: 470
+        height: '40%',
+        backgroundColor: '#F2F2F2'
       }}>
-
 
 
         <ScrollView
@@ -89,37 +98,36 @@ const Ranking = function ({ navigation }) {
           // showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={true}>
 
-          <View style={{
-            width: '100%',
-            height: 1600,
-            backgroundColor: '#DDEEF2',
-            marginTop: 20
-          }}>
 
 
-            {
-              ran.length > 1 ? ran.map((el, index) => {
-                return <Ranking_Com t={el} fo={index} key={index}></Ranking_Com>
-              }) : null
-            }
 
-          </View>
+          {
+            ran.length > 1 ? ran.map((el, index) => {
+              return <Ranking_Com t={el} fo={index} key={index}></Ranking_Com>
+            }) : null
+          }
+
+
         </ScrollView>
       </View>
       <View style={{
-        width: 330,
+        width: '90%',
         height: 60,
-        marginLeft: 20,
-        borderRadius: 10,
-        backgroundColor: '#BDBDBD'
+        marginLeft: '5%',
+        borderRadius: 5,
+        bottom: '35%',
+        position: 'absolute',
+        backgroundColor: '#545252'
       }}>
 
         {
           ran2.ranking ? <Text style={{
-            fontFamily: 'Nam-Bold',
+
+            fontFamily: 'Sc',
             fontSize: 20,
             textAlign: 'center',
             marginTop: 10,
+            color: 'white'
           }}>{` ${ran2.nickname}님 순위 ${ran2.ranking}위`}</Text>
             : null
         }
@@ -158,7 +166,7 @@ const style = StyleSheet.create({
 
     borderWidth: 3,
     margin: 10,
-    borderRadius: 10,
+    borderRadius: 5,
     marginLeft: '3%',
     marginLeft: 15,
     marginTop: '5%',

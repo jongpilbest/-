@@ -69,8 +69,15 @@ const initialstate = {
   }, {
    name: 'walnut',
 
+   kr: '호두'
+  },
+
+  , {
+   name: 'peanut',
+
    kr: '땅콩'
-  }, {
+  },
+  {
    name: 'chicken',
 
    kr: '닭'

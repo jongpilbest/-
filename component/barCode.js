@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Context } from '../contextv/DetailContext'
 import { barcodeAction } from "../redux/auth";
-
+import { Ionicons } from '@expo/vector-icons';
 
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -94,6 +94,28 @@ const Barcode = ({ navigation }) => {
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
+      <View style={{
+        backgroundColor: 'white',
+        width: 60,
+        height: 60,
+        borderRadius: 50,
+        marginTop: 20,
+
+      }}>
+
+
+        <TouchableOpacity onPress={() => {
+
+          console.log('엥')
+          navigation.pop()
+        }}>
+          <Ionicons style={{
+            margin: 5
+          }} name="chevron-back-circle-outline" size={50} color="black" />
+
+
+        </TouchableOpacity>
+      </View>
       {scanned &&
         <TouchableOpacity onPress={() => {
           setScanned(false)
@@ -120,7 +142,11 @@ const Barcode = ({ navigation }) => {
   );
 
 }
-
+Barcode.navigationOptions = () => {
+  return {
+    header: () => false,
+  };
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -23,9 +23,25 @@ import { Ionicons } from '@expo/vector-icons';
 const ingredient = function ({ navigation }) {
 
   const mos = useSelector((state) => state.auth.ingredient)
+  const [num, setnum] = useState(false);
+  const compon_length = useSelector((state) => state.auth.array_list_2);
+  useEffect(() => {
+    console.log('하나 이상 ?', compon_length.length)
+    if (compon_length.length > 0) {
+      setnum(false);
+    }
+    if (compon_length.length == 0) {
+      setnum(true);
+    }
+
+  }, [compon_length])
+
+
 
   const [MS_good, misu] = Ms();
   const [chna, obj_cha] = fian();
+
+  const [write, setwrite] = useState(0);
   console.log(misu);
   const dispatch = useDispatch();
   var arry_list = useSelector((state) => state.auth.array_list)
@@ -40,6 +56,7 @@ const ingredient = function ({ navigation }) {
   const check_most = function (el) {
 
     if (el == "") {
+
       chekc = -1;
       chek = mos;
 
@@ -64,6 +81,8 @@ const ingredient = function ({ navigation }) {
       console.log('ERROR CHECK')
       text_input = 1;
     }
+
+
 
 
 
@@ -233,8 +252,21 @@ const ingredient = function ({ navigation }) {
         }, {
           name: 'walnut',
           check: 0,
+          kr: '호두'
+        },
+
+        {
+          name: 'peanut',
+          check: 0,
           kr: '땅콩'
-        }, {
+
+
+
+
+        },
+
+
+        {
           name: 'chicken',
           check: 0,
           kr: '닭'
@@ -309,51 +341,11 @@ const ingredient = function ({ navigation }) {
     }
     console.log(ob.allergy);
     console.log(ob_grien.ingredient);
-    /*
-      for (var pro in go.allergy) {
-        var cc = (mos[pro]);
-        var oj_ = Object.values(cc);
-        console.log(oj_)
-        ob.allergy[oj_[0]] = oj_[1];
-  
-  
-      }
-  
-  
-  
-      console.log('미수야')
-      console.log(ob)
-      /*
-   axios.post("http://172.30.1.31:5000/auth/join", {
-     "id": misu.id,
-     "nickname": misu.nickname,
-     "password": misu.password,
-     "ingredient": misu.ingredient,
-     "allergy": misu.allergy,
-  
-   })
-     .then((response) => {
-       if (response) {
-         console.log('?');
-  
-  
-         //console.log(response.data);
-         //setUser(response);
-       } else {
-         alert("failed to ");
-       }
-     }).catch((err) => {
-       console.log(err.message);
-       console.log(err)
-       console.log('?');
-     });
-  
-  */
+
     console.log(id, password)
 
 
-
-    axios.post("http://172.30.1.31:5000/auth/join", {
+    axios.post("http://15.165.76.99:5000/auth/join", {
       "userId": id,
       "password": password,
       "nickname": nickname,
@@ -380,12 +372,13 @@ const ingredient = function ({ navigation }) {
       });
 
 
+
   }
 
   return (
 
     <View style={{
-      backgroundColor: '#DDEEF2',
+      backgroundColor: '#F2F2F2',
       height: '100%'
     }}>
 
@@ -398,7 +391,7 @@ const ingredient = function ({ navigation }) {
 
           marginLeft: 15,
           marginTop: 20,
-        }} name="arrow-back-circle" size={50} color="black" />
+        }} name="arrow-back-circle" size={50} color="#545252" />
 
       </TouchableOpacity>
       <View style={{
@@ -413,7 +406,7 @@ const ingredient = function ({ navigation }) {
             color: '#545252',
 
             fontWeight: 'bold',
-            fontFamily: 'Nam-Bold',
+            fontFamily: 'Sc'
 
           }}>
             비선호
@@ -423,7 +416,7 @@ const ingredient = function ({ navigation }) {
             color: '#545252',
 
             fontWeight: 'bold',
-            fontFamily: 'Nam-Bold',
+            fontFamily: 'Sc',
           }}>
             성분을 알려주세요
           </Text>
@@ -435,7 +428,7 @@ const ingredient = function ({ navigation }) {
           marginTop: 10,
 
           fontWeight: 'bold',
-          fontFamily: 'Nam-Bold',
+          fontFamily: 'Sc',
         }}>
           마이페이지에서 변경 가능합니다.
 
@@ -449,22 +442,34 @@ const ingredient = function ({ navigation }) {
 
 
       </SeachBar>
+      {
+        num && <Text style={{
+          fontFamily: 'Sc',
+          marginLeft: '10%',
+          color: '#545252'
 
+        }}>
+          최소 하나 이상 선택해주세요
+        </Text>
+      }
 
       {
         text_input == 1 && <Text style={{
           fontSize: 22,
-          color: '#545252',
+          color: 'white',
           marginLeft: 20,
 
           fontWeight: 'bold'
         }}>
-          검색되는 상품이 없습니다
+          검색되는 비선호 성분이 없습니다
 
         </Text>
       }
       <View style={{
-        height: '60%',
+        height: '52%',
+        width: '100%',
+        marginLeft: 10
+
 
       }}>
         <ScrollView style={styles.border}>
@@ -472,7 +477,6 @@ const ingredient = function ({ navigation }) {
 
 
           <View style={styles.frined}>
-
 
 
             {
@@ -505,11 +509,12 @@ const ingredient = function ({ navigation }) {
       }>
 
         <View style={{
-          backgroundColor: '#ffffff'
-          , width: '45%',
-          height: '22%',
-          borderRadius: 10,
-          marginTop: 19,
+          backgroundColor: '#545252'
+          , width: '83%',
+          height: 40,
+          borderRadius: 5,
+          marginTop: 20,
+
           alignSelf: 'center',
           alignContent: 'center'
 
@@ -522,10 +527,10 @@ const ingredient = function ({ navigation }) {
             alignItems: 'center',
             alignContent: 'center',
             textAlign: 'center',
-            color: '#545252',
-            marginTop: 10,
+            color: 'white',
+            marginTop: 12,
             fontWeight: 'bold',
-            fontFamily: 'Nam-Bold',
+            fontFamily: 'Sc',
           }}>
             완료
           </Text>
@@ -550,21 +555,21 @@ const styles = StyleSheet.create({
 
   border: {
     width: '90%',
-    height: 400,
+    height: 800,
 
     borderWidth: 3,
     margin: 3,
     borderColor: 'transparent'
 
 
+
   },
   frined: {
 
     flexDirection: 'row',
-
-    height: 400,
+    height: 700,
     // justifyContent: 'space-between',
-    backgroundColor: '#DDEEF2',
+    backgroundColor: '#F2F2F2',
     // justifyContent: 'flex-start',
     flexWrap: 'wrap'
   }

@@ -68,7 +68,7 @@ const Danger_Text = function ({ text }) {
       }, {
          name: 'pork',
 
-         kr: '돼지 고기'
+         kr: '돼지\n 고기'
 
       }, {
          name: 'peach',
@@ -112,6 +112,11 @@ const Danger_Text = function ({ text }) {
          kr: '달걀'
 
 
+      }, {
+
+         name: 'walnut',
+         check: 0,
+         kr: '호두'
       }]
 
    for (var i = 0; i < al.length; i++) {
@@ -124,14 +129,16 @@ const Danger_Text = function ({ text }) {
    return (
       <View style={{
 
-         width: 60,
-         marginLefta: 8
+         width: 55,
+         height: 50,
+         margin: 3
       }} >
          <Text style={{
 
-            fontSize: 10,
-            fontFamily: "Nam-Bold",
-            marginTop: 10
+            fontSize: 15,
+            fontFamily: "Sc",
+            marginTop: 10,
+
 
          }}>
             {

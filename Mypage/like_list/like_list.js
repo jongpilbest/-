@@ -26,12 +26,12 @@ const like_list = function ({ navigation, data }) {
 
  return (
   <View style={{
-   backgroundColor: '#ffffff'
+   backgroundColor: '#F2F2F2'
   }}>
 
 
    <View style={{
-    backgroundColor: '#F4F4F4',
+    backgroundColor: '#F2F2F2',
     height: 80,
     width: '100%'
 
@@ -61,13 +61,13 @@ const like_list = function ({ navigation, data }) {
      position: 'absolute',
 
 
-     fontFamily: "Nam-Bold"
+     fontFamily: "Sc"
     }}>선호 상품 리스트</Text>
    </View>
 
    <View
     style={{
-     backgroundColor: 'white',
+     backgroundColor: '#F2F2F2',
      height: '90%'
     }
 
@@ -87,7 +87,7 @@ const like_list = function ({ navigation, data }) {
 
      height: 300,
      // justifyContent: 'space-between',
-     backgroundColor: 'white',
+     backgroundColor: '#F2F2F2',
      // justifyContent: 'flex-start',
      flexWrap: 'wrap',
      marginTop: 15

@@ -15,7 +15,7 @@ const Write_Com = function ({ data }) {
 
    width: 300,
    height: 60,
-   backgroundColor: '#DDEEF2',
+   backgroundColor: '#FFE978',
    margin: 10,
    borderRadius: 20,
    // alignContent: 'center',
@@ -28,7 +28,8 @@ const Write_Com = function ({ data }) {
     marginTop: 20
    }}>
     <Text style={{
-     fontFamily: 'Nam-Bold',
+
+     fontFamily: 'Sc',
      fontSize: 17,
      textAlign: 'center'
     }}>
@@ -57,7 +58,7 @@ const Write_Com = function ({ data }) {
       backgroundColor: 'white',
 
       // padding: 20,
-      fontSize: 15, fontFamily: "Nam-Bold"
+      fontSize: 15, fontFamily: "Sc"
 
      }}
      placeholder="입력해주세요"
